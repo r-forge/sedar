@@ -30,13 +30,14 @@
 
 # DOCUMENTATION ISSUES:
 =======================
-*
+* find suitable examples for all functions
 
 # NEW IMPLEMENTATIONS:
 =====================
 * make a local copy of the Monmonier's algorithm
 * make a local copy of the mspa functions
-* make a local copy of the global/local tests
+* make a local copy of the global/local tests -- done (TJ)
+* make a local copy of the chooseCN utils -- done (TJ)
 
 # TESTING:
 ==========
