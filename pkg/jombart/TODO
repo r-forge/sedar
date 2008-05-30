@@ -1,0 +1,55 @@
+#######################
+#
+# sedar/jombart TODO list
+#
+#######################
+#
+# please list here all intended modifications
+# and all detected bugs
+#
+# please add a "-- done" or "-- fixed" tag when
+# you achieved something
+#
+# Inside a given section, priority goes decreasing.
+#
+# Delete fixed things each new release.
+#
+# T.J. 2008
+#
+######################
+
+
+
+# FOR NEXT STABLE VERSION
+=========================
+=========================
+
+# CODE ISSUES:
+==============
+*
+
+# DOCUMENTATION ISSUES:
+=======================
+*
+
+# NEW IMPLEMENTATIONS:
+=====================
+* make a local copy of the Monmonier's algorithm
+* make a local copy of the mspa functions
+* make a local copy of the global/local tests
+
+# TESTING:
+==========
+*
+
+
+
+# LOW PRIORITY / MINOR BUGS
+===========================
+===========================
+*
+
+# LONG TERM
+==========================
+==========================
+*
