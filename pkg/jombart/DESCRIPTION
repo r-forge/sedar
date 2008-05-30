@@ -1,0 +1,12 @@
+Package: sedarJombart
+Version: 1.0-0
+Date: 2008/06/01
+Title: Thibaut Jombart's contribution to SEDAR package
+Author: Thibaut Jombart <jombart@biomserv.univ-lyon1.fr>
+Maintainer: Thibaut Jombart <jombart@biomserv.univ-lyon1.fr>
+Suggests: adegenet
+Depends: spdep, ade4, tripack
+Description: Various spatial tools originally developped in the adegenet package.
+License: GPL (>=2)
+LazyLoad: yes
+Collate: chooseCN.R globloc.rtests.R
