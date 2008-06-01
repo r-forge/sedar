@@ -1,0 +1,10 @@
+$Date$
+
+This file containts information about visible changes in
+sedarVegan for developers (others and yourself). Add new entries to the 
+top of the file using version numbering defined in DESCRIPTION. 
+
+version 0.0-1 (opened June 1, 2008)
+
+	* setting up sedarVegan with only one function: spantree2neig
+          to translate vegan::spantree objects to ade4::neig objects. 
