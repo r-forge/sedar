@@ -1,6 +1,8 @@
 #######################
 #
 # sedar/sedarVegan TODO list
+# $Date$
+# $Author$
 #
 #######################
 #
@@ -13,9 +15,6 @@
 # Inside a given section, priority goes decreasing.
 #
 # Delete fixed things each new release.
-#
-# $Date$
-# $Author$
 #
 ######################
 
@@ -35,7 +34,8 @@
 
 # NEW IMPLEMENTATIONS:
 =====================
-* 
+* veganify Jombart's chooseCN
+* ade4/vegan translation of cca 
 
 # TESTING:
 ==========
@@ -49,4 +49,4 @@
 # LONG TERM
 ==========================
 ==========================
-*
+* vegan::scores conflicts with other 'scores'
