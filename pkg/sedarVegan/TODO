@@ -1,0 +1,52 @@
+#######################
+#
+# sedar/sedarVegan TODO list
+#
+#######################
+#
+# please list here all intended modifications
+# and all detected bugs
+#
+# please add a "-- done" or "-- fixed" tag when
+# you achieved something
+#
+# Inside a given section, priority goes decreasing.
+#
+# Delete fixed things each new release.
+#
+# $Date$
+# $Author$
+#
+######################
+
+
+
+# FOR NEXT STABLE VERSION
+=========================
+=========================
+
+# CODE ISSUES:
+==============
+*
+
+# DOCUMENTATION ISSUES:
+=======================
+* 
+
+# NEW IMPLEMENTATIONS:
+=====================
+* 
+
+# TESTING:
+==========
+*
+
+# LOW PRIORITY / MINOR BUGS
+===========================
+===========================
+*
+
+# LONG TERM
+==========================
+==========================
+*
