@@ -1,0 +1,9 @@
+Package: spacemakeR
+Title: Spatial modelling
+Version: 0.0-3
+Author: Stephane Dray
+Description: Package to compute principal coordinate analysis of neighbor matrices (PCNM) and moran's eigenvectors maps (MEM).
+Maintainer: Stephane Dray <dray@biomserv.univ-lyon1.fr>
+Depends: ade4, spdep, tripack
+License: GPL 2 or more
+Packaged: Mon Jun  2 16:53:24 2008; stephane
