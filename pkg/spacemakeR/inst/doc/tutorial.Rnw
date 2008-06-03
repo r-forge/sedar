@@ -20,14 +20,10 @@
 \maketitle
 <<t1, fig = FALSE, echo = FALSE, results=verbatim, width=7,height=7>>=
 options(prompt=" ", continue=" ", width = 70)
-.CurFileName <- get("file", env = parent.frame(3))
-.PrefixName <-strsplit(.CurFileName, "\\.")[[1]][1]
-.RversionName <-strsplit(R.version.string, ",")[[1]]
 options(digits=4)
-
 @
 
-\SweaveOpts{prefix.string = figs/\Sexpr{.PrefixName}, fig = TRUE, eps = TRUE, width = 6, height = 6}
+\SweaveOpts{prefix.string = figs/tutorial, fig = TRUE, eps = TRUE, width = 6, height = 6}
 \begin{quote}
 This appendix indicates how to manipulate spatial weighting matrices in R. It illustrates the approach developped in:
  Dray S., Legendre P. and Peres-Neto P. R. (accepted)
@@ -53,7 +49,7 @@ xygrid<-expand.grid(1:10,1:8)
 plot(xygrid)
 @ 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni2}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni2}
 \end{center}
 
 Spatial neighborhoods are managed in \texttt{spded} as objects of class \texttt{nb}. For a grid, you can create this kind of object with the function \texttt{cell2nb}.
@@ -76,8 +72,8 @@ nb2
 @ 
 
 \begin{center}
-\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni3}
-\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni4}
+\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/tutorial-ni3}
+\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/tutorial-ni4}
 \end{center}
 \subsection{Transects}
 The easiest way to deal with transects is to consider them as grids with only one row:
@@ -91,7 +87,7 @@ title(main="transect of 20 sites")
 summary(nb3)
 @ 
 \begin{center}
-\includegraphics[width=0.6\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni5}
+\includegraphics[width=0.6\textwidth,keepaspectratio]{figs/tutorial-ni5}
 \end{center}
 All sites have two neighbors except the first and the last one.
 \subsection{Irregular samplings}
@@ -102,7 +98,7 @@ xyir<-matrix(runif(20),10,2)
 plot(xyir,pch=20,cex=1.5,main="irregular sampling with 10 sites")
 @ 
 \begin{center}
-\includegraphics[width=0.6\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni6}
+\includegraphics[width=0.6\textwidth,keepaspectratio]{figs/tutorial-ni6}
 \end{center}
 <<ni7, fig=T, eval=TRUE, echo=TRUE, debug=TRUE, results=verbatim, include =FALSE, width=7, height=7>>=
 #?dnearneigh
@@ -122,7 +118,7 @@ plot(nbnear4,xyir,col="red",pch=20,cex=2)
 title(main="neighbors if 0<d<1.5")
 @ 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni7}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni7}
 \end{center}
 <<ni8, fig=F, eval=TRUE, echo=TRUE, debug=TRUE, results=verbatim, include =FALSE, width=7, height=7>>=
 nbnear1
@@ -153,8 +149,8 @@ title(main="nearest neighbors (k=2)",cex.main=2)
 @ 
 
 \begin{center}
-\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni10}
-\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni11}
+\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/tutorial-ni10}
+\includegraphics[width=0.4\textwidth,keepaspectratio]{figs/tutorial-ni11}
 \end{center}
 
 This definition of neighborhood can lead to unconnected subgraphs. The function \texttt{n.comp.nb} finds the number of disjoint connected subgraphs:
@@ -182,7 +178,7 @@ title(main=" Sphere of Influence Graph")
 @ 
 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni13}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni13}
 \end{center}
 
 What are the differences between two neighborhoods ?
@@ -218,7 +214,7 @@ plot(xx, coords, add=TRUE,pch=20,cex=2,col="red")
 title(main="Neighborhood for polygons")
 @ 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni16}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni16}
 \end{center}
 \section{Spatial weighting matrices}
 Spatial weighting matrices are not stored as matrices but as objects of the class \texttt{listw}. This format is more efficient than a matrix representation to manage large data sets. You can easily create an object of class \texttt{listw} from an object of class \texttt{nb} with the function \texttt{nb2listw}.
@@ -266,7 +262,7 @@ barplot(eigengab$values,main="Eigenvalues of spatial weighting matrix")
 
 @ 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni24}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni24}
 \end{center}
 Eigenvectors can be represented in the geographical space:
 <<ni25, fig=T, eval=TRUE, echo=TRUE, debug=TRUE, results=verbatim, include =FALSE, width=7, height=7>>=
@@ -275,7 +271,7 @@ for(i in 1:dim(eigengab$vectors)[2])
 s.value(xyir,eigengab$vectors[,i],addaxes=F, sub=paste("Eigenvector",i,"(",round(eigengab$values[i],3),")") ,cleg=0,csub=2,neig=neig(list=nbgab))
 @ 
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni25}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni25}
 \end{center}
 
 Moran's I can be computed and tested for each eigenvector with the \texttt{test.scores} function:
@@ -290,7 +286,7 @@ text(-1,0.5,paste("correlation =",cor(moranI$stat,eigengab$values)))
 abline(a=0,b=nrow(xyir)/sum(listw2mat(listwgab)),lty=3)
 @
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni25c}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni25c}
 \end{center}
 
 Eigenvalues and Moran's I are equal (post-multiply by a constant). Spatial representation of significant eigenvectors:
@@ -303,7 +299,7 @@ for(i in signi)
 s.value(xyir,eigengab$vectors[,i],addaxes=F,sub=paste("ev",i),csub=2,neig=neig(list=nbgab))
 @
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni26}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni26}
 \end{center}
 
 \section{Selection of a spatial weighting matrix}
@@ -362,7 +358,7 @@ mvspec
 plot(mvspec$d,mvspec$var,ty='b',pch=20,xlab="Distance", ylab="C(distance)")
 @
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni34}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni34}
 \end{center}
 We will construct ten neighborhood matrices with a distance criterion varying along the sequence of 10 evenly distributed values between 1.012 and 4 m:
 <<ni35, fig=F, eval=TRUE, echo=TRUE, debug=TRUE, results=verbatim, include =FALSE, width=7, height=7>>=
@@ -409,7 +405,7 @@ s.value(oribatid$xy, dnn.f2[[7]]$best$vectors[,dnn.f2[[7]]$best$ord[2]],cleg=0,s
 s.value(oribatid$xy, dnn.f2[[7]]$best$vectors[,dnn.f2[[7]]$best$ord[3]],cleg=0,sub=paste("vector",dnn.f2[[7]]$best$ord[3]),csub=3)
 @
 \begin{center}
-\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/\Sexpr{.PrefixName}-ni41}
+\includegraphics[width=0.8\textwidth,keepaspectratio]{figs/tutorial-ni41}
 \end{center}
 \end{document}
 
