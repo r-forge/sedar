@@ -40,7 +40,7 @@ while (!feof($handle)) {
 }
 fclose($handle);
 echo $contents; } ?>
-
+</p>
 <!-- end of project description -->
 
 <p> This project is born at a <a href="http://biomserv.univ-lyon1.fr/~dray/sedar/">workshop</a> organized in Lyon.</p>
