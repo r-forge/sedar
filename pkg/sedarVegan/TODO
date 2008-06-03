@@ -34,8 +34,8 @@
 
 # NEW IMPLEMENTATIONS:
 =====================
-* veganify Jombart's chooseCN
-* ade4/vegan translation of cca 
+* veganify Jombart's chooseCN -- done in 0.1-0
+* ade4/vegan translation of cca  -- ade2vegancca in vegan 1.14-2
 
 # TESTING:
 ==========
