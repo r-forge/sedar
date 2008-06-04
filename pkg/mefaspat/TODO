@@ -1,0 +1,7 @@
+TODO list for mefaspat package in the sedaR project
+
+* individual based restricted permutation of sample/species matrices with 'disjunction probabilities' for enabling between strata swapping of individuals. Spatial relations will be based on nb lists (currently it is implemented internally). This is parallel with additive diversity partitioning methods developed for the 'vegan' package.
+
+* simple heuristic reserve selection algorithms (greedy, progressive rarity) for evaluating performance of 'beta diversity' measures (contribution diversity approach) in reserve selection. Spatial constraints (reserve design principles) might be added later. (More advanced topics??? simulated annealing, benefit functions, ...)
+
+* methods for spatial representation (mapping) of 'mefa' objects. And also plug-ins for 'mefa' objects to enable consistency with 'sedaR' functions.
