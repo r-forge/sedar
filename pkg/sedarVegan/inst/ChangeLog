@@ -14,6 +14,13 @@ Version 0.1-0 (opened June 3, 2008)
 	really is Thibaut Jombert's code. Function uses eiter ade4 or
 	vegan for minimum spanning tree so that it works with either
 	package. 
+
+	* pcnm: veganified Stephane Dray's spacemakeR/pcnm function, so
+	that it can use either vegan spantree or ade4 mstree. Some
+	reorganization and stylistic changes within the code, and finding
+	of truncation distance was embedded in the function instead of
+	using a separate function. The result also got class "pcnm", but
+	there are no methods yet.
 	
 version 0.0-1 (closed June 2, 2008)
 
