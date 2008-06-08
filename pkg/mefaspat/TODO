@@ -1,7 +1,59 @@
-TODO list for mefaspat package in the sedaR project
+#######################
+#
+# sedar/mefaspat TODO list
+#
+#######################
+#
+# please list here all intended modifications
+# and all detected bugs
+#
+# please add a "-- done" or "-- fixed" tag when
+# you achieved something
+#
+# Inside a given section, priority goes decreasing.
+#
+# Delete fixed things each new release.
+#
+# T.J. 2008
+#
+######################
 
-* individual based restricted permutation of sample/species matrices with 'disjunction probabilities' for enabling between strata swapping of individuals. Spatial relations will be based on nb lists (currently it is implemented internally). This is parallel with additive diversity partitioning methods developed for the 'vegan' package.
+
+
+# FOR NEXT STABLE VERSION
+=========================
+=========================
+
+# CODE ISSUES:
+==============
+*
+
+# DOCUMENTATION ISSUES:
+=======================
+*
+
+# NEW IMPLEMENTATIONS:
+=====================
+* individual based restricted permutation of sample/species matrices with 'disjunction probabilities' for enabling between strata swapping of individuals. Spatial relations will be based on nb lists (currently it is implemented internally). This is parallel with additive diversity partitioning methods developed for the 'vegan' package. [Currently I am not sure whether this is a good idea.]
+
+* write a function (of class permatlist) for creating null model distribution for incidence based additive diversity partitioning methods, based on Christian Hennig's prabclus::autoconst and prabclus::randpop.nb. This than can be used to generate null models with spatially autocorrelated occurrences of species, that are independent of each other (without interspecific aggregation). This is a reasonable alternative along with fully random and restricted random null models.
 
 * simple heuristic reserve selection algorithms (greedy, progressive rarity) for evaluating performance of 'beta diversity' measures (contribution diversity approach) in reserve selection. Spatial constraints (reserve design principles) might be added later. (More advanced topics??? simulated annealing, benefit functions, ...)
 
-* methods for spatial representation (mapping) of 'mefa' objects. And also plug-ins for 'mefa' objects to enable consistency with 'sedaR' functions.
+* methods for spatial representation (mapping) of 'mefa' objects. And also plug-ins for 'mefa' objects to enable consistency with 'sedar' functions, and ade4 and vegan functionalities.
+
+# TESTING:
+==========
+*
+
+
+
+# LOW PRIORITY / MINOR BUGS
+===========================
+===========================
+*
+
+# LONG TERM
+==========================
+==========================
+*

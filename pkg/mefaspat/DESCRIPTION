@@ -1,11 +1,11 @@
 Package: mefaspat
 Type: Package
 Title: mefaspat - contributions for sedaR project by Peter Solymos
-Version: 1.0
-Date: 2008-06-05
+Version: 1.0-1
+Date: 2008-06-08
 Author: Peter Solymos
 Maintainer: Peter Solymos <psolymos@gmail.com>
-Description: mefaspat - contributions for sedaR project by Peter Solymos
+Description: The mefaspat package contains contributions for sedar project by Peter Solymos.
 Depends: vegan, fields
 License: GPL-2
 LazyLoad: yes

@@ -1,0 +1,9 @@
+ChangeLog for mefaspat package in the sedar project
+
+Version 1.0 (opened June 5, 2008)
+
+	* xytrend moved from 'mefa' to sedar.
+	* betaols (object class & S3 methods) written for test the difference of
+	  regression parameters between distance matrices (beta diversity indices
+	  vs. spatial distances) for two non overlaping sets of species.
+
