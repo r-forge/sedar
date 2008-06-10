@@ -1,0 +1,11 @@
+Package: metapop
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2008-06-10
+Author: Jari Oksanen
+Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
+Description: Hanski's metapopulation model and fitting incidence functions
+License: GPL-2
+LazyLoad: yes
+Packaged: Tue Jun 10 16:53:31 2008; jarioksa
