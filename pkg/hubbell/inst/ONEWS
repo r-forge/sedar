@@ -1,0 +1,11 @@
+v1.3-1 Cosmetic changes to satisfy R CMD check: some T to TRUE
+corrections, removing empty src directory.
+
+v1.3 Now this really should be able to restore graphical parameters
+after layout plotting: Hack to circumvent R `features'.
+
+v1.2 circumvents some R quirks in restoring graphical par and
+rectifies lazy T/F into TRUE/FALSE.
+
+v1.1 adds `landgame': build a metacommunity from scratch
+

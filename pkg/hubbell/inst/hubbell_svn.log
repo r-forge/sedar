@@ -1,0 +1,116 @@
+------------------------------------------------------------------------
+r13 | jarioksa | 2008-06-10 11:23:09 +0300 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   M /hubbell/R/plot.hubbell.R
+   M /hubbell/inst/ChangeLog
+
+plot.hubbell does not set colour palette globally
+------------------------------------------------------------------------
+r12 | jarioksa | 2008-06-10 11:12:39 +0300 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   D /hubbell/R/brokenstick.R
+   A /hubbell/R/rbstick.R (from /hubbell/R/brokenstick.R:11)
+   M /hubbell/inst/ChangeLog
+   D /hubbell/man/brokenstick.Rd
+   A /hubbell/man/rbstick.Rd (from /hubbell/man/brokenstick.Rd:11)
+   M /hubbell/man/rhubbell.Rd
+
+renamed brokenstick to rbstick
+------------------------------------------------------------------------
+r11 | jarioksa | 2008-06-10 10:54:08 +0300 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   D /hubbell/R/hubbell.build.R
+   A /hubbell/R/rhubbell.R (from /hubbell/R/hubbell.build.R:8)
+   M /hubbell/inst/ChangeLog
+   M /hubbell/man/E.S.Rd
+   M /hubbell/man/brokenstick.Rd
+   M /hubbell/man/hubbell.Rd
+   D /hubbell/man/hubbell.build.Rd
+   A /hubbell/man/rhubbell.Rd (from /hubbell/man/hubbell.build.Rd:10)
+
+hubbell.build renamed to rhubbell
+------------------------------------------------------------------------
+r10 | jarioksa | 2008-06-10 10:44:44 +0300 (Tue, 10 Jun 2008) | 1 line
+Changed paths:
+   M /hubbell/DESCRIPTION
+   M /hubbell/man/brokenstick.Rd
+   M /hubbell/man/hubbell.Rd
+   M /hubbell/man/hubbell.build.Rd
+
+replaced references to rad.lines with refs to vegan radfit
+------------------------------------------------------------------------
+r9 | jarioksa | 2008-06-10 10:38:18 +0300 (Tue, 10 Jun 2008) | 2 lines
+Changed paths:
+   M /hubbell/DESCRIPTION
+   D /hubbell/R/logn.fun.R
+   D /hubbell/R/logn.ml.R
+   D /hubbell/R/rad.lines.R
+   M /hubbell/inst/ChangeLog
+   D /hubbell/man/rad.lines.Rd
+
+removed rad.lines and friends: use vegan radfit instead
+
+------------------------------------------------------------------------
+r7 | jarioksa | 2008-03-28 14:31:45 +0200 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   D /hubbell/man/README
+
+removed stray README
+------------------------------------------------------------------------
+r6 | jarioksa | 2008-03-28 14:28:13 +0200 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /hubbell/inst/ChangeLog
+   M /hubbell/man/brokenstick.Rd
+   M /hubbell/man/rad.lines.Rd
+
+doc tweaks
+------------------------------------------------------------------------
+r4 | jarioksa | 2008-03-28 13:57:01 +0200 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   M /hubbell/DESCRIPTION
+   M /hubbell/data/carabid.rda
+   A /hubbell/inst/ChangeLog
+   M /hubbell/man/E.S.Rd
+   M /hubbell/man/carabid.Rd
+
+minor modifications to pass R CMD check
+------------------------------------------------------------------------
+r2 | jarioksa | 2008-03-28 12:14:01 +0200 (Fri, 28 Mar 2008) | 1 line
+Changed paths:
+   A /hubbell
+   A /hubbell/DESCRIPTION
+   A /hubbell/R
+   A /hubbell/R/E.S.R
+   A /hubbell/R/E.Somega.R
+   A /hubbell/R/Var.S.R
+   A /hubbell/R/brokenstick.R
+   A /hubbell/R/hubb2vect.R
+   A /hubbell/R/hubbell.R
+   A /hubbell/R/hubbell.build.R
+   A /hubbell/R/landgame.R
+   A /hubbell/R/logn.fun.R
+   A /hubbell/R/logn.ml.R
+   A /hubbell/R/makeland.R
+   A /hubbell/R/mutate.R
+   A /hubbell/R/plot.hubbell.R
+   A /hubbell/R/plot.landscape.R
+   A /hubbell/R/print.hubbell.R
+   A /hubbell/R/print.landscape.R
+   A /hubbell/R/rad.lines.R
+   A /hubbell/R/wtheta.fun.R
+   A /hubbell/data
+   A /hubbell/data/carabid.rda
+   A /hubbell/inst
+   A /hubbell/inst/README
+   A /hubbell/man
+   A /hubbell/man/E.S.Rd
+   A /hubbell/man/README
+   A /hubbell/man/brokenstick.Rd
+   A /hubbell/man/carabid.Rd
+   A /hubbell/man/hubbell.Rd
+   A /hubbell/man/hubbell.build.Rd
+   A /hubbell/man/landgame.Rd
+   A /hubbell/man/rad.lines.Rd
+
+Initial import
+------------------------------------------------------------------------

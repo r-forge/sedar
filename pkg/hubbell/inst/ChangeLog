@@ -1,0 +1,23 @@
+Package 'hubbell' -*- change log -*-
+
+$Date$
+
+Versin 1.6-0
+	* moved to R-Forge project sedar. The local svn log is in
+	hubbell_svn.log file.
+	
+Version 1.5-0
+	* removed rad.lines & associates: vegan radfit is a better
+	replacement. 
+	* rhubbell: a new name for hubbell.build.
+	* rbstick: a new name for brokenstick.
+	* plot.hubbell: does not change colour palette in the session.
+	
+Version 1.4-0
+	* package moved to a local (in my pc) svn repository.
+	* edited to pass R CMD check in current R.
+	* carabid: data written in current R format, and help file in
+	current R format and UTF-8 encoding.
+	* E.S: 'nls' is not in 'stats'.
+	* rad.lines.Rd: unmatched braces.
+	* added this ChangeLog.
