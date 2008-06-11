@@ -3,9 +3,11 @@ Title: Functions for Hubbell's Grand Unified Theory
 Version: 1.6-0
 Date: June 10, 2008
 Author: Jari Oksanen
-Description: A companion for Hubbell's "Unified Neutral Theory"
+Description: An educational package to accompany Hubbell's 
+  "Unified Neutral Theory" book.  Mainly used for illustrating
+  lectures, but some functions have spatial connotations.
 Suggests: vegan
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 License: GPL-2
 URL: http://cc.oulu.fi/~jarioksa/
-Packaged: Tue Jun 10 12:17:17 2008; jarioksa
+
