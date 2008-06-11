@@ -24,6 +24,11 @@ and migration in butterfly \emph{Melitaea cinxia}. \emph{Ecology} 75: 747--762.
 }
 \examples{
 data(fritty)
-## maybe str(fritty) ; plot(fritty) ...
+str(fritty)
+## Plot
+with(fritty,
+plot(x.crd, y.crd, asp = 1, xlab = "", ylab = "",
+cex = sqrt(A *+ 5), pch = 21, col = p + 1, bg = 5 * p)
+)
 }
 \keyword{datasets}

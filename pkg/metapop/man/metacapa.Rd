@@ -22,7 +22,9 @@ metacapa(d, A, alpha = 1, ...)
   \item{\dots}{ =ther parameters to the functions }
 }
 \details{
-  ~~ If necessary, more details than the description above ~~
+  Metapopulation capacity is defined as the largest eigenvalue of matrix
+  with non-diagonal elements \eqn{A_i \exp(-\alpha d_{ij} A_j} and zero
+  diagonal. 
 }
 \value{
 Function returns a list of class \code{"metacapa"} with following items:
@@ -39,22 +41,11 @@ fragmented landscape. \emph{Nature} 404: 755--758.
 
 \seealso{ nothing yet }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function(d, A, alpha=1, ...)
-{
-    M <- as.matrix(exp(-alpha*d))
-    diag(M) <- 0
-    M <- M * outer(A, A)
-    tmp <- eigen(M)
-    ev <- tmp$values[1]
-    cap <- list(capacity = ev, x = tmp$vectors[,1]^2, d=d, A=A)
-    class(cap) <- "metacapa"
-    cap
-  }
+data(fritty)
+attach(fritty)
+d <- dist(cbind(x.crd, y.crd))
+sol <- metacapa(d, A)
+plot(sol)
 }
 
 \keyword{ models }

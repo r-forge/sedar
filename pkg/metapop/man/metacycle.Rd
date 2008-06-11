@@ -11,7 +11,7 @@
 \usage{
 metacycle(steps = 1, d, A, p = rep(1, length(A)), y = 1, x = 1, e = min(A), alpha = 1, locations = NULL, ...)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{steps}{ Number of time steps }
   \item{d}{ Distances among patches  }
@@ -34,25 +34,34 @@ metacycle(steps = 1, d, A, p = rep(1, length(A)), y = 1, x = 1, e = min(A), alph
 \value{
   Function \code{metacycle} returns an object of class
  \code{"metacycle"} with following items. 
-  \item{pmat }{Occupancy matrix with a row for each location and column
+  \item{p }{Occupancy matrix with a row for each location and column
     for each step}
   \item{d }{ connectivity from the exponenential decay model.}
   \item{A}{ Sizes of patches}
   \item{y, x, e, alpha}{Input parameters of the model}
-  \item{locations}{Coordinates of the patches}
+  \item{locations}{Coordinates of the patches, found from
+    \code{\link{cmdscale}} if not given. }
+  \item{J.obs}{Observed incidences for each patch.}
+  \item{P.obs}{Observed number of occupied site for each step.}
+  \item{J.pot, S.pot, C.pot}{Expected incidence and parameters \eqn{S}
+    and \eqn{C}.}
 }
 \references{
 Hanski, I. 1999. Metapopulation Ecology. Oxford UP.
 }
 \author{ Jari Oksanen }
-\note{
-  Awaits documetations
-}
+
 \seealso{ nothing yet }
 \examples{
-## Nothing yet
+## Parameters similar to a Melitae cinxia network
+data(fritty)
+attach(fritty)
+d <- dist(cbind(x.crd, y.crd))
+sim <- metacycle(100, d, A, p, x = 0.42, e = 0.061, y = 15.2)
+plot(sim$P.obs,   type = "l", col = "blue", lwd = 2,
+ xlab = "Time", ylab = "Population Size")
+plot(sim$J.pot, sim$J.obs, xlab="Expected incidence", ylab="Simulated incidence")
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{ models }
 
