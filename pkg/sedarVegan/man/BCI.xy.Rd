@@ -1,3 +1,4 @@
+\encoding{UTF-8}
 \name{BCI.xy}
 \alias{BCI.xy}
 \docType{data}
@@ -30,10 +31,9 @@
 \code{\link[BiodiversityR]{BCI.env}} (\pkg{BiodiversityR}).}
 \examples{
 data(BCI.xy)
-library(vegan)
 data(BCI)
 ## Unconstrained ordination
-ord <- cca(BCI)
+ord <- vegan::cca(BCI)
 ordisurf(BCI.xy, scores(ord, display="sites", choices=1),
   main="Unonstrained CA")
 ## Multiscale ordination and variogram
@@ -43,10 +43,28 @@ msoplot(mord)
 nm <- sedarVegan::pcnm(BCI.xy)$vectors
 ## Take half of the pcnm vectors
 take <- round(ncol(nm)/2)
-ord <- vegan::cca(BCI, nm[,1:take])
+ord <- vegan::cca(BCI ~ nm[,1:take])
+ord
 ## Use LC scores in plotting
 ordisurf(BCI.xy, scores(ord, display="lc", choices=1), 
   main = "Constrained by PCNM")
 msoplot(mso(ord, BCI.xy))
+## Spatial filtering
+ord <- vegan::cca(BCI ~ Condition(nm[, 1:take]))
+ord
+msoplot(mso(ord, BCI.xy))
+## For the following we have to detach ade4, because
+## that may be first in the search path, and its cca
+## will be used instead of vegan
+(pkg <- .packages())
+if (any("ade4" == pkg)) detach(package:ade4) 
+## Forward selection of PCNM's
+m1 <- cca(BCI ~ ., data.frame(nm))
+m0 <- cca(BCI ~ 1., data.frame(nm))
+ord <- step(m0, scope=formula(m1))
+coef(ord)
+anova(ord, by="t", step = 200)
+ordisurf(BCI.xy, scores(ord, display="lc", choices=1), 
+  main = "Forward selection of PCNM")
 }
 \keyword{datasets}
