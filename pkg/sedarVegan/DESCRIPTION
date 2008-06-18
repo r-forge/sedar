@@ -1,8 +1,8 @@
 Package: sedarVegan
 Type: Package
 Title: Spatial and ade4 support for vegan
-Version: 0.1-0
-Date: 2008-06-03
+Version: 0.1-1
+Date: 2008-06-19
 Author: Jari Oksanen
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Depends: ade4, vegan
