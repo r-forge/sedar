@@ -5,7 +5,7 @@ Version: 0.1-1
 Date: 2008-06-19
 Author: Jari Oksanen
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
-Depends: ade4, vegan
+Depends: ade4, vegan (>= 1.13-1)
 Suggests: spdep, tripack
 Description: Working package to develop spatial functions and ade4
   compatibility for vegan within sedar project. 
