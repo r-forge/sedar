@@ -1,0 +1,112 @@
+\name{aem}
+\alias{aem}
+
+\title{ Function to construct asymmetric eigenvector maps (AEM) }
+\description{
+  This function construct eigenvectors of a site-by-link matrix. Weights can be applied to the links.
+}
+\usage{
+aem(build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat = FALSE)
+}
+
+\arguments{
+  \item{build.binary}{ Object created by function \code{build.binary}. }
+  \item{binary.mat}{ Site (n rows) by link (k columns) matrix. 1 represents the presence of a link influencing a site, directly or indirectly, otherwise 0. }
+  \item{weight}{ Vector of weights of length k, to be applied to the links. }
+  \item{rm.link0}{ Logical (\code{TRUE}, \code{FALSE}) determining if the links directly connecting a site to the origin (site 0) should be removed. Default value: \code{FALSE}. This parameter is only used when an object of class \code{build.binary} is provided to the function. }
+  \item{print.binary.mat}{Logical (\code{TRUE}, \code{FALSE}) determining if the site-by-link matrix used in the analysis should be printed.}
+}
+\details{
+  If only an object of class \code{build.binary} is given to this function, The argument \code{binary.mat} is not considered. \code{binary.mat} is only considered when the argument \code{build.binary} is missing.
+  
+  If weights are applied to the links, the length of vector \code{weight} has to take into account wether the links connecting real sites to the origin (the fictitious site 0) have been kept or removed.
+}
+\value{
+  \item{value }{A vector of singular values associated with the AEM.}
+  \item{vectors }{A matrix of eigenvector. Each column is an AEM eigenfunction (or variable).}
+  \item{mod.binary.mat}{A site-by-link matrix modified through the function.}
+
+}
+\references{Blanchet F.G., P. Legendre and Borcard D. 2008, Modelling directional spatial processes in ecological data. \emph{Ecological Modelling}, 215, 325-336.
+ }
+
+\author{ F. Guillaume Blanchet }
+\note{ 
+ It sometimes happens that AEM eigenfunctions have equal singular values.In that case, different sets of AEM eigenfunctions may be produced on different plateforms.
+ Eigenvectors associated to an eigenvalue that is smaller than 10^12 are considered negligeable. They have been removed from the created AEM eigenfunctions.
+ 
+}
+\seealso{ \code{\link{build.binary}},\code{\link{svd}} }
+\examples{
+
+### Construction of object of class nb (spdep)
+nb<-cell2nb(5,5,"queen")
+
+### Create fictitious geographical coordinates 
+xy <- cbind(1:25,expand.grid(1:5,1:5))
+
+### Build binary site-by-link matrix
+bin.mat <- build.binary(nb,xy)
+
+### Construct AEM eigenfunctions from an object of class build.binary
+res <- aem(build.binary=bin.mat,rm.link0=FALSE)
+res$values
+
+### Illustrate 4 AEM eigenfunctions using bubble plots
+par(mfrow=c(2,2))
+s.value(xy[,2:3],res$vectors[,1])
+title("AEM 1")
+s.value(xy[,2:3],res$vectors[,2])
+title("AEM 2")
+s.value(xy[,2:3],res$vectors[,3])
+title("AEM 3")
+s.value(xy[,2:3],res$vectors[,4])
+title("AEM 4")
+
+### Construct AEM eigenfunctions using only a site-by-link matrix
+res2 <- aem(binary.mat=bin.mat[[1]])
+res2$values
+
+### Illustrate 4 AEM eigenfunctions using bubble plots
+par(mfrow=c(2,2))
+s.value(xy[,2:3],res2$vectors[,1])
+title("AEM 1")
+s.value(xy[,2:3],res2$vectors[,2])
+title("AEM 2")
+s.value(xy[,2:3],res2$vectors[,3])
+title("AEM 3")
+s.value(xy[,2:3],res2$vectors[,4])
+title("AEM 4")
+
+### Construct AEM eigenfunctions with a function of the distance as weights to put on the links
+
+### Construction of object of class nb (spdep)
+nb<-cell2nb(5,5,"queen")
+
+### Create fictitious geographical coordinates
+xy <- cbind(1:25,expand.grid(1:5,1:5))
+
+### Build binary site-by-link matrix
+bin.mat <- build.binary(nb,xy)
+
+### Construct a matrix of distances
+long.lien.mat<-as.matrix(dist(xy))
+
+### Extract the edges, remove the ones directly linked to site 0
+lien.b<-bin.mat$edges[-1:-5,]
+
+### Construct a vector giving the length of each edge
+long.lien<-vector(length=nrow(lien.b))
+
+for(i in 1:nrow(lien.b)){
+	long.lien[i]<-long.lien.mat[lien.b[i,1],lien.b[i,2]]
+}
+
+### Construct a vector of weights based on distance
+weight.vec<-1-(long.lien/max(long.lien))^2
+
+### Construct AEM eigenfunctions from an object of class build.binary
+res <- aem(build.binary=bin.mat,weight=weight.vec,rm.link0=TRUE)
+
+}
+\keyword{ spatial }
