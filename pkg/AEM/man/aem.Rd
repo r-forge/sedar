@@ -33,7 +33,7 @@ aem(build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat = FALSE
 \author{ F. Guillaume Blanchet }
 \note{ 
  It sometimes happens that AEM eigenfunctions have equal singular values.In that case, different sets of AEM eigenfunctions may be produced on different plateforms.
- Eigenvectors associated to an eigenvalue that is smaller than 10^12 are considered negligeable. They have been removed from the created AEM eigenfunctions.
+ Eigenvectors associated to an eigenvalue that is smaller than $10^{-12}$ are considered negligeable. They have been removed from the created AEM eigenfunctions.
  
 }
 \seealso{ \code{\link{build.binary}},\code{\link{svd}} }

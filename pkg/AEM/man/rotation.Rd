@@ -41,4 +41,4 @@ plot(coords,xlim=range(rbind(coords.90,coords)[,1]),ylim=range(rbind(coords.90,c
 points(coords.90,pch=19)
 }
 
-\keyword{ rotation }
+\keyword{ manip }

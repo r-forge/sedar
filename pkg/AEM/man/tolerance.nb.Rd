@@ -24,10 +24,9 @@ tolerance.nb(coords, unit.angle = "degrees", max.dist, tolerance, rot.angle, plo
 \value{
 The function returns an object of class \code{nb} with a list of integer vectors  corresponding to neighbour region numbers.
 }
-\keyword{ tolerance, angle, coordinate }
 \author{ F. Guillaume Blanchet }
 
-\seealso{ \code{\link{knn2nb}}, \code{\link{dnearneigh}}, \code{\link{cell2nb}}, \code{\link{graph2nb}}, \code{\link{tri2nb}}, \code{\link{knn2nb}} }
+\seealso{  code{\link[spdep]{dnearneigh}}, \code{\link[spdep]{cell2nb}}, \code{\link[spdep]{graph2nb}}, \code{\link[spdep]{tri2nb}}, \code{\link[spdep]{knn2nb}} }
 \examples{
 
 data(oribatid)
@@ -47,4 +46,6 @@ plot(nb.oribatid,oribatid$xy)
 plot(nb.oribatid.2,oribatid$xy)
 plot(nb.oribatid.3,oribatid$xy)
 }
+
+\keyword{ spatial }
 

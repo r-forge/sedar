@@ -20,13 +20,14 @@ moran.I.multi(eigenvector.mat, link, weight, scaled = FALSE, normalize = FALSE, 
   \item{weight}{ A vector providing weights associated to the edges. If no weights are given, the function consider all edges to have the same weights.}
   \item{scaled}{ Logical (\code{TRUE}, \code{FALSE}) determining if the index should be scaled to allow comparisons between indices (default to \code{FALSE}). }
   \item{normalize}{ Logical (\code{TRUE}, \code{FALSE}) determining if the matrix of weights should be row-normalized to 1 (default to \code{FALSE}). }
+  \item{na.rm}{ Logical (\code{TRUE}, \code{FALSE}) determining whether missing values should be removed (default to \code{FALSE}). }
   \item{alternative}{ A character string specifying the alternative hypothesis that is tested against the null hypothesis of no spatial autocorrelation; must be of one "two.sided", "less", or "greater", or any unambiguous abbrevation of these. }
   \item{plot.res}{ Logical (\code{TRUE}, \code{FALSE}) determining if the expected and observed values and the results of the test of significance of Moran's I, for each AEM eigenfunction, should be plotted (default to \code{TRUE}). }
 }
 \details{
-  \code{moran.I.uni} is a modification of \code{\link{Moran.I}}. In \code{\link{Moran.I}} the normalization is carried out by default, whereas in \code{moran.I.uni} the choice is given to the user.
+  \code{moran.I.uni} is a modification of \code{\link[ape]{Moran.I}} (the code was heavily borrowed from library \pkg{ape}). In \code{\link[ape]{Moran.I}} the normalization is carried out by default, whereas in \code{moran.I.uni} the choice is given to the user.
   
-  Other type of orthogonal spatial variables (MEM, PCNM) created through the Moran's eigenvector maps framework (result of \code{\link{scores.listw}} or \code{\link{pcnm}}) can also be tested with those functions. 
+  Other type of orthogonal spatial variables (MEM, PCNM) created through the Moran's eigenvector maps framework (result of \code{\link[spacemakeR]{scores.listw}} or \code{\link[spacemakeR]{pcnm}}) can also be tested with those functions. 
 }
 \value{
   \item{ observed }{ The computed Moran's I}
@@ -38,7 +39,7 @@ moran.I.multi(eigenvector.mat, link, weight, scaled = FALSE, normalize = FALSE, 
 
 \author{ F. Guillaume Blanchet }
 
-\seealso{ \code{\link{Moran.I}} }
+\seealso{ \code{\link[ape]{Moran.I}} }
 
 \examples{
 
@@ -52,4 +53,4 @@ aem1 <- aem(build.binary=bin.mat)
 moran.I.multi(aem1$vectors, bin.mat[[2]])
 
 }
-\keyword{ spatial, Moran }
+\keyword{ spatial }
