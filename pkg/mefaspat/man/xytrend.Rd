@@ -7,12 +7,11 @@ Makes trend surface using third-degree polynomial of spatial terms.
 \usage{
 xytrend(xy)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{xy}{a matrix with 2 columns for x and y coordinates.}
 }
 \value{
-A matrix with.
+A matrix with 9 columns.
 }
 \details{
 The x and y coordinates are standardized (scaled to zero mean and unit variance) by the function \code{\link[vegan]{decostand}}. Polynomial terms are: $x$, $y$, $x^2$, $xy$, $y^2$, $x^3$, $x^2*y$, $x*y^2$, $y^3$, according to Legendre (1993).

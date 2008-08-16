@@ -51,7 +51,7 @@ Using linear regression for distance matrices is not necessarily the best choice
   \item{test}{a matrix with test results (observed differences and p values).}
 }
 \references{
-La Sorte, F.A., McKinney, M.L., Py?ek, P., Klotz, S., Rapson, G.L. Celesti-Grapow, L., and Thompson, K. (2008) Distance decay in similarity among European urban floras: the impact of anthropogenic activities on beta diversity. Global Ecology and Biogeography, 17, 363-371.
+La Sorte, F.A., McKinney, M.L., Pysek, P., Klotz, S., Rapson, G.L. Celesti-Grapow, L., and Thompson, K. (2008) Distance decay in similarity among European urban floras: the impact of anthropogenic activities on beta diversity. Global Ecology and Biogeography, 17, 363-371.
 
 La Sorte, F.A., and McKinney, M.L. (2006) Compositional similarity and the distribution of geographical range size for native and non-native species in urban floras. Diversity and Distributions, 12, 679-686.
 }

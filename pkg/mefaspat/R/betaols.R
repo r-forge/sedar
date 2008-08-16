@@ -116,7 +116,6 @@ return(out)
 function(x, leg=TRUE, leg.pos="topright", leg.text=c("Group 1", "Group 2"), ...)
 {
 
-if (!inherits(x, "betaols")) stop("Object is not of class 'betaols'.")
 kmch <- ""
 if (x$geogr == "great circle") kmch <- "(km)"
 
@@ -139,7 +138,6 @@ invisible(NULL)
 function(x, decimals=4, ...)
 {
 
-if (!inherits(x, "betaols")) stop("Object is not of class 'betaols'.")
 interc <- if (nrow(x$test) == 2) "intercept" else "intercepts"
 cat("Permutation test for differences in slope and", interc, "of\n")
 cat("OLS regression with",x$n.perm,"permutations, based on matrices of\n")

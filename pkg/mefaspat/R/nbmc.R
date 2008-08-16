@@ -1,5 +1,7 @@
 `nbmc` <-
-function(loc, reg, hab, process=c("dl","ss","ls","me", "zd", "ud"), cont=rep(1,length(loc))){
+function(loc, reg, hab=NULL, process=c("dl","ss","ls","me", "zd", "ud"), cont=rep(1,length(loc))){
+    process <- match.arg(process, c("dl","ss","ls","me", "zd", "ud"))
+    if (is.null(hab)) hab <- rep(1,length(loc))
     # internal
     metac <- function(i, hab, reg, process, cont)
         {

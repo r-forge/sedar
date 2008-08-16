@@ -2,7 +2,7 @@ Package: mefaspat
 Type: Package
 Title: mefaspat - contributions for sedaR project by Peter Solymos
 Version: 1.0-1
-Date: 2008-06-09
+Date: 2008-08-16
 Author: Peter Solymos
 Maintainer: Peter Solymos <psolymos@gmail.com>
 Description: The mefaspat package contains contributions for sedar project by Peter Solymos.

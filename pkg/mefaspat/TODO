@@ -26,7 +26,9 @@
 
 # CODE ISSUES:
 ==============
-*
+* betaols needs summary method 
+
+* a good data set is neede to demonstrate sedar/mefaspat issues with
 
 # DOCUMENTATION ISSUES:
 =======================
@@ -34,19 +36,12 @@
 
 # NEW IMPLEMENTATIONS:
 =====================
-* individual based restricted permutation of sample/species matrices with 'disjunction probabilities' for enabling between strata swapping of individuals. Spatial relations will be based on nb lists (currently it is implemented internally). This is parallel with additive diversity partitioning methods developed for the 'vegan' package. [Currently I am not sure whether this is a good idea.]
+*
 
-* write a function (of class permatlist) for creating null model distribution for incidence based additive diversity partitioning methods, based on Christian Hennig's prabclus::autoconst and prabclus::randpop.nb. This than can be used to generate null models with spatially autocorrelated occurrences of species, that are independent of each other (without interspecific aggregation). This is a reasonable alternative along with fully random and restricted random null models.
--- done PS
-
-* simple heuristic reserve selection algorithms (greedy, progressive rarity) for evaluating performance of 'beta diversity' measures (contribution diversity approach) in reserve selection. Spatial constraints (reserve design principles) might be added later. (More advanced topics??? simulated annealing, benefit functions, ...)
-
-* methods for spatial representation (mapping) of 'mefa' objects. And also plug-ins for 'mefa' objects to enable consistency with 'sedar' functions, and ade4 and vegan functionalities.
 
 # TESTING:
 ==========
 *
-
 
 
 # LOW PRIORITY / MINOR BUGS
@@ -57,4 +52,6 @@
 # LONG TERM
 ==========================
 ==========================
-*
+* simple heuristic reserve selection algorithms (greedy, progressive rarity) for evaluating performance of 'beta diversity' measures (contribution diversity approach) in reserve selection. Spatial constraints (reserve design principles) might be added later. (More advanced topics??? simulated annealing, benefit functions, ...)
+
+* methods for spatial representation (mapping) of 'mefa' objects. And also plug-ins for 'mefa' objects to enable consistency with 'sedar' functions, and ade4 and vegan functionalities.

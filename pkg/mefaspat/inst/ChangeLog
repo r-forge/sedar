@@ -1,9 +1,19 @@
 ChangeLog for mefaspat package in the sedar project
 
-Version 1.0 (opened June 5, 2008)
+Version 1.0-1 (opened June 9, 2008)
 
-	* xytrend moved from 'mefa' to sedar.
-	* betaols (object class & S3 methods) written for test the difference of
-	  regression parameters between distance matrices (beta diversity indices
-	  vs. spatial distances) for two non overlaping sets of species.
+    * permatsar: individual based community matrix permutation algorithm
+    complementing permatfull and permatswap functions in the vegan package,
+    permatsar is based on prabclus functions for autocorrelated abundances.
 
+    * nbmc: neighbourhood lists fo different metacommunity models, based on
+    discrete region and habitat classes.
+
+Version 1.0 (opened June 5, 2008, closed June 9, 2008)
+
+	* xytrend: function moved from 'mefa' to sedar, computes polynoimial ters for
+    spatial variables.
+
+	* betaols (object class & S3 methods): written for test the difference of
+	regression parameters between distance matrices (beta diversity indices
+	vs. spatial distances) for two non overlaping sets of species.

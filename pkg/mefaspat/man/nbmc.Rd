@@ -2,16 +2,16 @@
 \alias{nbmc}
 \title{Neighbourhood list based on metacommunity models}
 \description{
-The function uses grouping vectors or factors for regions and habitat classes to make neighbourhood list that can be used in e.g. the 'prabclus' package and in the \code{\link{prabmatsar}} function.
+The function uses grouping vectors or factors for regions and habitat classes to make neighbourhood list that can be used in e.g. the 'prabclus' package and in the \code{\link{permatsar}} function.
 }
 \usage{
-nbmc(loc, reg, hab, process = c("dl", "ss", "ls", "me", "zd", "ud"), cont = rep(1, length(loc)))
+nbmc(loc, reg, hab = NULL, process = c("dl", "ss", "ls", "me", "zd", "ud"), cont = rep(1, length(loc)))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{loc}{a vectorcontaining names of the locations.}
+  \item{loc}{a vector containing names of the locations.}
   \item{reg}{grouping vector for regions, factor levels or unique values are used.}
-  \item{hab}{grouping vector for habitat classes, factor levels or unique values are used.}
+  \item{hab}{grouping vector for habitat classes, factor levels or unique values are used. If \code{NULL}, one level is used for as \code{rep(1, length(loc))}.}
   \item{process}{character, choose the metacommunity model to use: \code{dl} dispersal limitation, \code{ss}species sorting, \code{ls} dispersal limitation and species sorting, \code{me} mass effect, \code{zd} zero dispersal, \code{ud} unlimited dispersal.}
   \item{cont}{grouping vector for continents, factor levels or unique values are used. Continents are larger areas, and above that scale, dispersal is not possible.}
 }
