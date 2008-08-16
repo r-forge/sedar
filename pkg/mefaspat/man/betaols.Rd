@@ -49,7 +49,7 @@ Plot shows scatter of beta index vs. geographic distances for the two groups of 
   \item{x.loc}{locations along the geographic distance axis where intercepts are compared. If \code{x.loc=NULL}, only 0 is used for comparison. Only unique values are used.}
   \item{n.perm}{number of permutations.}
   \item{mat}{a list containing distance matrices \code{gcd1}, \code{gcd2}, \code{beta1} and \code{beta2} (geographic distances and dissimilarities for the two groups) for plotting and reuse.}
-  \item{d.perm}{data frame with \code{times} rows and colums for slope and intercepts, this contains permutation results for further validation.}
+  \item{d.perm}{data frame with \code{times} rows and colums for differences of slope and intercepts between the two groups, this contains permutation results for further validation.}
   \item{betadiv}{dissimilarity index used by \code{method}.}
   \item{geogr}{geographic distance calculation according to \code{gcd}.}
   \item{coef.gr1}{coefficients for \code{lm} object fitted to group 1.}

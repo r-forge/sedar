@@ -96,7 +96,7 @@ distance <- if (fields.ok & gcd) "great circle" else "Euclidean"
 
 out <- list(
     call=match.call(),
-    m=data,
+    m=datamatrix,
     gr1=gr1,
     gr2=gr2,
     x.loc=x.loc,
