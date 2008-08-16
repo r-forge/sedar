@@ -1,8 +1,8 @@
 `betaols` <-
-function(data, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd = TRUE, times = 100)
+function(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd = TRUE, times = 100)
 {
 require(vegan)
-x <- data
+x <- datamatrix
 fields.ok <- if (gcd) require(fields, quietly=TRUE) else FALSE
 if (!fields.ok & gcd) warning("euclidean distances were used instead of great circle distances")
 
@@ -11,7 +11,7 @@ if (length(gr1) >= ncol(x)) stop("length(gr1) should be less than ncol(x)")
 if (length(c(gr1, gr2)) > ncol(x)) stop("length(c(gr1, gr2)) should be less than or equal to ncol(x)")
 if (sum(intersect(gr1, gr2)) > 0) stop("gr1 and gr2 overlap")
 
-if (is.null(x.loc)) x.loc <- 0 else x.loc <- c(0, x.loc)
+if (is.null(x.loc)) x.loc <- 0 else x.loc <- unique(c(0, x.loc))
 
 ## internal function START
 subset.internal <-
@@ -96,11 +96,12 @@ distance <- if (fields.ok & gcd) "great circle" else "Euclidean"
 
 out <- list(
     call=match.call(),
-    data=data,
+    m=data,
     gr1=gr1,
     gr2=gr2,
+    x.loc=x.loc,
     n.perm=times,
-    m=m.orig,
+    mat=m.orig,
     d.perm=data.frame(t(d.perm)),
     betadiv=method,
     geogr=distance,
@@ -108,48 +109,6 @@ out <- list(
     coef.gr2=c2,
     test=final
     )
-class(out) <- "betaols"
+class(out) <- c("betaols", "list")
 return(out)
 } ## function END
-
-`plot.betaols` <-
-function(x, leg=TRUE, leg.pos="topright", leg.text=c("Group 1", "Group 2"), ...)
-{
-
-kmch <- ""
-if (x$geogr == "great circle") kmch <- "(km)"
-
-xlim <- range(c(range(x$m$gcd1), range(x$m$gcd2)))
-xlab <- paste(x$geogr, " distances ", kmch, sep="")
-ylab <- paste("dissimilarity, index=\"", x$betadiv, "\"", sep="")
-
-
-plot(x$m$beta1 ~ x$m$gcd1, pch=19, xlim=xlim, ylim=c(0,1), xlab=xlab, ylab=ylab, ...)
-abline(lm(x$m$beta1 ~ x$m$gcd1), lty=2)
-points(x$m$beta2 ~ x$m$gcd2, pch=21)
-abline(lm(x$m$beta2 ~ x$m$gcd2), lty=3)
-
-if (leg) legend(leg.pos, pch=c(19,21), lty=c(2,3), legend=leg.text)
-
-invisible(NULL)
-}
-
-`print.betaols` <-
-function(x, decimals=4, ...)
-{
-
-interc <- if (nrow(x$test) == 2) "intercept" else "intercepts"
-cat("Permutation test for differences in slope and", interc, "of\n")
-cat("OLS regression with",x$n.perm,"permutations, based on matrices of\n")
-cat("\"", x$betadiv, "\" beta diversity index and ",x$geogr," distances.\n", sep="")
-# cat("\nCall:")
-# print(x$call)
-# cat("\nCoefficients for species group 1:\n")
-# print(round(x$coef.gr1,decimals))
-# cat("\nCoefficients for species group 2:\n")
-# print(round(x$coef.gr2,decimals))
-# cat("\nPermutation test results:\n")
-cat("\n")
-print(round(x$test,decimals))
-}
-

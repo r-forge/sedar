@@ -2,6 +2,9 @@ ChangeLog for mefaspat package in the sedar project
 
 Version 1.0-1 (opened June 9, 2008)
 
+    * betaols: proper print and summary methods are written, plot method
+    is modified to show locations for comparison on the x axis.
+
     * permatsar: individual based community matrix permutation algorithm
     complementing permatfull and permatswap functions in the vegan package,
     permatsar is based on prabclus functions for autocorrelated abundances.
