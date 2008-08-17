@@ -2,7 +2,7 @@
 \alias{permatsar}
 \title{Matrix Permutation Algorithms or Presence-Absence and Count Data}
 \description{
-Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's prabclus package to obtain parametric bootstrap matrices based on the estimation of pisjunction probability and the SAR model.
+Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's prabclus package to obtain parametric bootstrap matrices based on the estimation of disjunction probability and the SAR model.
 }
 \usage{
 permatsar(m, nb, pd = NULL, mtype = "count", times = 100, round.sar = TRUE)
@@ -36,7 +36,7 @@ consequence of differential immigration from Pleistocene glacial refuges. Oecolo
 Hausdorf, B. and Hennig, C. (2007) Null model tests of clustering of species, negative co-occurrence
 patterns and nestedness in meta-communities. Oikos 116, 818-828.
 }
-\author{Peter Solymos}
+\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}, \url{http://www.univet.hu/users/psolymos/personal/}}
 \seealso{
 autoconst, prab.sarestimate, randpop.nb, regpop.sar
 }

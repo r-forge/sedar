@@ -2,18 +2,13 @@
 \alias{mefaspat}
 \docType{package}
 \title{
-mefaspat - contributions for sedaR project by Peter Solymos
+mefaspat - functions for spatial ecological data and compatibility with the mefa package
 }
 \description{
-mefaspat - contribution for sedaR package by Peter Solymos}
+Miscellaneous functions for mainly multivariate spatial ecological data and compatibility with the mefa package.
+}
 \details{
-\tabular{ll}{
-Package: \tab mefaspat\cr
-Type: \tab Package\cr
-Version: \tab 1.0-1\cr
-Date: \tab 2008-06-09\cr
-License: \tab GPL-2\cr
-LazyLoad: \tab yes\cr
+Main functionalities: and overview, vignettes ?
 }
 ~~ An overview of how to use the package, including the most important ~~
 ~~ functions ~~

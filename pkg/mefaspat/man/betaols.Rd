@@ -15,7 +15,6 @@ betaols(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd 
 \method{plot}{betaols}(x, leg = TRUE, leg.pos = "topright", leg.text = c("Group 1", "Group 2"), crit=0.05, \dots)
 \method{summary}{betaols}(object, decimals = 4, \dots)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{datamatrix}{a matrix or data frame containing the data.}
   \item{latlong}{a matrix or data frame with latitude/longitude (when \code{gcd=TRUE}) or x/y coordinates (when \code{gcd=FALSE}).}
@@ -61,7 +60,7 @@ La Sorte, F.A., McKinney, M.L., Pysek, P., Klotz, S., Rapson, G.L. Celesti-Grapo
 
 La Sorte, F.A., and McKinney, M.L. (2006) Compositional similarity and the distribution of geographical range size for native and non-native species in urban floras. Diversity and Distributions, 12, 679-686.
 }
-\author{Peter Solymos}
+\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}, \url{http://www.univet.hu/users/psolymos/personal/}}
 \examples{
 xy <- cbind(x <- runif(50), y <- runif(50))
 gr1 <- c(1:10)
