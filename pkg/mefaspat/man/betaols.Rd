@@ -14,7 +14,8 @@ betaols(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL,
 method = "sim", gcd = TRUE, times = 100, dis.only = TRUE)
 \method{print}{betaols}(x, decimals = 4, \dots)
 \method{plot}{betaols}(x, leg = TRUE, leg.pos = "topright", 
-leg.text = c("Group 1", "Group 2"), crit=0.05, \dots)
+leg.text = c("Group 1", "Group 2"), crit=0.05,
+xlab, ylab, xlim, ylim, \dots)
 \method{summary}{betaols}(object, decimals = 4, \dots)
 }
 \arguments{
@@ -33,6 +34,7 @@ leg.text = c("Group 1", "Group 2"), crit=0.05, \dots)
   \item{leg.pos}{position of legend, passed to \code{\link{legend}}.}
   \item{leg.text}{character vector with legend text, passed to \code{\link{legend}}.}
   \item{crit}{critical value for color plotting of locations for comparisons. If \code{NULL}, locations are not plotted.}
+  \item{xlab, ylab, xlim, ylim}{arguments for axis labels and limits. Can be missing. If not specified by user, defaults are used.}
   \item{\dots}{other arguments.}
 }
 \details{

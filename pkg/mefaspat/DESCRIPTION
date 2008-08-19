@@ -2,7 +2,7 @@ Package: mefaspat
 Type: Package
 Title: mefaspat - functions for spatial ecological data and compatibility with the mefa package
 Version: 1.0-1
-Date: 2008-08-16
+Date: 2008-08-19
 Author: Peter Solymos
 Maintainer: Peter Solymos <psolymos@gmail.com>
 Description: Miscellaneous functions for mainly multivariate spatial ecological data and compatibility with the mefa package.
