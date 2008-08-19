@@ -1,5 +1,5 @@
 `betaols` <-
-function(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd = TRUE, times = 100)
+function(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd = TRUE, times = 100, dis.only=TRUE)
 {
 require(vegan)
 x <- datamatrix
@@ -39,9 +39,11 @@ gcd2 <- dist(xy2)
 ## beta_ distances as in betadiver()
 beta1 <- betadiver(part1, index=method)
 beta2 <- betadiver(part2, index=method)
-if (is.element(method, c("j", "sor", "rlb"))) {
-    beta1 <- 1 - beta1
-    beta2 <- 1 - beta2
+if (dis.only) {
+    if (is.element(method, c("j", "sor", "rlb"))) {
+        beta1 <- 1 - beta1
+        beta2 <- 1 - beta2
+        }
     }
 
 return(list(gcd1=gcd1, gcd2=gcd2, beta1=beta1, beta2=beta2))
@@ -109,6 +111,7 @@ out <- list(
     coef.gr2=c2,
     test=final
     )
+attr(out, "dis.only") <- dis.only
 class(out) <- c("betaols", "list")
 return(out)
 } ## function END

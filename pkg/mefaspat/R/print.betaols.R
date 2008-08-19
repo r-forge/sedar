@@ -8,5 +8,5 @@ cat("Index of beta diversities: \"", x$betadiv, "\"\nGeographic distances: ",x$g
 cat(locs, "for comparison:",x$x.loc,"\n")
 cat("Total number of species:",ncol(x$m),"\n")
 cat("Number of species in group 1:",length(x$gr1),"\n")
-cat("Number of species in group 2:",length(x$gr1),"\n")
+cat("Number of species in group 2:",length(x$gr2),"\n")
 }
