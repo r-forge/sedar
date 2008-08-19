@@ -9,9 +9,7 @@ Miscellaneous functions for mainly multivariate spatial ecological data and comp
 }
 \details{
 Main functionalities: and overview, vignettes ?
-}
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+An overview of how to use the package, including the most important functions
 }
 \author{
 Maintainer: Peter Solymos <psolymos@gmail.com>

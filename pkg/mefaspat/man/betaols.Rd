@@ -10,9 +10,11 @@ Permutation test for regression on distance matrices between two species groups
 Permutation test for differences in slope and intercepts of OLS regression on distance matrices between two species groups.
 }
 \usage{
-betaols(datamatrix, latlong, gr1, gr2 = NULL, x.loc = NULL, method = "sim", gcd = TRUE, times = 100)
+betaols(datamatrix, latlong, gr1, gr2 = NULL, 
+x.loc = NULL, method = "sim", gcd = TRUE, times = 100)
 \method{print}{betaols}(x, decimals = 4, \dots)
-\method{plot}{betaols}(x, leg = TRUE, leg.pos = "topright", leg.text = c("Group 1", "Group 2"), crit=0.05, \dots)
+\method{plot}{betaols}(x, leg = TRUE, leg.pos = "topright", 
+leg.text = c("Group 1", "Group 2"), crit=0.05, \dots)
 \method{summary}{betaols}(object, decimals = 4, \dots)
 }
 \arguments{

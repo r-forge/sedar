@@ -2,10 +2,11 @@
 \alias{permatsar}
 \title{Matrix Permutation Algorithms or Presence-Absence and Count Data}
 \description{
-Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's prabclus package to obtain parametric bootstrap matrices based on the estimation of disjunction probability and the SAR model.
+Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's 'prabclus' package to obtain parametric bootstrap matrices based on the estimation of disjunction probability and the SAR model.
 }
 \usage{
-permatsar(m, nb, pd = NULL, mtype = "count", times = 100, round.sar = TRUE)
+permatsar(m, nb, pd = NULL, mtype = "count", 
+times = 100, round.sar = TRUE)
 }
 \arguments{
   \item{m}{a community data matrix with plots (samples) as rows and species (taxa) as columns.}
@@ -30,7 +31,7 @@ ch/Research-Reports/110.html.
 Hausdorf, B. and Hennig, C. (2003) Biotic Element Analysis in Biogeography. Systematic Biology
 52, 717-723.
 
-Hausdorf, B. and Hennig, C. (2003) Nestedness of nerth-west European land snail ranges as a
+Hausdorf, B. and Hennig, C. (2003) Nestedness of north-west European land snail ranges as a
 consequence of differential immigration from Pleistocene glacial refuges. Oecologia 135, 102-109.
 
 Hausdorf, B. and Hennig, C. (2007) Null model tests of clustering of species, negative co-occurrence

@@ -5,7 +5,8 @@
 The function uses grouping vectors or factors for regions and habitat classes to make neighbourhood list that can be used e.g. in the 'prabclus' package and in the \code{\link{permatsar}} function.
 }
 \usage{
-nbmc(loc, reg, hab = NULL, process = c("dl", "ss", "ls", "me", "zd", "ud"), cont = rep(1, length(loc)))
+nbmc(loc, reg, hab = NULL, process = c("dl", "ss", "ls", "me", "zd", "ud"), 
+cont = rep(1, length(loc)))
 }
 \arguments{
   \item{loc}{a vector containing names of the locations.}
