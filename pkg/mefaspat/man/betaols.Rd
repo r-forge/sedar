@@ -27,7 +27,7 @@ xlab, ylab, xlim, ylim, \dots)
   \item{method}{method for dissimilarity computation, one \code{index} of \code{\link[vegan]{betadiver}} (only character formulation available here).}
   \item{gcd}{logical, if \code{TRUE}, great circle distances (in kms) are calculated, if \code{FALSE}, Euclidean distances are calculated instead.}
   \item{times}{number of permutations.}
-  \times{dis.only}{logical, if \code {TRUE} all returned beta diversity matrices are dissimilarities. Beta diversity indices are based on the \code{\link[vegan]{betadiver}} function of the 'vegan' package, and not all indices give dissimilarities. If such cases a $1-x$ complement is calculated instead. If this is not necessary, use \code{dis.only=FALSE}.}
+  \item{dis.only}{logical, if \code{TRUE} all returned beta diversity matrices are dissimilarities. Beta diversity indices are based on the \code{\link[vegan]{betadiver}} function of the 'vegan' package, and not all indices give dissimilarities. If such cases a $1-x$ complement is calculated instead. If this is not necessary, use \code{dis.only=FALSE}.}
   \item{x, object}{an object of class 'betaols'.}
   \item{decimals}{number of decimal places to passed to print method.}
   \item{leg}{logical, whether legend should be plotted.}
