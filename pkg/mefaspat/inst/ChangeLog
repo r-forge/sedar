@@ -1,6 +1,10 @@
 ChangeLog for mefaspat package in the sedar project
 
-Version 1.0-1 (opened June 9, 2008)
+Version 1.0-2 (opened September 27, 2008)
+
+    * heatload: function to calculate heat load index from aspect.
+
+Version 1.0-1 (closed September 27, 2008)
 
     * betaols: proper print and summary methods are written, plot method
     is modified to show locations for comparison on the x axis.
@@ -14,9 +18,9 @@ Version 1.0-1 (opened June 9, 2008)
 
 Version 1.0 (opened June 5, 2008, closed June 9, 2008)
 
-	* xytrend: function moved from 'mefa' to sedar, computes polynoimial ters for
+    * xytrend: function moved from 'mefa' to sedar, computes polynoimial ters for
     spatial variables.
 
-	* betaols (object class & S3 methods): written for test the difference of
-	regression parameters between distance matrices (beta diversity indices
-	vs. spatial distances) for two non overlaping sets of species.
+    * betaols (object class & S3 methods): written for test the difference of
+    regression parameters between distance matrices (beta diversity indices
+    vs. spatial distances) for two non overlaping sets of species.

@@ -1,8 +1,9 @@
+\encoding{UTF-8}
 \name{nbmc}
 \alias{nbmc}
-\title{Neighbourhood list based on metacommunity models}
+\title{Neighbourhood List Based on Metacommunity Models}
 \description{
-The function uses grouping vectors or factors for regions and habitat classes to make neighbourhood list that can be used e.g. in the 'prabclus' package and in the \code{\link{permatsar}} function.
+The function uses grouping vectors or factors for regions and habitat classes to make neighbourhood list that can be used e.g. in the \strong{prabclus} package and in the \code{\link{permatsar}} function.
 }
 \usage{
 nbmc(loc, reg, hab = NULL, process = c("dl", "ss", "ls", "me", "zd", "ud"), 
@@ -18,7 +19,9 @@ cont = rep(1, length(loc)))
 \value{
 A list with neighborhood(s) of each element of \code{loc}.
 }
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}, \url{http://www.univet.hu/users/psolymos/personal/}}
+\author{
+\enc{Péter Sólymos}{Peter Solymos}, \email{solymos@ualberta.ca}
+}
 \examples{
 loc <- 1:8
 reg <- c(1,1,1,1,2,2,2,2)
@@ -29,3 +32,4 @@ nbmc(loc,reg,hab,"ss")
 nbmc(loc,reg,hab,"me")
 }
 \keyword{ manip }
+\keyword{ spatial }

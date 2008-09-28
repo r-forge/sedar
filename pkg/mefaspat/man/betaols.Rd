@@ -1,10 +1,11 @@
+\encoding{UTF-8}
 \name{betaols}
 \alias{betaols}
 \alias{print.betaols}
 \alias{plot.betaols}
 \alias{summary.betaols}
 \title{
-Permutation test for regression on distance matrices between two species groups
+Permutation Test for Regression on Distance Matrices Between Two Species Groups
 }
 \description{
 Permutation test for differences in slope and intercepts of OLS regression on distance matrices between two species groups.
@@ -20,14 +21,14 @@ xlab, ylab, xlim, ylim, \dots)
 }
 \arguments{
   \item{datamatrix}{a matrix or data frame containing the data.}
-  \item{latlong}{a matrix or data frame with latitude/longitude (when \code{gcd=TRUE}) or x/y coordinates (when \code{gcd=FALSE}).}
+  \item{latlong}{a matrix or data frame with latitude/longitude (when \code{gcd = TRUE}) or x/y coordinates (when \code{gcd = FALSE}).}
   \item{gr1}{a vector for group membership (columns of \code{datamatrix}) of species belonging to group 1.}
   \item{gr2}{a vector for group membership (columns of \code{datamatrix}) of species belonging to group 2 (optional), \code{NULL} means all species that are not in group 1.}
   \item{x.loc}{locations along the geographic distance axis where intercepts are compared.}
   \item{method}{method for dissimilarity computation, one \code{index} of \code{\link[vegan]{betadiver}} (only character formulation available here).}
   \item{gcd}{logical, if \code{TRUE}, great circle distances (in kms) are calculated, if \code{FALSE}, Euclidean distances are calculated instead.}
   \item{times}{number of permutations.}
-  \item{dis.only}{logical, if \code{TRUE} all returned beta diversity matrices are dissimilarities. Beta diversity indices are based on the \code{\link[vegan]{betadiver}} function of the 'vegan' package, and not all indices give dissimilarities. If such cases a $1-x$ complement is calculated instead. If this is not necessary, use \code{dis.only=FALSE}.}
+  \item{dis.only}{logical, if \code{TRUE} all returned beta diversity matrices are dissimilarities. Beta diversity indices are based on the \code{\link[vegan]{betadiver}} function of the 'vegan' package, and not all indices give dissimilarities. If such cases a $1-x$ complement is calculated instead. If this is not necessary, use \code{dis.only = FALSE}.}
   \item{x, object}{an object of class 'betaols'.}
   \item{decimals}{number of decimal places to passed to print method.}
   \item{leg}{logical, whether legend should be plotted.}
@@ -50,7 +51,7 @@ Plot shows scatter of beta index vs. geographic distances for the two groups of 
   \item{m}{data in \code{x}.}
   \item{gr1}{a vector for group membership in group 1.}
   \item{gr2}{a vector for group membership in group 2.}
-  \item{x.loc}{locations along the geographic distance axis where intercepts are compared. If \code{x.loc=NULL}, only 0 is used for comparison. Only unique values are used.}
+  \item{x.loc}{locations along the geographic distance axis where intercepts are compared. If \code{x.loc = NULL}, only 0 is used for comparison. Only unique values are used.}
   \item{n.perm}{number of permutations.}
   \item{mat}{a list containing distance matrices \code{gcd1}, \code{gcd2}, \code{beta1} and \code{beta2} (geographic distances and dissimilarities for the two groups) for plotting and reuse.}
   \item{d.perm}{data frame with \code{times} rows and colums for differences of slope and intercepts between the two groups, this contains permutation results for further validation.}
@@ -61,18 +62,20 @@ Plot shows scatter of beta index vs. geographic distances for the two groups of 
   \item{test}{a matrix with test results (observed differences and p values).}
 }
 \references{
-La Sorte, F.A., McKinney, M.L., Pysek, P., Klotz, S., Rapson, G.L. Celesti-Grapow, L., and Thompson, K. (2008) Distance decay in similarity among European urban floras: the impact of anthropogenic activities on beta diversity. Global Ecology and Biogeography, 17, 363-371.
+La Sorte, F.A., McKinney, M.L., Pysek, P., Klotz, S., Rapson, G.L. Celesti-Grapow, L., and Thompson, K. 2008. Distance decay in similarity among European urban floras: the impact of anthropogenic activities on beta diversity. \emph{Global Ecology and Biogeography} 17, 363--371.
 
-La Sorte, F.A., and McKinney, M.L. (2006) Compositional similarity and the distribution of geographical range size for native and non-native species in urban floras. Diversity and Distributions, 12, 679-686.
+La Sorte, F.A., and McKinney, M.L. 2006. Compositional similarity and the distribution of geographical range size for native and non-native species in urban floras. \emph{Diversity and Distributions} 12, 679--686.
 }
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}, \url{http://www.univet.hu/users/psolymos/personal/}}
+\author{
+\enc{Péter Sólymos}{Peter Solymos}, \email{solymos@ualberta.ca}
+}
 \examples{
 xy <- cbind(x <- runif(50), y <- runif(50))
 gr1 <- c(1:10)
 gr2 <- c(11:30)
 m <- matrix(c(rpois(500,5), rpois(2000,1)), 50, 50)
 
-(bols1 <- betaols(m, xy, gr1, gr2, gcd=FALSE))
+(bols1 <- betaols(m, xy, gr1, gr2, gcd = FALSE))
 (bols2 <- betaols(m, xy, gr1, x.loc = seq(0.1,1.1,0.2)))
 plot(bols2)
 hist(bols2$d.perm[,1])

@@ -1,8 +1,9 @@
+\encoding{UTF-8}
 \name{permatsar}
 \alias{permatsar}
 \title{Matrix Permutation Algorithms or Presence-Absence and Count Data}
 \description{
-Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's 'prabclus' package to obtain parametric bootstrap matrices based on the estimation of disjunction probability and the SAR model.
+Individual (for count data) or incidence (for presence-absence data) based null models can be generated for community level simulations. This function uses Cristian Hennig's and Bernhad Hausdorf's \strong{prabclus} package to obtain parametric bootstrap matrices based on the estimation of disjunction probability and the SAR model.
 }
 \usage{
 permatsar(m, nb, pd = NULL, mtype = "count", 
@@ -24,20 +25,22 @@ An object of class 'permat'.
   \item{specs}{a list of other specifications: \code{nb}, \code{pd}, SAR estimates.}
 }
 \references{
-Hennig, C. and Hausdorf, B. (2004) Distance-based parametric bootstrap tests for clustering of
-species ranges. Computational Statistics and Data Analysis 45, 875-896. http://stat.ethz.
-ch/Research-Reports/110.html.
+Hennig, C. and Hausdorf, B. 2004. Distance-based parametric bootstrap tests for clustering of
+species ranges. \emph{Computational Statistics and Data Analysis} 45, 875--896. \url{http://stat.ethz.
+ch/Research-Reports/110.html}
 
-Hausdorf, B. and Hennig, C. (2003) Biotic Element Analysis in Biogeography. Systematic Biology
-52, 717-723.
+Hausdorf, B. and Hennig, C. 2003. Biotic Element Analysis in Biogeography. \emph{Systematic Biology}
+52, 717--723.
 
-Hausdorf, B. and Hennig, C. (2003) Nestedness of north-west European land snail ranges as a
-consequence of differential immigration from Pleistocene glacial refuges. Oecologia 135, 102-109.
+Hausdorf, B. and Hennig, C. 2003. Nestedness of north-west European land snail ranges as a
+consequence of differential immigration from Pleistocene glacial refuges. \emph{Oecologia} 135, 102--109.
 
-Hausdorf, B. and Hennig, C. (2007) Null model tests of clustering of species, negative co-occurrence
-patterns and nestedness in meta-communities. Oikos 116, 818-828.
+Hausdorf, B. and Hennig, C. 2007. Null model tests of clustering of species, negative co-occurrence
+patterns and nestedness in meta-communities. \emph{Oikos} 116, 818--828.
 }
-\author{Peter Solymos, \email{Solymos.Peter@aotk.szie.hu}, \url{http://www.univet.hu/users/psolymos/personal/}}
+\author{
+\enc{Péter Sólymos}{Peter Solymos}, \email{solymos@ualberta.ca}
+}
 \seealso{
 autoconst, prab.sarestimate, randpop.nb, regpop.sar
 }
@@ -57,4 +60,4 @@ x2 <- permatsar(m,nb,mtype="count")
 x2
 }
 \keyword{multivariate}
-
+\keyword{ spatial }
