@@ -44,6 +44,7 @@ function(m, nb, pd=NULL, mtype="count", times=100, round.sar=TRUE)
     attr(out, "ptype") <- "sar"
     attr(out, "fixedmar") <- "none"
     attr(out, "times") <- times
+    attr(out, "replace") <- NA
     class(out) <- c("permat", "list")
     return(out)
 }
