@@ -42,6 +42,7 @@ function(m, nb, pd=NULL, mtype="count", times=100, round.sar=TRUE)
     out <- list(call=match.call(), orig=m, perm=perm, specs=specs)
     attr(out, "mtype") <- mtype
     attr(out, "ptype") <- "sar"
+    attr(out, "method") <- NA
     attr(out, "fixedmar") <- "none"
     attr(out, "times") <- times
     attr(out, "shuffle") <- NA
