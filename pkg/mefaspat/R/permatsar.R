@@ -46,7 +46,10 @@ function(m, nb, pd=NULL, mtype="count", times=100, round.sar=TRUE)
     attr(out, "fixedmar") <- "none"
     attr(out, "times") <- times
     attr(out, "shuffle") <- NA
+    attr(out, "is.strat") <- FALSE
+    attr(out, "strata") <- NULL
+    attr(out, "burnin") <- NA
+    attr(out, "thin") <- NA
     class(out) <- c("permat", "list")
     return(out)
 }
-
