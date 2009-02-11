@@ -10,7 +10,6 @@ function(matdist, thresh=NULL, all=FALSE, include.zero=FALSE)
 {
 	require(vegan)
 	a <- system.time({
-	cat("Truncation level =",thresh,'\n')
 	matdist <- as.matrix(matdist)
 
 	## Truncation of distance matrix
@@ -19,6 +18,7 @@ function(matdist, thresh=NULL, all=FALSE, include.zero=FALSE)
 		thresh <- max(spanning$dist)
 		}
 	matdist[matdist > thresh] <- 4*thresh
+	cat("Truncation level =",thresh,'\n')
 
 	mypcnm.all <- pcoa.all(matdist, all=all, include.zero=include.zero, rn=rownames(matdist))
 	})

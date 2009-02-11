@@ -53,14 +53,14 @@ The \code{biplot.pcoa} function produces plots for any pair of principal coordin
 
   \item{correction }{A note describing the type of correction dane, if any. }
   \item{values }{The eigenvalues and related information: }
-  \item{Eigenvalues}{all eigenvalues (positive, null, negative). }
-  \item{Relative_eig}{relative eigenvalues. }
-  \item{Corr_eig}{corrected eigenvalues (Lingoes correction); Legendre and Legendre (1998, p. 438, eq. 9.27). }
-  \item{{Rel_corr_eig}relative eigenvalues after Lingoes or Cailliez correction. }
-  \item{Broken_stick}{expected fractions of variance under the broken stick model. }
-  \item{Cumul_eig}{cumulative relative eigenvalues. }
-  \item{Cum_corr_eig}{cumulative corrected relative eigenvalues. }
-  \item{Cumul_br_stick}{cumulative broken stick fractions. }
+  \item{$Eigenvalues}{All eigenvalues (positive, null, negative). }
+  \item{$Relative_eig}{Relative eigenvalues. }
+  \item{$Corr_eig}{Corrected eigenvalues (Lingoes correction); Legendre and Legendre (1998, p. 438, eq. 9.27). }
+  \item{$Rel_corr_eig}{Relative eigenvalues after Lingoes or Cailliez correction. }
+  \item{$Broken_stick}{Expected fractions of variance under the broken stick model. }
+  \item{$Cumul_eig}{Cumulative relative eigenvalues. }
+  \item{$Cum_corr_eig}{Cumulative corrected relative eigenvalues. }
+  \item{$Cumul_br_stick}{Cumulative broken stick fractions. }
   \item{vectors}{The principal coordinates with positive eigenvalues. }
   \item{trace}{The trace of the distance matrix. This is also the sum of all eigenvalues, positive and negative. }
   \item{vectors.cor }{The principal coordinates with positive eigenvalues from the distance matrix corrected using the method specified by parameter \code{correction}. }
