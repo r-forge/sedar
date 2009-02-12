@@ -1,5 +1,5 @@
 'quickPCNM' <- 
-	function(Y,space,thresh=0,method="fwd",myPCNM=NULL,alpha=0.05,rangexy=FALSE,detrend=TRUE)
+	function(Y,space,thresh=0,method="fwd",myPCNM=NULL,alpha=0.05,rangexy=FALSE,detrend=TRUE, ...)
 {
 #                                        Daniel Borcard
 #                                        Universite de Montreal
@@ -97,7 +97,7 @@ if(detrend==TRUE){
                               }
    else{  
    temp2 <- vegan::rda(Y,space)
-   temp2.test <- vegan::anova.cca(temp2,alpha=alpha,step=100,perm.pmax=1000)
+   temp2.test <- vegan::anova.cca(temp2,alpha=alpha,step=100,perm.pmax=1000, ...)
    if(temp2.test[1,5] <= alpha) {
       Y.det <- resid(lm(Y~space))
      assign("Y.det", Y.det, envir=.GlobalEnv)   # compensation for internal loss of object by R
@@ -117,7 +117,7 @@ else {
 ## RDA with all PCNM variables(complete model)
 
 mod1 <- vegan::rda(Y.det~.,data=PCNMbase)
-global.test <- vegan::anova.cca(mod1,alpha=alpha,step=100,perm.max=1000)
+global.test <- vegan::anova.cca(mod1,alpha=alpha,step=100,perm.max=1000, ...)
 mod1.sum <- summary(mod1,scaling=1)
 R2glob <- mod1.sum$constr.chi/mod1.sum$tot.chi
 R2glob.a <- 1-((n-1)/(n-global.test[1,1]-1))*(1-R2glob)
@@ -189,7 +189,7 @@ assign("PCNMred",PCNMred,envir=.GlobalEnv)  # compensation for internal loss of 
 mod <- vegan::rda(Y.det~.,data=PCNMred)
 mod.sum <- summary(mod,scaling=1)}
 
-mod.test <- vegan::anova.cca(mod, alpha=alpha, step=100,perm.max=1000)
+mod.test <- vegan::anova.cca(mod, alpha=alpha, step=100,perm.max=1000, ...)
 
 R2 <- mod.sum$constr.chi/mod.sum$tot.chi
 R2adj <- 1-((n-1)/(n-mod.test[1,1]-1))*(1-R2)
@@ -218,6 +218,8 @@ cat("\n------------------------------------------------------------------")
 
 # At this point, anova.cca for all axes doesn't seem to work properly: it looses
 # the track of one or the other object defined higher (generally PCNMred).
+## Not anova.ccabyaxis's fault, but a scoping issue that should be handled
+## in this function (note added by JO, Feb 12, 2009).
 # The workaround is to export PCNMred from the function during the run
 # and assign it to the global R environment (Line 247). PCNMred is thus present
 # in the main R workspace and should be deleted prior to another quickPCNM run.
@@ -225,7 +227,7 @@ cat("\n------------------------------------------------------------------")
 if(ncol(Y)==1 || nb.sig.ev == 1) {
    nb.ax <- 1                    }
  else {
- mod.axes.test <- vegan::anova.cca(mod,by="axis",step=100,perm.max=1000)
+ mod.axes.test <- vegan::anova.cca(mod,by="axis",step=100,perm.max=1000, ...)
  
 ## Count the significant axes 
 nb.ax <- length(which(mod.axes.test[,5]<=alpha))
