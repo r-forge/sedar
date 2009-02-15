@@ -19,7 +19,7 @@
 	trace <- sum(diag(Dpr2))
 
 # Eigenvalue decomposition
-	D.eig <- eigen(Dpr2)
+	D.eig <- eigen(Dpr2, symmetric=TRUE)
 	rel.values <- D.eig$values/trace
 	rel.cum <- cumsum(rel.values)
 	if(length(rn)!=0) {
@@ -32,7 +32,7 @@
 	if(all) {
 		select <- 1:n
 		if(!include.zero) {
-			exclude <- which((D.eig$values > -epsilon) & (D.eig$values < epsilon))
+			exclude <- which(abs(D.eig$values) < epsilon)
 			select <- select[-exclude]
 			}
 		k <- length(select)

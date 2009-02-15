@@ -9,8 +9,8 @@ Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices
 \tabular{ll}{
 Package: \tab PCNM\cr
 Type: \tab Package\cr
-Version: \tab 1.4\cr
-Date: \tab 2009-02-01\cr
+Version: \tab 1.6\cr
+Date: \tab 2009-02-12\cr
 License: \tab Copyleft\cr
 LazyLoad: \tab yes\cr
 }

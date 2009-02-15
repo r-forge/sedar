@@ -1,6 +1,5 @@
 \name{pcoa}
 \alias{pcoa}
-\alias{broken.stick}
 \alias{biplot.pcoa}
 \title{ Principal Coordinate Analysis }
 \description{
@@ -97,6 +96,7 @@ mite.log <- log(mite[1:30,-35]+1)  # Equivalent: log1p(mite[1:30,-35])
 # Principal coordinate analysis and simple ordination plot
 mite.D <- vegdist(mite.log, "bray")
 res <- pcoa(mite.D)
+res$values
 biplot(res)
 
 # Project unstandardized and standardized species on the PCoA ordination plot

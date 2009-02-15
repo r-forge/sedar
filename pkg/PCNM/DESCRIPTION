@@ -1,7 +1,7 @@
 Package: PCNM
 Type: Package
-Version: 1.5
-Date: 2009-02-06
+Version: 1.6
+Date: 2009-02-12
 Title: PCNM spatial eigenfunction and principal coordinate analyses
 Author:  Pierre Legendre, Daniel Borcard and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>

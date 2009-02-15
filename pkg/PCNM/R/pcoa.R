@@ -34,7 +34,8 @@ centre <- function(D,n)
 		}
 	CORRECTIONS <- c("none","lingoes","cailliez")
 	correction <- pmatch(correction, CORRECTIONS)
-	# cat("correction =",correction,'\n')
+	if(is.na(correction)) stop("Invalid correction method")
+	# cat("Correction method =",correction,'\n')
 
 # Gower centring of matrix D
 # delta1 = (I - 11'/n) [-0.5 d^2] (I - 11'/n)
@@ -51,17 +52,19 @@ centre <- function(D,n)
 
 # No negative eigenvalue
 	if(min.eig > -epsilon) { 
-		correction <- 3
+		correction <- 1
 		eig <- D.eig$values
 		k <- length(which(eig > epsilon))
 		rel.eig <- eig[1:k]/trace
 		cum.eig <- cumsum(rel.eig) 
 		vectors <- sweep(D.eig$vectors[,1:k], 2, sqrt(eig[1:k]), FUN="*")
-		bs <- broken.stick(k)[,2]
+		# bs <- broken.stick(k)[,2]
+		bs <- bstick.default(k)     # Use 'bstick.default' from vegan
 		cum.bs <- cumsum(bs)
 
 res <- data.frame(eig[1:k], rel.eig, bs, cum.eig, cum.bs)
 colnames(res) <- c("Eigenvalues","Relative_eig","Broken_stick","Cumul_eig","Cumul_br_stick")
+rownames(res) <- 1:nrow(res)
 
 rownames(vectors) <- names
 colnames(vectors) <- colnames(vectors, do.NULL = FALSE, prefix = "Axis.")
@@ -71,7 +74,7 @@ out <- (list(values=res, vectors=vectors, trace=trace))
 	} else {
 		k <- n 
 		eig <- D.eig$values
-		rel.eig <- cumsum(eig)
+		rel.eig <- eig/trace
 		rel.eig.cor <- (eig - min.eig)/(trace - (n-1)*min.eig) # Eq. 9.27 for a single dimension
 		rel.eig.cor = c(rel.eig.cor[1:(zero.eig[1]-1)], rel.eig.cor[(zero.eig[1]+1):n], 0)
 		cum.eig.cor <- cumsum(rel.eig.cor) 
@@ -81,16 +84,16 @@ out <- (list(values=res, vectors=vectors, trace=trace))
 		# Only the eigenvectors with positive eigenvalues are shown
 
 # Negative eigenvalues: three ways of handling the situation
-	if((correction==1) | (correction==2)) {
+	if((correction==2) | (correction==3)) {
 
 		# Lingoes correction: compute c1, then the corrected D
-		if(correction == 1) {
+		if(correction == 2) {
 			c1 <- -min.eig
 			note <- paste("Lingoes correction applied to negative eigenvalues: D' = -0.5*D^2 -",c1,", except diagonal elements")
 			D <- -0.5*(D^2 + 2*c1)
 
 		# Cailliez correction: compute c2, then the corrected D
-		} else if(correction == 2) {
+		} else if(correction == 3) {
 			delta2 <- centre((-0.5*D),n)
 			upper <- cbind(matrix(0,n,n), 2*delta1)
 			lower <- cbind(-diag(n), -4*delta2)
@@ -117,20 +120,22 @@ out <- (list(values=res, vectors=vectors, trace=trace))
 		cum.eig.cor <- cumsum(rel.eig.cor) 
 		k2 <- length(which(eig.cor > epsilon))
 		vectors.cor <- sweep(toto.cor$vectors[,1:k2], 2, sqrt(eig.cor[1:k2]), FUN="*")
-		bs <- broken.stick(k2)[,2]
+		# bs <- broken.stick(k2)[,2]
+		bs <- bstick.default(k2)     # Use 'bstick.default' from vegan
 		bs <- c(bs, rep(0,(k-k2)))
 		cum.bs <- cumsum(bs)
 
 	# Negative eigenvalues still present after correction: incorrect result
 	} else { 
-	if(correction == 1) cat("Probleme! Negative eigenvalues are still present after Lingoes",'\n') 
-	if(correction == 2) cat("Probleme! Negative eigenvalues are still present after Cailliez",'\n') 
+	if(correction == 2) cat("Problem! Negative eigenvalues are still present after Lingoes",'\n') 
+	if(correction == 3) cat("Problem! Negative eigenvalues are still present after Cailliez",'\n') 
 	rel.eig.cor <- cum.eig.cor <- bs <- cum.bs <- rep(NA,n)
 	vectors.cor <- matrix(NA,n,2)
 	}
 
 	res <- data.frame(eig[1:k], eig.cor[1:k], rel.eig.cor, bs, cum.eig.cor, cum.bs)
 	colnames(res) <- c("Eigenvalues", "Corr_eig", "Rel_corr_eig", "Broken_stick", "Cum_corr_eig", "Cum_br_stick")
+	rownames(res) <- 1:nrow(res)
 
 	rownames(vectors) <- names
 	colnames(vectors) <- colnames(vectors, do.NULL = FALSE, prefix = "Axis.")
@@ -139,12 +144,14 @@ out <- (list(values=res, vectors=vectors, trace=trace))
 	} else {
 			
 	note <- "No correction was applied to the negative eigenvalues"
-	bs <- broken.stick(k3)[,2]
+	# bs <- broken.stick(k3)[,2]
+	bs <- bstick.default(k3)     # Use 'bstick.default' from vegan
 	bs <- c(bs, rep(0,(k-k3)))
 	cum.bs <- cumsum(bs)
 
 	res <- data.frame(eig[1:k], rel.eig, rel.eig.cor, bs, cum.eig.cor, cum.bs)
 	colnames(res) <- c("Eigenvalues","Relative_eig","Rel_corr_eig","Broken_stick","Cum_corr_eig","Cumul_br_stick")
+	rownames(res) <- 1:nrow(res)
 
 	rownames(vectors) <- names
 	colnames(vectors) <- colnames(vectors, do.NULL = FALSE, prefix = "Axis.")

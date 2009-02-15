@@ -1,10 +1,11 @@
 \name{quickPCNM}
 \alias{quickPCNM}
+\alias{anova.ccabyaxis}
 \title{ Quick PCNM spatial eigenfunction analysis }
 \description{
 Function \code{\link{quickPCNM}} computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis. }
 \usage{
-quickPCNM(Y, space, thresh=0, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FALSE, detrend=TRUE)
+quickPCNM(Y, space, thresh=0, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FALSE, detrend=TRUE, perm.max=NULL)
 }
 
 \arguments{
@@ -20,6 +21,7 @@ quickPCNM(Y, space, thresh=0, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FAL
   \item{alpha}{ Level of significance for the tests (default value: 0.05). }
   \item{rangexy}{ If TRUE, the spatial coordinates are rescaled to a minimum of 0 on both axes and a maximum of 10 on the axis wih the largest range, without altering the ratio between the x and y coordinates. If only one coordinate is provided, it is rescaled into a range [0,10]. Useful when the x-y coordinates are provided in extremely large or small values. Default: FALSE. }
   \item{detrend}{ If TRUE (default), prior ot the PCNM analysis, the function tests if a linear trend is present and significant at the level given by 'alpha'. If that is the case, a linear detrending of the response data is done. One should not waste sine-shaped PCNM variables to model a linear trend. }
+  \item{perm.max}{ Maximum number of permutations in tests of siignificance, e.g. perm.max=1000. If perm.max=NULL, vegan's default method will be used. }
 }
 
 \details{
