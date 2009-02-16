@@ -1,0 +1,27 @@
+$Date$
+
+PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
+
+Version 1.6
+
+	* added this ChangeLog.
+
+	* PL & DB crosschecked the functions and fixed diffuse places in
+	pcoa.R, pcoa.all.R, and quickPCNM.R.  Documentation updated.
+
+	* Added anova.ccabyaxis.R from vegan (against JO's ideals of
+	software development).
+
+	* Removed broken.stick.R which was duplicating vegan::bstick(). 
+	
+Version 1.5
+
+	* Minor fixes in PCNM.R and pcoa.Rd.  
+
+	* quickPCNM.R: a quick temporary fix to pass 'cutoff' to
+	vegan::anova.ccabyaxis which was changed to cope with PL's wish to
+	bail out from lengthy analysis after hitting insignificant axes.
+
+Version 1.4
+
+	* Initial import of the Legendre and Borcard package.
