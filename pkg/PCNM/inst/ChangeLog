@@ -4,6 +4,9 @@ PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
 Version 1.6
 
+	* Fixes in Rd files to pass R-devel parser 2 check, and cleaning
+	of some Rd entries.
+
 	* added this ChangeLog.
 
 	* PL & DB crosschecked the functions and fixed diffuse places in

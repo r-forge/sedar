@@ -26,7 +26,7 @@ The function returns an object of class \code{nb} with a list of integer vectors
 }
 \author{ F. Guillaume Blanchet }
 
-\seealso{  code{\link[spdep]{dnearneigh}}, \code{\link[spdep]{cell2nb}}, \code{\link[spdep]{graph2nb}}, \code{\link[spdep]{tri2nb}}, \code{\link[spdep]{knn2nb}} }
+\seealso{  \code{\link[spdep]{dnearneigh}}, \code{\link[spdep]{cell2nb}}, \code{\link[spdep]{graph2nb}}, \code{\link[spdep]{tri2nb}}, \code{\link[spdep]{knn2nb}} }
 \examples{
 
 data(oribatid)

@@ -11,8 +11,6 @@ The \code{carabid} data frame has 64 rows representing sampling sites
 \format{
   This data frame contains pitfall counts on 45 Carabid species with
   abbreviated names.  
-  }
-}
 }
 \source{
   The data were collected by Dr. Jarmo K. Holopainen (University of

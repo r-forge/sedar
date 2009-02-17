@@ -38,10 +38,12 @@ In all cases, only the eigenvectors corresponding to positive eigenvalues are sh
 
 We recommend not to use PCoA to produce ordinations from the chord, chi-square, abundance profile, or Hellinger distances. It is easier to first transform the community composition data using the following transformations,available in the \code{decostand} function of the \code{vegan} package, and then to carry out a principal component analysis (PCA) on the transformed data:
 
+\describe{
 \item{ }{Chord transformation: decostand(spiders,"normalize") }
 \item{ }{Transformation to relative abundance profiles: decostand(spiders,"total") }
 \item{ }{Hellinger transformation: decostand(spiders,"hellinger") }
 \item{ }{Chi-square transformation: decostand(spiders,"chi.square") }
+}
 
 The ordination results will be identical and the calculations shorter. This two-step ordination method, called transformation-based PCA (tb-PCA), was described by Legendre and Gallagher (2001).
 
@@ -52,14 +54,14 @@ The \code{biplot.pcoa} function produces plots for any pair of principal coordin
 
   \item{correction }{A note describing the type of correction dane, if any. }
   \item{values }{The eigenvalues and related information: }
-  \item{$Eigenvalues}{All eigenvalues (positive, null, negative). }
-  \item{$Relative_eig}{Relative eigenvalues. }
-  \item{$Corr_eig}{Corrected eigenvalues (Lingoes correction); Legendre and Legendre (1998, p. 438, eq. 9.27). }
-  \item{$Rel_corr_eig}{Relative eigenvalues after Lingoes or Cailliez correction. }
-  \item{$Broken_stick}{Expected fractions of variance under the broken stick model. }
-  \item{$Cumul_eig}{Cumulative relative eigenvalues. }
-  \item{$Cum_corr_eig}{Cumulative corrected relative eigenvalues. }
-  \item{$Cumul_br_stick}{Cumulative broken stick fractions. }
+  \item{Eigenvalues}{All eigenvalues (positive, null, negative). }
+  \item{Relative_eig}{Relative eigenvalues. }
+  \item{Corr_eig}{Corrected eigenvalues (Lingoes correction); Legendre and Legendre (1998, p. 438, eq. 9.27). }
+  \item{Rel_corr_eig}{Relative eigenvalues after Lingoes or Cailliez correction. }
+  \item{Broken_stick}{Expected fractions of variance under the broken stick model. }
+  \item{Cumul_eig}{Cumulative relative eigenvalues. }
+  \item{Cum_corr_eig}{Cumulative corrected relative eigenvalues. }
+  \item{Cumul_br_stick}{Cumulative broken stick fractions. }
   \item{vectors}{The principal coordinates with positive eigenvalues. }
   \item{trace}{The trace of the distance matrix. This is also the sum of all eigenvalues, positive and negative. }
   \item{vectors.cor }{The principal coordinates with positive eigenvalues from the distance matrix corrected using the method specified by parameter \code{correction}. }

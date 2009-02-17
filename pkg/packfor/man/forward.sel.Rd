@@ -70,5 +70,5 @@ Miller, J. K., and S. D. Farr. (1971). Bimultivariate redundancy: a comprehensiv
     
     forward.sel(y,x,nperm=99, alpha = 0.5)
   }
-}
+
 \keyword{ multivariate }% at least one, from doc/KEYWORDS

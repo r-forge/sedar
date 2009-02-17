@@ -2,7 +2,11 @@ Package 'hubbell' -*- change log -*-
 
 $Date$
 
-Versin 1.6-0
+Version 1.6-1
+	* carabid.Rd: fixes to pass R-devel (2.9.0-tobe) Rd parser 2
+	checks. 
+	
+Version 1.6-0
 	* moved to R-Forge project sedar. The local svn log is in
 	hubbell_svn.log file.
 	
