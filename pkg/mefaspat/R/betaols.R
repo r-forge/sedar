@@ -109,7 +109,7 @@ subset.internal <- function(x, latlong, gr1, gr2, method) {
         coef.gr2=c2,
         test=final)
     attr(out, "dis.only") <- dis.only
-    class(out) <- c("betaols", "list")
+    class(out) <- "betaols"
     return(out)
 } ## function END
 
