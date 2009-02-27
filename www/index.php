@@ -43,7 +43,7 @@ echo $contents; } ?>
 </p>
 <!-- end of project description -->
 
-<p> This project is born at a <a href="http://biomserv.univ-lyon1.fr/~dray/sedar/">workshop</a> organized in Lyon.</p>
+<p> This project is born at a <a href="http://pbil.univ-lyon1.fr/members/dray/sedar/">workshop</a> organized in Lyon.</p>
 
 <p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
