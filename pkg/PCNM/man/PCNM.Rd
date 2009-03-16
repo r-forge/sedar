@@ -7,12 +7,13 @@ Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices
 This version allows users to obtain either the classical PCNM eigenfunctions with positive eigenvalues only, or all PCNM eigenfunctions with positive and negative eigenvalues.
 }
 \usage{
-PCNM(matdist, thresh=NULL, all=FALSE, include.zero=FALSE)
+PCNM(matdist, thresh=NULL, dbMEM=FALSE, all=FALSE, include.zero=FALSE)
 }
 
 \arguments{
   \item{matdist}{ A distance matrix of class \code{dist} or \code{matrix}. }
-  \item{thresh}{ A threshold value for truncation of the geographic distance matrix. }
+  \item{thresh}{ A threshold value for truncation of the geographic distance matrix. If \code{thresh=NULL}, the length of the longest edge of the minimum spanning tree will be used as the threshold. }
+  \item{dbMEM}{ If FALSE, the diagonal of matrix D contains zeros; classical PCNM eigenfunctions are produced. If TRUE, the diagonal of matrix D contains 4*thresh; the eigenfunctions produced are called distance-based MEM or db-MEM (Dray et al. 2006). db-MEM eigenfunctions with positive eigenvalues all have positive Moran's I. The db-MEMs with positive eigenvalues are fewer in number than the PCNMs with positive eigenvalues. }
   \item{all}{ If TRUE, the eigenvectors corresponding to all eigenvalues, positive and negative, are shown in the output list. Default value: \code{all=FALSE}. }
   \item{include.zero}{ If FALSE (default value), the zero eigenvalues as well as their eigenvectors are excluded from the output list. See details. }
 }
@@ -27,10 +28,12 @@ When \code{include.zero} is \code{TRUE}, the null eigenvalue(s) and associated P
 
 \value{
 
-  \item{PCNM_eigenvalues }{The eigenvalues. }
+  \item{values }{The PCNM eigenvalues. }
   \item{rel.values }{The relative eigenvalues. }
   \item{rel.cum.values }{The cumulative relative eigenvalues. }
-  \item{PCNM }{The PCNM eigenfunctions (principal coordinates of the truncated distance matrix). }
+  \item{vectors }{The PCNM or db-MEM eigenfunctions (principal coordinates of the truncated distance matrix). }
+  \item{smanning }{An R object containing the minimum spanning tree. }
+  \item{thresh }{The truncation threshold. If a \code{thresh} value was provided by the user, that value is given here. If \code{thresh=NULL}, this is the length of the longest edge in the minimum spanning tree; the threshold is augmented by 0.000001 before printing to correct the cases where the threshold is rounded to a value slightly smaller than the true threshold. }
   \item{trace }{The trace of the truncated distance matrix. This is also the sum of all eigenvalues, positive and negative. }
 }
 
@@ -55,22 +58,34 @@ data(mite)      # 70 peat cores, 35 species
 data(mite.xy)   # Core geographic coordinates
 
 mite.D <- dist(mite.xy)   # Geographic distance matrix
-pcnm1 <- PCNM(mite.D, thresh=1.012)
-pcnm2 <- PCNM(mite.D, thresh=1.012, all=TRUE)
-pcnm3 <- PCNM(mite.D, thresh=1.012, all=TRUE, include.zero=TRUE)
+# thresh=1.012 is the value used in Borcard and Legendre (2002)
+mite.pcnm1 <- PCNM(mite.D, thresh=1.012)
+mite.pcnm2 <- PCNM(mite.D, thresh=1.012, all=TRUE)
+mite.pcnm3 <- PCNM(mite.D, thresh=1.012, all=TRUE, include.zero=TRUE)
 
-# Plot maps of the first 3 PCNM eigenfunctions of file pcnm1
+# Plot maps of the first 3 PCNM eigenfunctions of file mite.pcnm1
+library(ade4)
 par(mfrow=c(1,3))
-s.value(mite.xy, pcnm1$vectors[,1], clegend=0, sub="PCNM 1", csub=2.5)
-s.value(mite.xy, pcnm1$vectors[,2], clegend=0, sub="PCNM 2", csub=2.5)
-s.value(mite.xy, pcnm1$vectors[,3], clegend=0, sub="PCNM 3", csub=2.5)
+s.value(mite.xy, mite.pcnm1$vectors[,1], clegend=0, sub="PCNM 1", csub=2.5)
+s.value(mite.xy, mite.pcnm1$vectors[,2], clegend=0, sub="PCNM 2", csub=2.5)
+s.value(mite.xy, mite.pcnm1$vectors[,3], clegend=0, sub="PCNM 3", csub=2.5)
 
 # Plot maps of PCNM eigenfunctions no. 1 (eigenvalue = 77.12495), 
-# no. 44 (eigenvalue = 0), and no. 70 (eigenvalue = -18.92951) of file pcnm3
+# no. 44 (eigenvalue = 0), and no. 70 (eigenvalue = -18.92951) of mite.pcnm3
+library(ade4)
 par(mfrow=c(1,3))
-s.value(mite.xy, pcnm3$vectors[,1] , clegend=0, sub="PCNM 1" , csub=2.5)
-s.value(mite.xy, pcnm3$vectors[,44], clegend=0, sub="PCNM 44", csub=2.5)
-s.value(mite.xy, pcnm3$vectors[,70], clegend=0, sub="PCNM 70", csub=2.5)
+s.value(mite.xy, mite.pcnm3$vectors[,1] , clegend=0, sub="PCNM 1" , csub=2.5)
+s.value(mite.xy, mite.pcnm3$vectors[,44], clegend=0, sub="PCNM 44", csub=2.5)
+s.value(mite.xy, mite.pcnm3$vectors[,70], clegend=0, sub="PCNM 70", csub=2.5)
+
+# Compute the db-MEM eigenfunctions that have positive eigenvalues and Moran's I
+mite.dbMEM1 <- PCNM(mite.D, dbMEM=TRUE)
+dim(mite.dbMEM1$vectors)
+plot.spantree(mite.dbMEM1$spanning, mite.xy)
+
+# Compute all (n-1) db-MEM eigenfunctions
+mite.dbMEM2 <- PCNM(mite.D, dbMEM=TRUE, all=TRUE)
+dim(mite.dbMEM2$vectors)
 }
 
 \keyword{ multivariate }

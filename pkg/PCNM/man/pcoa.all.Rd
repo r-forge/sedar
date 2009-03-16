@@ -5,11 +5,12 @@
 Function \code{\link{pcoa.all}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D (Gower 1966) and outputs the eigenvectors corresponding to all eigenvalues, positive and negative.
 }
 \usage{
-pcoa.all(D, all=FALSE, include.zero=FALSE, rn=NULL)
+pcoa.all(D, diagonal=0, all=FALSE, include.zero=FALSE, rn=NULL)
 }
 
 \arguments{
   \item{D}{ A distance matrix of class \code{dist} or \code{matrix}. }
+  \item{diagonal}{ In an ordinary dissimilarity or distance matrix, the diagonal is 0. Other constant values can be forced on the diagonal of matrix D. For example, for the construction of db-MEM eigenfunctions, the diagonal contains 4*thresh. }
   \item{all}{ If TRUE, the eigenvectors corresponding to all eigenvalues, positive and negative, are shown in the output list. Default value: \code{all=FALSE}. }
   \item{include.zero}{ If FALSE (default value), the zero eigenvalues as well as their eigenvectors are excluded from the output list. See details. }
   \item{rn}{ An optional vector of row names, of length n, for the n objects. }

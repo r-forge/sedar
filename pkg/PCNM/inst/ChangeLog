@@ -2,6 +2,14 @@ $Date$
 
 PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
+Version 1.7
+
+	* dbMEM option added to PCNM.R to compute db-MEM eigenfunctions.
+	
+	* PCNM.R now outputs spanning and thresh.
+	
+	* PCNM.R transfers a parameter 'diagonal' to pcoa.all.R.
+
 Version 1.6
 
 	* Fixes in Rd files to pass R-devel parser 2 check, and cleaning

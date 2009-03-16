@@ -1,4 +1,4 @@
-'pcoa.all' <- function(D, all=FALSE, include.zero=FALSE, rn=NULL)
+'pcoa.all' <- function(D, diagonal=0, all=FALSE, include.zero=FALSE, rn=NULL)
 # Principal coordinate decomposition of a square distance matrix D
 # Get the eigenvectors corresponding to all eigenvalues, positive and negative
 # Pierre Legendre, 2005, 2007
@@ -11,6 +11,7 @@
 	epsilon <- sqrt(.Machine$double.eps) 
 	D=as.matrix(D)
 	n <- nrow(D)
+	D <- D + diag(rep(diagonal,n))
 
 # Gower centring, matrix formula
 	One <- matrix(1,n,n)
