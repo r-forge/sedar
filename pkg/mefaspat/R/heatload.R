@@ -4,7 +4,7 @@ function(aspect, adjust=45, flat=0)
     if (!is.numeric(aspect)) {
         aspect <- tolower(substr(aspect,1,1))
         codes <-  c("n", "e", "s", "w", "f")
-        if (all(unique(aspect) %in% codes))
+        if (!all(unique(aspect) %in% codes))
             stop("aspect as character misspecified")
         values <- c(0, 90, 180, 270, flat) + adjust
         tmp <- numeric(length(aspect))
