@@ -9,7 +9,7 @@
 # rn : An optional vector of row names, of length n, for the objects.
 {
 	epsilon <- sqrt(.Machine$double.eps) 
-	D=as.matrix(D)
+	D <- as.matrix(D)
 	n <- nrow(D)
 	D <- D + diag(rep(diagonal,n))
 
@@ -43,8 +43,13 @@
 		} else {
 
 		k <- length(which(D.eig$values > epsilon))		
-		weights <- sqrt(D.eig$values[1:k])
-		res <- list(values=D.eig$values[1:k], rel.values=rel.values[1:k], rel.cum.values=rel.cum[1:k], vectors=D.eig$vectors[,1:k]%*%diag(weights), trace=trace)
+		weight <- sqrt(D.eig$values[1:k])
+		if(k == 1) {
+			vectors <- D.eig$vectors[,1]*sqrt(D.eig$values[1])
+			} else {
+			vectors <- D.eig$vectors[,1:k]%*%diag(weight)
+			}
+		res <- list(values=D.eig$values[1:k], rel.values=rel.values[1:k], rel.cum.values=rel.cum[1:k], vectors=vectors, trace=trace)
 		}
 	res
 }

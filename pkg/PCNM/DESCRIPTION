@@ -1,13 +1,12 @@
 Package: PCNM
 Type: Package
-Version: 1.7
-Date: 2009-03-15
+Version: 1.8
+Date: 2009-03-27
 Title: PCNM spatial eigenfunction and principal coordinate analyses
-Author:  Pierre Legendre, Daniel Borcard and Stephane Dray
+Author:  Pierre Legendre, Daniel Borcard, Guillaume Blanchet and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
-Depends: ade4, vegan, packfor
+Depends: ade4, vegan, packfor, AEM
 Description: Spatial eigenfunction analysis by principal coordinates of neighbour matrices (PCNM) and principal coordinate analysis.
 License: copyleft
 LazyLoad: yes
-Revision: 58
-Packaged: Sun Mar 15 2009; rforge
+

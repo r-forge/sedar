@@ -2,6 +2,10 @@ $Date$
 
 PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
+Version 1.8
+
+	* PCNM.R: added computation of Moran's I for the computed PCNMs.
+	
 Version 1.7
 
 	* dbMEM option added to PCNM.R to compute db-MEM eigenfunctions.

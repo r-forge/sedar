@@ -16,7 +16,7 @@ pcoa(D, correction="none", rn=NULL)
   \item{correction}{ Correction methods for negative eigenvalues (details below): \code{"lingoes"} and \code{"cailliez"}. Default value: \code{"none"}.  }
   \item{rn}{ An optional vector of row names, of length n, for the n objects. }
   \item{x}{ Output object from \code{\link{pcoa}}. }
-  \item{Y}{ Rectangular data table, e.g. community composition data, used to compute D. }
+  \item{Y}{ Any rectangular data table containing explanatory variables to be projected onto the ordination plot. That table may contain, for example, the community composition data used to compute D, or any transformation of these data; see examples. }
   \item{plot.axes}{ The two PCoA axes to plot. }
   \item{dir.axis1}{ = -1 to revert axis 1 for the projection of points and variables. Default value: +1. }
   \item{dir.axis2}{ = -1 to revert axis 2 for the projection of points and variables. Default value: +1. }

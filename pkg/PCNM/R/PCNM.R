@@ -1,5 +1,5 @@
 'PCNM' <- 
-function(matdist, thresh=NULL, dbMEM=FALSE, all=FALSE, include.zero=FALSE)
+function(matdist, thresh=NULL, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=FALSE)
 #
 # Compute the PCNM or dbMEM eigenfunctions corresponding to 
 # all eigenvalues (+, 0, -). 
@@ -14,10 +14,28 @@ function(matdist, thresh=NULL, dbMEM=FALSE, all=FALSE, include.zero=FALSE)
 # The present version: Pierre Legendre, August 2007, January and March 2009
 {
 	require(vegan)
+	epsilon <- sqrt(.Machine$double.eps) 
 	a <- system.time({
-	matdist <- as.matrix(matdist)
+	single <- FALSE
+	if(moran) {
+		# cat("The site coordinates were computed from 'matdist'.",'\n')
+		pcoa.xy <- pcoa.all(matdist)
+		
+		if(is.na(pcoa.xy$values[2]) | (pcoa.xy$values[2] < epsilon)) {
+		#	cat("This algorithm cannot compute Moran's I because the sites form a straight line on the map.",'\n')
+			cat("The sites form a straight line on the map.",'\n')
+			xy <- pcoa.xy$vectors
+			single <- TRUE
+		#	moran <- FALSE
+			} else {
+			xy <- pcoa.xy$vectors[,1:2]
+			}
+		}
 
-	## Truncation of distance matrix
+	matdist <- as.matrix(matdist)
+	n <- nrow(matdist)
+
+	# Truncation of distance matrix
 	if(is.null(thresh)) {
 		spanning <- vegan::spantree(as.dist(matdist))
 		threshh <- max(spanning$dist)
@@ -31,13 +49,44 @@ function(matdist, thresh=NULL, dbMEM=FALSE, all=FALSE, include.zero=FALSE)
 	if(dbMEM==FALSE) { diagonal <- 0 } else { diagonal <- 4*threshh }
 
 	mypcnm.all <- pcoa.all(matdist, diagonal=diagonal, all=all, include.zero=include.zero, rn=rownames(matdist))
+
+	# Compute Moran's I
+	if(moran) {
+		require(AEM)
+		if(single) {
+			nb <- dnearneigh(matrix(c(xy,rep(0,n)),n,2), 0, (threshh + epsilon))
+			} else {
+			nb <- dnearneigh(xy, 0, (threshh + epsilon))
+			}
+		fr.to.pcnm2 <- as.matrix(listw2sn(nb2listw(nb))[,1:2])
+		weight.dist.coord.mat <- as.matrix(1-(as.dist(matdist)/(4*threshh))^2)
+		#weights <- numeric()
+		#for(i in 1:nrow(fr.to.pcnm2)){
+		#	weights[i] <- weights.dist.coord.mat[fr.to.pcnm2[i,1],fr.to.pcnm2[i,2]]
+		#	}
+		weight <- weight.dist.coord.mat[fr.to.pcnm2]
+		res <- moran.I.multi(mypcnm.all$vectors, link=fr.to.pcnm2, weight=weight)
+		Moran <- res$res.mat[,1:2]
+		positive <- rep(0,length(mypcnm.all$values))
+		positive[which(Moran[,1] > res$expected)] <- 1
+		Moran <- cbind(Moran, positive)
+		colnames(Moran) <- c("Moran","p.value","Positive")
+		}
 	})
 	a[3] <- sprintf("%2f",a[3])
 	cat("Time to compute PCNMs =",a[3]," sec",'\n')
 	if(is.null(thresh)) {
-		res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, spanning=spanning, thresh=threshh+0.000001)
+		if(moran) {
+			res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, Moran_I=Moran, expected_Moran=res$expected, spanning=spanning, thresh=threshh+0.000001)
+			} else {
+			res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, spanning=spanning, thresh=threshh+0.000001)
+			}
 		} else {
-		res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, thresh=thresh)
+		if(moran) {
+			res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, Moran_I=Moran, expected_Moran=res$expected, thresh=thresh)
+			} else {
+			res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, thresh=threshh+0.000001)
+			}
 		}
 	res
 }
