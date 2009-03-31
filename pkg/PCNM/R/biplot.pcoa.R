@@ -34,9 +34,9 @@
 		} else {
 		# Find positions of variables in biplot:
 		# construct U from covariance matrix between Y and standardized point vectors
-		# (equivalent to PCA scaling 1, since PCoA preserve distances among objects)
+		# (equivalent to PCA scaling 1, since PCoA preserves distances among objects)
 		n <- nrow(Y)
-		points.stand <- apply(x$vectors[,plot.axes],2,scale,center=TRUE,scale=TRUE)
+		points.stand <- scale(x$vectors[,plot.axes])
 		S <- cov(Y, points.stand)
 		U <- S %*% diag((x$values$Eigenvalues[plot.axes]/(n-1))^(-0.5))
 		colnames(U) <- colnames(x$vectors[,plot.axes])
