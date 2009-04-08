@@ -125,7 +125,9 @@ mspa <- function(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"), npe
 
   # return result
   return(res)
-}
+} # end mspa
+
+
 
 
 
@@ -169,4 +171,60 @@ scatter.mspa <- function(x, xax = 1, yax = 2, clab.var = 0.75, clab.sca = 1,
   box(which="figure")
 
   return(invisible(match.call))
-}
+} # end scatter.mspa
+
+
+
+
+
+
+
+#############################
+# function print.mspa
+#############################
+print.mspa <- function(x, ...){
+    cat("=== Multi-Scale Pattern Analysis ===\n")
+    cat("class: ")
+    cat(class(x))
+    cat("\n$call: ")
+    print(x$call)
+    cat("\n$nf:", x$nf, "axis-components saved")
+    cat("\n$rank: ")
+    cat(x$rank)
+    cat("\neigen values: ")
+    l0 <- length(x$eig)
+    cat(signif(x$eig, 4)[1:(min(5, l0))])
+    if (l0 > 5)
+        cat(" ...\n")
+    else cat("\n")
+    sumry <- array("", c(3, 4), list(1:3, c("vector", "length",
+                                            "mode", "content")))
+    sumry[1, ] <- c("$cw", length(x$cw), mode(x$cw), "column weights")
+    sumry[2, ] <- c("$lw", length(x$lw), mode(x$lw), "row weights")
+    sumry[3, ] <- c("$eig", length(x$eig), mode(x$eig), "eigen values")
+    class(sumry) <- "table"
+    print(sumry)
+    cat("\n")
+
+    sumryA <- array("", c(4, 4), list(1:4, c("data.frame", "nrow", "ncol", "content")))
+    sumryA[1, ] <- c("$R2", nrow(x$R2), ncol(x$R2), "matrix raw R2 ('S')")
+    sumryA[2, ] <- c("$tab", nrow(x$tab), ncol(x$tab), "matrix of centred R2 ('Z')")
+    sumryA[3, ] <- c("$c1", nrow(x$c1), ncol(x$c1), "principal axes ('A')")
+    sumryA[4, ] <- c("$ls", nrow(x$ls), ncol(x$ls), "principal components ('B')")
+    class(sumryA) <- "table"
+    cat("\nMain components:\n")
+    print(sumryA)
+
+    sumryB <- array("", c(3, 4), list(1:3, c("data.frame", "nrow", "ncol", "content")))
+    sumryB[1, ] <- c("$li", nrow(x$li), ncol(x$li), "centred principal components")
+    sumryB[2, ] <- c("$l1", nrow(x$l1), ncol(x$l1), "scaled principal components")
+    sumryB[3, ] <- c("$co", nrow(x$co), ncol(x$co), "column coordinates")
+    class(sumryB) <- "table"
+    cat("\nGeneric 'dudi' components:\n")
+    print(sumryB)
+
+    cat("Other elements: ")
+    if (length(names(x)) > 14)
+        cat(names(x)[15:(length(x))], "\n")
+    else cat("NULL\n")
+} # end print.mspa

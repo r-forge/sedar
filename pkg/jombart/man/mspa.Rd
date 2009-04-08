@@ -1,9 +1,10 @@
 \name{mspa}
 \alias{mspa}
 \alias{scatter.mspa}
+\alias{print.mspa}
 \title{Multi-Scale Pattern Analysis}
 \description{
-  The multi-scale pattern analysis (MSPA) investigates the main scales
+  The multi-scale pattern analysis (MSPA, Jombart et al 2009) investigates the main scales
   of spatial variation in a multivariate dataset. This implementation
   allows one to perform a MSPA using any multivariate analysis (stored
   as a \code{\link[pkg:ade4]{dudi}} object), and a list of spatial
@@ -51,13 +52,18 @@ mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
   An object having the classes \code{mspa} and \code{\link[pkg:ade4]{dudi}}: \code{mspa}
   objects are \code{\link[pkg:ade4]{dudi}} objects with the following
   extra slots:\cr
-  - ls: \cr
-  - R2:\cr
-  - meanPoint:\cr
-  - varweights:\cr
-  - :\cr
-  - :\cr
-  - :\cr
+  - ls: principal components of the MSPA. These are the coordinates of
+             variables onto principal axes, to be used for
+             plotting. Correspond to matrix \bold{B} in Appendix A of
+             Jombart et al (2009). \cr
+  - R2: matrix of R2 between variables and MEMs. Corresponds to \bold{S}
+             in Jombart et al (2009).\cr
+  - meanPoint: coordinates of the 'mean variable' onto principal
+             axes. The 'mean variable' is an hypothetic variable whose
+             scale profile is the average of those of all variables of
+             the analysed dataset.\cr
+  - varweights: the weights of variables. Corresponds to \bold{d} in
+             Jombart et al. (2009).\cr
 }
 \references{
   Jombart T, Dray S, and Dufour, A-B. (2009) Finding essential scales of
