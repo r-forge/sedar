@@ -10,7 +10,7 @@
   as a \code{\link[pkg:ade4]{dudi}} object), and a list of spatial
   weights.\cr
 
-  The \code{scatter} method is used for plotting the results. 
+  The \code{scatter} method is used for plotting the results.
 }
 \usage{
 mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
@@ -68,7 +68,7 @@ mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
 \references{
   Jombart T, Dray S, and Dufour, A-B. (2009) Finding essential scales of
   spatial variation in ecological data: a multivariate
-  approach. \emph{Ecography} \blod{32}: 161-168.
+  approach. \emph{Ecography} \bold{32}: 161-168.
 }
 \author{Thibaut Jombart \email{t.jombart@imperial.ac.uk}}
 \seealso{\code{\link{chooseCN}} to obtain a list of spatial weights.}
@@ -87,7 +87,7 @@ lw <- attr(mspaIllus,"lw")
 pcaX <- dudi.pca(X,scannf=FALSE,nf=4)
 
 ## perform the MSPA
-mspa1 <- mspa(pcaX,lw,scannf=F,nf=3)
+mspa1 <- mspa(pcaX,lw,scannf=FALSE,nf=3)
 
 ## plot the results
 scatter(mspa1)
