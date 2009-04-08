@@ -45,13 +45,19 @@ mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
     screeplot as a proportion of the plot.}
   \item{bary}{a logical indicating whether the barycenter of the variables should be displayed.}
   \item{circle}{a logical indicating whether a circle of radius one should be displayed.}
-  \item{\dots}{}
-}
-\details{
- These tests were originally part of the adegenet package for R.
+  \item{\dots}{other parameters passed to \code{\link[pkg:ade4]{s.arrow}}.}
 }
 \value{
-An object of class \code{randtest}.
+  An object having the classes \code{mspa} and \code{\link[pkg:ade4]{dudi}}: \code{mspa}
+  objects are \code{\link[pkg:ade4]{dudi}} objects with the following
+  extra slots:\cr
+  - ls: \cr
+  - R2:\cr
+  - meanPoint:\cr
+  - varweights:\cr
+  - :\cr
+  - :\cr
+  - :\cr
 }
 \references{
   Jombart T, Dray S, and Dufour, A-B. (2009) Finding essential scales of
@@ -61,6 +67,102 @@ An object of class \code{randtest}.
 \author{Thibaut Jombart \email{t.jombart@imperial.ac.uk}}
 \seealso{\code{\link{chooseCN}} to obtain a list of spatial weights.}
 \examples{
+############################
+### using simulated data ###
+############################
+
+## load data
+data(mspaIllus)
+X <- mspaIllus
+dim(X)
+lw <- attr(mspaIllus,"lw")
+
+## perform a PCA
+pcaX <- dudi.pca(X,scannf=FALSE,nf=4)
+
+## perform the MSPA
+mspa1 <- mspa(pcaX,lw,scannf=F,nf=3)
+
+## plot the results
+scatter(mspa1)
+scatter(mspa1,xax=1,yax=3)
+
+
+
+####################################
+### using oribatib mites dataset ###
+####################################
+
+## load data
+data(oribatid)
+
+## get the list of spatial weights
+cn <- chooseCN(oribatid$xy,res="listw",ask=FALSE,type=1)
+
+## Hellinger transformation
+hellTrans <- function(X){
+  if (!( is.matrix(X) | is.data.frame(X) )) stop("Object is not a matrix.")  
+  if (any(is.na(X))) stop("na entries in table.")
+  
+  sumRow <- apply(X,1,sum)
+  Y <- X/sumRow
+  Y <- sqrt(Y)
+  
+  return(Y)
+}
+
+
+## ENVIRONMENTAL VARIABLES ##
+## Hill and Smith analysis for environmental variables
+## (for a mixture of quantitative / qualitative variables)
+hsEnv <- dudi.hillsmith(oribatid$envir,scannf=FALSE)
+
+## detrending of the analysis (residuals of regression onto xy coordinates)
+hsEnv.detr <- pcaivortho(hsEnv,oribatid$xy,scannf=FALSE)
+
+## MSPA of the detrended analysis
+mspaEnv <- mspa(hsEnv.detr,cn,scannf=FALSE,nf=2)
+scatter(mspaEnv)
+
+
+
+## SPECIES DATA ##
+## PCA of species abundances, after Hellinger transformation
+pcaFau <- dudi.pca(hellTrans(oribatid$fau),scale=FALSE,scannf=FALSE)
+
+## detrending of this PCA
+pcaFau.detr <- pcaivortho(pcaFau,oribatid$xy,scannf=FALSE)
+
+# MSPA of the detrended analysis
+mspaFau <- mspa(pcaFau.detr,cn,scannf=FALSE,nf=2)
+scatter(mspaFau)
+
+
+
+## CANONICAL MSPA ##
+## RDA species ~ envir
+## (species abundances predicted by environment)
+## note: RDA = 'PCAIV' (PCA with Instrumental Variables)
+rda1 <- pcaiv(dudi=pcaFau.detr, df=oribatid$envir,scannf=FALSE,nf=2)
+
+## canonical MSPA (species predicted by environment)
+mspaCan1 <- mspa(dudi=rda1, lw=cn, scannf=FALSE, nf=2)
+scatter(mspaCan1)
+
+## same analysis, using a non-parametric centring
+mspaCan1NP <- mspa(dudi=rda1, lw=cn, scannf=FALSE, nf=2,cent="sim",nper=999)
+scatter(mspaCan1NP) # basically no change
+
+
+
+## PARTIAL CANONICAL MSPA ##
+## partial RDA species ~ envir
+## (species abundances not predicted by environment)
+rda2 <- pcaivortho(dudi=pcaFau.detr,df=oribatid$envir,scannf=FALSE,nf=2)
+
+## partial canonical MSPA
+mspaCan2 <- mspa(dudi=rda2, lw=cn, scannf=FALSE, nf=2)
+scatter(mspaCan2) # nothing left
 
 }
 \keyword{multivariate}
