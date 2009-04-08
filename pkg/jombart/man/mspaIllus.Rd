@@ -61,6 +61,11 @@ M <- matrix(rnorm(100*28),nrow=100)
 X <- cbind.data.frame(V,M)
 colnames(X) <- paste("V",1:ncol(X),sep='')
 attr(X,"lw") <- lw
+
+## plot some variables
+par(mfrow=c(3,3))
+for(i in 1:9) s.value(xy,X[,i], include.ori=FALSE,sub=i, csub=3, cleg=0,
+cgrid=0)
 }
 \keyword{datasets}
 \keyword{spatial}
