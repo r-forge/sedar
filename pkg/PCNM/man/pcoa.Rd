@@ -52,7 +52,8 @@ The \code{biplot.pcoa} function produces plots for any pair of principal coordin
 
 \value{
 
-  \item{correction }{A note describing the type of correction dane, if any. }
+  \item{correction }{The values of parameter \code{correction} and variable 'correct' in the function. }
+  \item{note }{A note describing the type of correction done, if any. }
   \item{values }{The eigenvalues and related information: }
   \item{Eigenvalues}{All eigenvalues (positive, null, negative). }
   \item{Relative_eig}{Relative eigenvalues. }

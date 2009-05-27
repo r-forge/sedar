@@ -7,14 +7,14 @@ Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices
 This version allows users to obtain either the classical PCNM eigenfunctions with positive eigenvalues only, or all PCNM eigenfunctions with positive and negative eigenvalues.
 }
 \usage{
-PCNM(matdist, thresh=NULL, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=FALSE)
+PCNM(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE)
 }
 
 \arguments{
   \item{matdist}{ A distance matrix of class \code{dist} or \code{matrix}. }
   \item{thresh}{ A threshold value for truncation of the geographic distance matrix. If \code{thresh=NULL}, the length of the longest edge of the minimum spanning tree will be used as the threshold. }
   \item{dbMEM}{ If FALSE, the diagonal of matrix D contains zeros; classical PCNM eigenfunctions are produced. If TRUE, the diagonal of D contains 4*thresh; the eigenfunctions produced are called distance-based MEM or db-MEM (Dray et al. 2006). db-MEM eigenfunctions with positive eigenvalues all have positive Moran's I. The db-MEMs with positive eigenvalues are fewer in number than the PCNMs with positive eigenvalues. }
-  \item{moran}{ If TRUE (default value), Moran's I are computed for all PCNMs. }
+  \item{moran}{ If TRUE, Moran's I are computed for all PCNMs. If FALSE, Moran's I are not computed. When \code{moran=NULL} (default value), Moran's I are computed for PCNM but not for dbMEM eigenfunctions because, for dbMEM, Moran's I are proportional to the eigenvalues. That is not the case for classical PCNMs. }
   \item{all}{ If TRUE, the eigenvectors corresponding to all eigenvalues, positive and negative, are shown in the output list. Default value: \code{all=FALSE}. }
   \item{include.zero}{ If FALSE (default value), the zero eigenvalues as well as their eigenvectors are excluded from the output list. See details. }
 }
@@ -39,6 +39,8 @@ When \code{include.zero} is \code{TRUE}, the null eigenvalue(s) and associated P
   \item{thresh }{The truncation threshold. If a \code{thresh} value was provided by the user, that value is given here. If \code{thresh=NULL}, this is the length of the longest edge in the minimum spanning tree; the threshold is augmented by 0.000001 before printing to correct the cases where the threshold is rounded to a value slightly smaller than the true threshold. }
 }
 
+\author{ Stephane Dray, Universite Lyon I, Pierre Legendre and Daniel Borcard, Universite de Montreal, Guillaume Blanchet, University of Alberta }
+
 \references{ 
 Borcard, D. and P. Legendre. 1994. Environmental control and spatial structure in ecological communities: an example using Oribatid mites (Acari, Oribatei). Environmental and Ecological Statistics 1: 37-53.
      
@@ -48,8 +50,6 @@ Borcard, D., P. Legendre, C. Avois-Jacquet and H. Tuomisto. 2004. Dissecting the
 
 Dray, S., P. Legendre and P. R. Peres-Neto. 2006. Spatial modelling: a comprehensive framework for principal coordinate analysis of neighbour matrices (PCNM). Ecological Modelling 196: 483-493.
 }
-
-\author{ Stephane Dray, Universite Lyon I, Pierre Legendre and Daniel Borcard, Universite de Montreal, Guillaume Blanchet, University of Alberta }
 
 \seealso{\code{\link{pcoa.all}}, \code{\link{quickPCNM}} }
 

@@ -3,14 +3,14 @@
 \docType{package}
 \title{ PCNM spatial eigenfunctions }
 \description{
-Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) and function \code{\link{quickPCNM}} carries out spatial eigenfunction analysis. Function \code{\link{pcoa}} computes principal coordinate decomposition of a distance matrix and implements two correction methods for negative eigenvalues.
+Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) and function \code{\link{quickPCNM}} carries out spatial eigenfunction analysis. Function \code{\link{pcoa}} computes principal coordinate decomposition of a distance matrix and implements two correction methods for negative eigenvalues. Functions \code{\link{STImodels}} and  \code{\link{quickSTI}} allow testing space-time ANOVA models in the absence of replication.
 }
 \details{
 \tabular{ll}{
 Package: \tab PCNM\cr
 Type: \tab Package\cr
-Version: \tab 1.8\cr
-Date: \tab 2009-03-27\cr
+Version: \tab 1.9\cr
+Date: \tab 2009-05-27\cr
 License: \tab Copyleft\cr
 LazyLoad: \tab yes\cr
 }
@@ -18,13 +18,18 @@ Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices
 
 Function \code{\link{quickPCNM}} computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis.
 
-Function \code{\link{pcoa.all}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D (Gower 1966) and outputs the eigenvectors corresponding to all eigenvalues, positive and negative.
+Function \code{\link{pcoa.all}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D and outputs the eigenvectors corresponding to all eigenvalues, positive and negative.
 
 Function \code{\link{pcoa}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D. It implements two correction methods for negative eigenvalues.
+
+Function \code{\link{STImodels}} allows testing ANOVA space-time interaction without replicates under different models. Degrees of freedom are saved through using principal coordinates of neighbour matrices (PCNM).
+
+Function \code{\link{quickSTI}} allows testing space-time ANOVA models without replicates in a simplified way. Degrees of freedom are saved through using principal coordinates of neighbour matrices (PCNM).
+
 }
 
 \author{
-Pierre Legendre, Daniel Borcard and Stephane Dray
+Pierre Legendre, Daniel Borcard, Stephane Dray and Miquel De Caceres
 
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
 }
@@ -37,6 +42,8 @@ Borcard, D. and P. Legendre. 2002. All-scale spatial analysis of ecological data
 Borcard, D., P. Legendre, C. Avois-Jacquet and H. Tuomisto. 2004. Dissecting the spatial structure of ecological data at multiple scales. Ecology 85: 1826-1832 [Statistical report].
 
 Dray, S., P. Legendre and P. R. Peres-Neto. 2006. Spatial modelling: a comprehensive framework for principal coordinate analysis of neighbour matrices (PCNM). Ecological Modelling 196: 483-493.
+
+Legendre, P., M. De Caceres and  D. Borcard (Submitted to Ecology). Community surveys through space and time to assess environmental changes: testing space-time interaction in the absence of replication. 
 }
 
 \examples{

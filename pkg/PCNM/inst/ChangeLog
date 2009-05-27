@@ -2,6 +2,14 @@ $Date$
 
 PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
+Version 1.9
+
+	* Space-time interaction: new functions STImodels.R, quickSTI.R, and manovRDa.R.
+	
+	* New data set: trichoptera.rda
+	
+	* PCNM.R: small changes.
+	
 Version 1.8
 
 	* PCNM.R: added computation of Moran's I for the computed PCNMs.

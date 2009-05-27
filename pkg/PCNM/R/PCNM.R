@@ -1,5 +1,5 @@
 'PCNM' <- 
-function(matdist, thresh=NULL, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=FALSE)
+function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE)
 #
 # Compute the PCNM or dbMEM eigenfunctions corresponding to 
 # all eigenvalues (+, 0, -). 
@@ -16,17 +16,18 @@ function(matdist, thresh=NULL, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=
 	require(vegan)
 	epsilon <- sqrt(.Machine$double.eps) 
 	a <- system.time({
+	if(is.null(moran)) {
+		if(dbMEM) { moran=FALSE } else { moran=TRUE }
+		}
 	single <- FALSE
 	if(moran) {
 		# cat("The site coordinates were computed from 'matdist'.",'\n')
 		pcoa.xy <- pcoa.all(matdist)
 		
 		if(is.na(pcoa.xy$values[2]) | (pcoa.xy$values[2] < epsilon)) {
-		#	cat("This algorithm cannot compute Moran's I because the sites form a straight line on the map.",'\n')
 			cat("The sites form a straight line on the map.",'\n')
 			xy <- pcoa.xy$vectors
 			single <- TRUE
-		#	moran <- FALSE
 			} else {
 			xy <- pcoa.xy$vectors[,1:2]
 			}
@@ -60,16 +61,12 @@ function(matdist, thresh=NULL, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=
 			}
 		fr.to.pcnm2 <- as.matrix(listw2sn(nb2listw(nb))[,1:2])
 		weight.dist.coord.mat <- as.matrix(1-(as.dist(matdist)/(4*threshh))^2)
-		#weights <- numeric()
-		#for(i in 1:nrow(fr.to.pcnm2)){
-		#	weights[i] <- weights.dist.coord.mat[fr.to.pcnm2[i,1],fr.to.pcnm2[i,2]]
-		#	}
 		weight <- weight.dist.coord.mat[fr.to.pcnm2]
 		res <- moran.I.multi(mypcnm.all$vectors, link=fr.to.pcnm2, weight=weight)
 		Moran <- res$res.mat[,1:2]
-		positive <- rep(0,length(mypcnm.all$values))
-		positive[which(Moran[,1] > res$expected)] <- 1
-		Moran <- cbind(Moran, positive)
+		positive <- rep(FALSE,length(mypcnm.all$values))
+		positive[which(Moran[,1] > res$expected)] <- TRUE
+		Moran <- cbind(as.data.frame(Moran), positive)
 		colnames(Moran) <- c("Moran","p.value","Positive")
 		}
 	})
