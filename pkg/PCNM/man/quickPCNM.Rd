@@ -1,6 +1,6 @@
 \name{quickPCNM}
 \alias{quickPCNM}
-\alias{anova.ccabyaxis}
+
 \title{ Quick PCNM spatial eigenfunction analysis }
 \description{
 Function \code{\link{quickPCNM}} computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis. }
@@ -44,9 +44,9 @@ When the run is completed, type \code{summary(name_of_object)} to find the RDA r
   \item{PCNM_eigenvalues }{The PCNM eigenvalues. }
   \item{fwd.sel }{The forward selection results produced by function \code{forward.sel} of the \code{packfor} library. }
   \item{PCNM_reduced_model }{A table containing only the PCNMs selected by forwartd selection. }
-  \item{RDA }{The RDA results computed by function \code{rda} of the \code{vegan} library. }
-  \item{RDA_test }{The anova table reporting the permutation test of significance of the F-statistic of the RDA, computed by function \code{anova.cca} of the \code{vegan} library. }
-  \item{RDA_axes_tests }{The anova table reporting the permutation tests of significance of the F-statistic of the RDA canonical axes, computed by function \code{anova.cca} of the \code{vegan} library. }
+  \item{RDA }{The RDA results computed by function \code{\link[vegan]{rda}} of the \pkg{vegan} package. }
+  \item{RDA_test }{The anova table reporting the permutation test of significance of the F-statistic of the RDA, computed by function \code{\link[vegan]{anova.cca}} of the \pkg{vegan} package. }
+  \item{RDA_axes_tests }{The anova table reporting the permutation tests of significance of the F-statistic of the RDA canonical axes, computed by function \code{\link[vegan]{anova.cca}} of the \pkg{vegan} package. }
 }
 
 \references{ 

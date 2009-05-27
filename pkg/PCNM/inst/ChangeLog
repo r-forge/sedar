@@ -9,6 +9,9 @@ Version 1.9
 	* New data set: trichoptera.rda
 	
 	* PCNM.R: small changes.
+
+	* anova.ccabyaxis: removed from PCNM because identical function
+	now in vegan release.
 	
 Version 1.8
 
