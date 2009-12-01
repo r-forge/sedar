@@ -1,6 +1,10 @@
 `aem` <-
 function (build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat=FALSE) 
 {
+    if(!is.numeric(weight)){
+    	stop("weight needs to be numeric")
+    }
+    
     if (missing(build.binary)) {
         if (is.matrix(binary.mat) == FALSE) {
             stop("binary.mat is not a matrix")
