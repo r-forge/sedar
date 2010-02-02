@@ -207,10 +207,10 @@ nblag(neighbours, maxlag)
 If the sampling sites are polygons (and not points), you can use the function \texttt{poly2nb}. Note also that GIS data can be import into R using the package \texttt{shapefiles}. Then, utilities for transform/manipulate these data are available in the package \texttt{maptools}.
 <<ni16, fig=T, eval=TRUE, echo=TRUE, debug=TRUE, results=verbatim, include =FALSE, width=7, height=7>>=
 library(maptools)
-data(columbus)
-xx <- poly2nb(polys)
-plot(polys, border="grey")
-plot(xx, coords, add=TRUE,pch=20,cex=2,col="red")
+columbus <- readShapePoly(system.file("etc/shapes/columbus.shp", package="spdep")[1])
+xx <- poly2nb(columbus)
+plot(columbus, border="grey")
+plot(xx, coordinates(columbus), add=TRUE,pch=20,cex=2,col="red")
 title(main="Neighborhood for polygons")
 @ 
 \begin{center}
