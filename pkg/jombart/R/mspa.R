@@ -137,40 +137,42 @@ mspa <- function(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"), npe
 # function scatter.mspa
 #############################
 scatter.mspa <- function(x, xax = 1, yax = 2, clab.var = 0.75, clab.sca = 1,
-    posieig = "top", sub = NULL, ratio = 1/4, bary=TRUE, circle=TRUE, ...){
+                         posieig = "top", sub = NULL, ratio = 1/4, bary=TRUE, circle=TRUE,
+                         var.show=TRUE, mem.show=TRUE, ...){
 
-  if(!inherits(x,"mspa")) stop("to be used with mspa objects only")
+    if(!inherits(x,"mspa")) stop("to be used with mspa objects only")
 
-  opar <- par(mar = par("mar"))
-  on.exit(par(opar))
+    opar <- par(mar = par("mar"))
+    on.exit(par(opar))
 
-  s.arrow(x$c1[,c(xax,yax)], clab=clab.sca, sub=sub, ...)
+    ##s.arrow(x$c1[,c(xax,yax)], clab=clab.sca, sub=sub, ...)
+    s.label(x$c1[,c(xax,yax)], clab=0, sub=sub, pch="",...)
 
-  extrem <- chull(x$c1[,c(xax,yax)])
+    extrem <- chull(x$c1[,c(xax,yax)])
 
-  par(xpd=TRUE)
-  polygon(x$c1[extrem,c(xax,yax)],col="lightgrey")
-  if(circle) {symbols(x=0,y=0,circles=1,add=TRUE,inches=FALSE)}
+    par(xpd=TRUE)
+    polygon(x$c1[extrem,c(xax,yax)],col="lightgrey")
+    if(circle) {symbols(x=0,y=0,circles=1,add=TRUE,inches=FALSE)}
 
-  s.arrow(x$c1[,c(xax,yax)], clab=clab.sca, add.p=TRUE)
-  s.label(x$ls[,c(xax,yax)], clab=clab.var, add.p=TRUE)
+    s.arrow(x$c1[mem.show, c(xax,yax), drop=FALSE], clab=clab.sca, add.p=TRUE)
+    s.label(x$ls[var.show, c(xax,yax), drop=FALSE], clab=clab.var, add.p=TRUE)
 
-  # compute coordinates of factors
-  # = weighted mean of its levels
-  if(!is.null(x$assign)) {
-    temp <- apply(x$li[,c(xax,yax)],2,function(c) tapply(c, x$assign,mean))
-    rownames(temp) <- unique(x$assign)
-    s.label(temp, add.plot=TRUE, clab=clab.var)
-  }
+                                        # compute coordinates of factors
+                                        # = weighted mean of its levels
+    if(!is.null(x$assign)) {
+        temp <- apply(x$li[,c(xax,yax)],2,function(c) tapply(c, x$assign,mean))
+        rownames(temp) <- unique(x$assign)
+        s.label(temp, add.plot=TRUE, clab=clab.var)
+    }
 
-  if(bary) points(x$meanPoint[xax],x$meanPoint[yax],pch=20,cex=2)
+    if(bary) points(x$meanPoint[xax],x$meanPoint[yax],pch=20,cex=2)
 
-  add.scatter.eig(x$eig, x$nf, xax, yax, posi = posieig, ratio = ratio)
+    add.scatter.eig(x$eig, x$nf, xax, yax, posi = posieig, ratio = ratio)
 
-  par(mar=rep(.1,4))
-  box(which="figure")
+    par(mar=rep(.1,4))
+    box(which="figure")
 
-  return(invisible(match.call))
+    return(invisible(match.call))
 } # end scatter.mspa
 
 
