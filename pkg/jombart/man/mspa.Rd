@@ -4,11 +4,11 @@
 \alias{print.mspa}
 \title{Multi-Scale Pattern Analysis}
 \description{
-  The multi-scale pattern analysis (MSPA, Jombart et al 2009) investigates the main scales
-  of spatial variation in a multivariate dataset. This implementation
-  allows one to perform a MSPA using any multivariate analysis (stored
-  as a \code{\link[pkg:ade4]{dudi}} object), and a list of spatial
-  weights.\cr
+  The multi-scale pattern analysis (MSPA, Jombart et al 2009)
+  investigates the main scales of spatial variation in a multivariate
+  dataset. This implementation allows one to perform a MSPA using any
+  multivariate analysis (stored as a \code{\link[pkg:ade4]{dudi}}
+  object), and a list of spatial weights.\cr
 
   The \code{scatter} method is used for plotting the results.
 }
@@ -17,7 +17,8 @@ mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
      nperm=1000)
 
 \method{scatter}{mspa}(x, xax = 1, yax = 2, clab.var = 0.75, clab.sca = 1, 
-             posieig = "top", sub = NULL, ratio = 1/4, bary=TRUE, circle=TRUE, \dots)
+             posieig = "top", sub = NULL, ratio = 1/4, bary=TRUE,
+             circle=TRUE, var.show = TRUE, mem.show = TRUE, \dots)
 }
 \arguments{
   \item{dudi}{a duality diagram (i.e. a reduced space ordination)
@@ -45,7 +46,14 @@ mspa(dudi, lw, scannf = TRUE, nf = 2, centring=c("param","sim"),
   \item{ratio}{a number between 0 and 1 indicating the size of the
     screeplot as a proportion of the plot.}
   \item{bary}{a logical indicating whether the barycenter of the variables should be displayed.}
-  \item{circle}{a logical indicating whether a circle of radius one should be displayed.}
+  \item{circle}{a logical indicating whether a circle of radius one
+    should be displayed.}
+  \item{var.show}{an optional vector of indicating the subset of
+             variables to be plotted, interpreted as the normal
+             subsetting used for matrix objects}
+  \item{mem.show}{an optional vector of indicating the subset of
+             spatial predictors (MEMs) to be plotted, interpreted as the normal
+             subsetting used for matrix objects}
   \item{\dots}{other parameters passed to \code{\link[pkg:ade4]{s.arrow}}.}
 }
 \value{
