@@ -1,11 +1,11 @@
 \name{quickPCNM}
 \alias{quickPCNM}
-
+\alias{anova.ccabyaxis}
 \title{ Quick PCNM spatial eigenfunction analysis }
 \description{
 Function \code{\link{quickPCNM}} computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis. }
 \usage{
-quickPCNM(Y, space, thresh=0, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FALSE, detrend=TRUE, perm.max=NULL)
+quickPCNM(Y, space, thresh=NULL, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FALSE, detrend=TRUE, perm.max=NULL, original=FALSE)
 }
 
 \arguments{
@@ -21,7 +21,9 @@ quickPCNM(Y, space, thresh=0, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FAL
   \item{alpha}{ Level of significance for the tests (default value: 0.05). }
   \item{rangexy}{ If TRUE, the spatial coordinates are rescaled to a minimum of 0 on both axes and a maximum of 10 on the axis wih the largest range, without altering the ratio between the x and y coordinates. If only one coordinate is provided, it is rescaled into a range [0,10]. Useful when the x-y coordinates are provided in extremely large or small values. Default: FALSE. }
   \item{detrend}{ If TRUE (default), prior ot the PCNM analysis, the function tests if a linear trend is present and significant at the level given by 'alpha'. If that is the case, a linear detrending of the response data is done. One should not waste sine-shaped PCNM variables to model a linear trend. }
-  \item{perm.max}{ Maximum number of permutations in tests of siignificance, e.g. perm.max=1000. If perm.max=NULL, vegan's default method will be used. }
+  \item{perm.max}{ Maximum number of permutations in tests of significance, e.g. perm.max=1000. If perm.max=NULL, vegan's default method will be used. }
+  \item{original}{ If TRUE, the function will use all the PCNM variables with
+  positive eigenvalues, as in the original (Borcard et al. 2002) paper. If FALSE, only the PCNM variables with positive autocorrelation will be used. }
 }
 
 \details{
@@ -44,9 +46,9 @@ When the run is completed, type \code{summary(name_of_object)} to find the RDA r
   \item{PCNM_eigenvalues }{The PCNM eigenvalues. }
   \item{fwd.sel }{The forward selection results produced by function \code{forward.sel} of the \code{packfor} library. }
   \item{PCNM_reduced_model }{A table containing only the PCNMs selected by forwartd selection. }
-  \item{RDA }{The RDA results computed by function \code{\link[vegan]{rda}} of the \pkg{vegan} package. }
-  \item{RDA_test }{The anova table reporting the permutation test of significance of the F-statistic of the RDA, computed by function \code{\link[vegan]{anova.cca}} of the \pkg{vegan} package. }
-  \item{RDA_axes_tests }{The anova table reporting the permutation tests of significance of the F-statistic of the RDA canonical axes, computed by function \code{\link[vegan]{anova.cca}} of the \pkg{vegan} package. }
+  \item{RDA }{The RDA results computed by function \code{rda} of the \code{vegan} library. }
+  \item{RDA_test }{The anova table reporting the permutation test of significance of the F-statistic of the RDA, computed by function \code{anova.cca} of the \code{vegan} library. }
+  \item{RDA_axes_tests }{The anova table reporting the permutation tests of significance of the F-statistic of the RDA canonical axes, computed by function \code{anova.cca} of the \code{vegan} library. }
 }
 
 \references{ 

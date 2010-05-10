@@ -1,9 +1,9 @@
 'quickPCNM' <- 
-	function(Y,space,thresh=0,method="fwd",myPCNM=NULL,alpha=0.05,rangexy=FALSE,detrend=TRUE, perm.max=NULL)
+	function(Y, space, thresh=NULL, method="fwd", myPCNM=NULL, alpha=0.05, rangexy=FALSE, detrend=TRUE, perm.max=NULL, original = FALSE)
 {
 #                                        Daniel Borcard
 #                                        Universite de Montreal
-#                                        May 2007 - January 2009
+#                                        May 2007 - April 2010
 
 require(ade4)   # Needed for function 's.value'
 require(vegan)
@@ -35,33 +35,28 @@ space <- as.matrix(xy.trans/range.max)
 
 if (is.null(myPCNM)) {
 
-### 1. Building the PCNM variables
+### Building the PCNM variables
 
-## Computation of a matrix of Euclidean distances among sites
-dist.d1 <- dist(space)
+prePCNM <- PCNM(dist(space),thresh=thresh, dbMEM=FALSE, moran=TRUE, all=FALSE, include.zero=FALSE)
 
-## Use of user-defined truncation value for distance matrix
-if(thresh > 0) {
-  dmin = thresh }
+dmin <- prePCNM$thresh
+
+positMoran <- which(prePCNM$Moran_I[,3]==TRUE)
+
+if(original==TRUE) {
+ev <- prePCNM$values
+nb.ev <- length(which(ev > epsilon))
+PCNMbase <- as.data.frame(prePCNM$vectors[1:nrow(space),])
+                    }
 
 else {
-## If no truncation distance is given by the user, search for truncation value 
-#  (largest value of minimum spanning tree) using vegan:
-spanning <- vegan::spantree(dist.d1)
-dmin <- max(spanning$dist)
-     }
-
-## Truncation of distance matrix
-dist.d1[dist.d1 > dmin] <- 4*dmin
-dist.trunc <- dist.d1
-
-## Computation of PCNM with PL's pcoa.all function
-pcoord <- pcoa.all(dist.trunc, all=FALSE, include.zero=FALSE, rn=NULL)
-ev <- pcoord$values
+ev <- prePCNM$values[positMoran]
 nb.ev <- length(which(ev > epsilon))
-PCNMbase <- as.data.frame(pcoord$vectors[1:nrow(space),1:nb.ev])
+PCNMbase <- as.data.frame(prePCNM$vectors[1:nrow(space),positMoran])
+      }
 assign("PCNMbase", PCNMbase, envir=.GlobalEnv)# compensation for internal loss of object by R
                      }
+                     
 else {
 PCNMbase <<- as.data.frame(myPCNM)
 dmin <- "implicit in PCNM file"
@@ -186,6 +181,13 @@ else{
                   } else {
   fwd.sel <- packfor::forward.sel(Y.det,PCNMbase,alpha=alpha,adjR2thresh = R2glob.a)
                          }
+
+# Compensation for a bug in packfor: if the stopping criterion is adjR2thresh, 
+# one nonsignificant variable is retained.
+
+          if(fwd.sel[nrow(fwd.sel),5] > R2glob.a + epsilon) {
+             fwd.sel <- fwd.sel[-nrow(fwd.sel),]       }
+
   nb.sig.ev <- nrow(fwd.sel)
   vars.sign <- sort(fwd.sel[,2])}   # 1.2.1 close  fwd
 
@@ -209,22 +211,23 @@ R2adj <- 1-((n-1)/(n-mod.test[1,1]-1))*(1-R2)
 # Warning if the adjusted R-square of minimal model is greater than the
 # adjusted R-square of the global model with all PCNM variables.
 
-if(R2adj > (R2glob.a+0.05*R2glob.a)){
-cat("\n------------------------------------------------------------------")
-cat("\nWARNING: the adjusted R-square of the reduced model,",round(R2adj,4))
-cat("\nexceeds the adjusted R-square of the global model,",round(R2glob.a,4))
-cat("\nby more that 5%.This means that the selection has been overly liberal.")
-cat("\nChoose another, mode conservative method (see explanations).")
-cat("\n------------------------------------------------------------------")
-                                   }
-else if(R2adj > (R2glob.a) & R2adj <= (R2glob.a+0.05*R2glob.a)){
-cat("\n------------------------------------------------------------------")
-cat("\nWARNING: the adjusted R-square of the reduced model,",round(R2adj,4))
-cat("\nexceeds the adjusted R-square of the global model,",round(R2glob.a,4))
-cat("\nby 5% or less. This means that the selection has been a little bit")
-cat("\ntoo liberal. This small amount should not harm, however.")
-cat("\n------------------------------------------------------------------")
-                                   }
+# if(R2adj > (1.05*R2glob.a)){
+# cat("\n------------------------------------------------------------------")
+# cat("\nWARNING: the adjusted R-square of the reduced model,",round(R2adj,4))
+# cat("\nexceeds the adjusted R-square of the global model,",round(R2glob.a,4))
+# cat("\nby more that 5%.This means that the selection has been overly liberal.")
+# cat("\nChoose another, mode conservative method (see explanations).")
+# cat("\n------------------------------------------------------------------")
+#                                    }
+# else if(R2adj > (R2glob.a) & R2adj <= (1.05*R2glob.a)){
+# if(R2adj > (R2glob.a) & R2adj <= (1.05*R2glob.a)){
+# cat("\n------------------------------------------------------------------")
+# cat("\nWARNING: the adjusted R-square of the reduced model,",round(R2adj,4))
+# cat("\nexceeds the adjusted R-square of the global model,",round(R2glob.a,4))
+# cat("\nby 5% or less. This means that the selection has been a little bit")
+# cat("\ntoo liberal. This small amount should not harm, however.")
+# cat("\n------------------------------------------------------------------")
+#                                    }
 
 # At this point, anova.cca for all axes doesn't seem to work properly: it looses
 # the track of one or the other object defined higher (generally PCNMred).
@@ -284,8 +287,8 @@ if(detrend==TRUE){
 
 
 cat("\n-------------------------------------------------------")
-cat("\nThe truncation value used for PCNM building is",dmin)
-cat("\nThere are ",nb.ev," positive PCNM eigenvalues","\n")
+cat("\nThe truncation value used for PCNM building is",dmin,"\n")
+cat(nb.ev," PCNM eigenvectors have been produced","\n")
 cat("Adjusted R2 of global model = ",round(R2glob.a,4),"\n")
 if(method != "none") {
 if(nb.sig.ev==1){
@@ -307,20 +310,24 @@ cat("Time to compute quickPCNM =",a[3]," sec",'\n')
 
 if(method == "none") {
    if(ncol(Y)>1 && nb.sig.ev > 1) {
-      table <- list(PCNMbase, ev[1:nb.ev], mod.sum,mod.test, mod.axes.test)
+#      table <- list(PCNMbase, ev[1:nb.ev], mod.sum, mod.test, mod.axes.test)
+      table <- list(PCNMbase, ev[1:nb.ev], mod, mod.test, mod.axes.test)
       names(table) <- c("PCNM","PCNM_eigenvalues","RDA","RDA_test","RDA_axes_tests")
       } else {
-      table <- list(PCNMbase,ev[1:nb.ev],mod.sum,mod.test)
+#      table <- list(PCNMbase,ev[1:nb.ev],mod,mod.test)
+      table <- list(PCNMbase,ev[1:nb.ev],mod,mod.test)
       names(table) <- c("PCNM","PCNM_eigenvalues","RDA","RDA_test")   
       }
 } else {
 
    if(method == "fwd") {
       if(ncol(Y)>1 && nb.sig.ev > 1) {
-   table <- list(PCNMbase, ev[1:nb.ev], fwd.sel, PCNMred, mod.sum, mod.test, mod.axes.test)
+#   table <- list(PCNMbase, ev[1:nb.ev], fwd.sel, PCNMred, mod.sum, mod.test, mod.axes.test)
+   table <- list(PCNMbase, ev[1:nb.ev], fwd.sel, PCNMred, mod, mod.test, mod.axes.test)
    names(table) <- c("PCNM","PCNM_eigenvalues","fwd.sel","PCNM_reduced_model","RDA","RDA_test","RDA_axes_tests")
        } else {
-   table <- list(PCNMbase,ev[1:nb.ev],fwd.sel,PCNMred,mod.sum,mod.test)
+#   table <- list(PCNMbase,ev[1:nb.ev], fwd.sel, PCNMred, mod.sum, mod.test)
+   table <- list(PCNMbase,ev[1:nb.ev], fwd.sel, PCNMred,mod, mod.test)
    names(table) <- c("PCNM","PCNM_eigenvalues","fwd.sel","PCNM_reduced_model","RDA","RDA_test")
        }
 

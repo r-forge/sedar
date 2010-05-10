@@ -2,6 +2,17 @@ $Date$
 
 PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
+Version 2.1
+
+	* Provision for the case where there is a single eigenvector with 
+	positve eigenvalue in pcoa.
+
+Version 2.0
+
+	* By default, quickPCNM now uses only the PCNM variables with positive
+	autocorrelation. An argument has been added to allow the use of all
+	PCNM variables with positive eigenvalues.
+
 Version 1.9
 
 	* Space-time interaction: new functions STImodels.R, quickSTI.R, and manovRDa.R.

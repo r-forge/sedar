@@ -3,7 +3,7 @@
 \alias{biplot.pcoa}
 \title{ Principal Coordinate Analysis }
 \description{
-Function \code{\link{pcoa}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D (Gower 1966). It implements two correction methods for negative eigenvalues.
+Function \code{\link{pcoa}} computes principal coordinate decomposition (also called classical multidimensional scaling) of a distance matrix D (Gower 1966). It implements two correction methods for negative eigenvalues.
 }
 \usage{
 pcoa(D, correction="none", rn=NULL)
@@ -64,7 +64,7 @@ The \code{biplot.pcoa} function produces plots for any pair of principal coordin
   \item{Cum_corr_eig}{Cumulative corrected relative eigenvalues. }
   \item{Cumul_br_stick}{Cumulative broken stick fractions. }
   \item{vectors}{The principal coordinates with positive eigenvalues. }
-  \item{trace}{The trace of the distance matrix. This is also the sum of all eigenvalues, positive and negative. }
+  \item{trace}{The trace of the double-centred distance matrix. This is also the sum of all eigenvalues, positive and negative. }
   \item{vectors.cor }{The principal coordinates with positive eigenvalues from the distance matrix corrected using the method specified by parameter \code{correction}. }
   \item{trace.cor }{The trace of the corrected distance matrix. This is also the sum of its eigenvalues. }
 }

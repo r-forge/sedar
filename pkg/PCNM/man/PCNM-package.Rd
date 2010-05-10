@@ -9,27 +9,27 @@ Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices
 \tabular{ll}{
 Package: \tab PCNM\cr
 Type: \tab Package\cr
-Version: \tab 1.9\cr
+Version: \tab 2.1\cr
 Date: \tab 2009-05-27\cr
 License: \tab Copyleft\cr
 LazyLoad: \tab yes\cr
 }
-Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) from a geographic distance matrix, in view of spatial eigenfunction analysis.
+From a geographic distance matrix, function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) or Moran's eigenvector maps (MEM) based on distances, in view of spatial eigenfunction analysis.
 
-Function \code{\link{quickPCNM}} computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis.
+Function \code{\link{quickPCNM}} automatically computes principal coordinates of neighbour matrices (PCNM) and carries out the spatial eigenfunction analysis.
 
-Function \code{\link{pcoa.all}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D and outputs the eigenvectors corresponding to all eigenvalues, positive and negative.
+Function \code{\link{pcoa.all}} computes principal coordinate decomposition (also called classical multidimensional scaling) of a distance matrix D and outputs the eigenvectors corresponding to all eigenvalues, positive and negative.
 
-Function \code{\link{pcoa}} computes principal coordinate decomposition (also called classical scaling) of a distance matrix D. It implements two correction methods for negative eigenvalues.
+Function \code{\link{pcoa}} computes principal coordinate decomposition (also called classical multidimensional scaling) of a distance matrix D. It implements two correction methods for negative eigenvalues.
 
-Function \code{\link{STImodels}} allows testing ANOVA space-time interaction without replicates under different models. Degrees of freedom are saved through using principal coordinates of neighbour matrices (PCNM).
+Function \code{\link{STImodels}} performs two-way ANOVA with test of the space-time interaction without replication using one among a set of possible models. In many models, degrees of freedom are saved by coding space and/or time parsimoniously using principal coordinates of neighbour matrices (\code{\link{PCNM}}).
 
-Function \code{\link{quickSTI}} allows testing space-time ANOVA models without replicates in a simplified way. Degrees of freedom are saved through using principal coordinates of neighbour matrices (PCNM).
+Function \code{\link{quickSTI}} performs two-way ANOVA with test of the space-time interaction without replication in a simplified way.
 
 }
 
 \author{
-Pierre Legendre, Daniel Borcard, Stephane Dray and Miquel De Caceres
+Pierre Legendre, Daniel Borcard, Guillaume Blanchet, Miquel De Caceres and Stephane Dray
 
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
 }

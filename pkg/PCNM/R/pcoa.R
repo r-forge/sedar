@@ -87,7 +87,7 @@ bstick.def <- function (n, tot.var = 1, ...)   # 'bstick.default' from vegan
 		cum.eig.cor <- cumsum(rel.eig.cor) 
 		k2 <- length(which(eig > epsilon))
 		k3 <- length(which(rel.eig.cor > epsilon))
-		vectors <- sweep(D.eig$vectors[,1:k2], 2, sqrt(eig[1:k2]), FUN="*")
+		vectors <- sweep(as.matrix(D.eig$vectors[,1:k2]), 2, sqrt(eig[1:k2]), FUN="*")
 		# Only the eigenvectors with positive eigenvalues are shown
 
 # Negative eigenvalues: three ways of handling the situation
