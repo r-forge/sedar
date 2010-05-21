@@ -6,12 +6,14 @@
   This functions compute eigenvector's of a doubly centered spatial weighting matrix. Corresponding eigenvalues are linearly related to Moran's index of spatial autocorrelation.
 }
 \usage{
-scores.listw(listw, echo = FALSE)
+scores.listw(listw, echo = FALSE, MEM.autocor = c("all","positive", "negative"))
 }
 
 \arguments{
   \item{listw}{ An object of the class \code{listw} created by functions of the \code{spdep} package. }
   \item{echo}{ A logical value, if TRUE a message indicates which eigenvectors corresponding to null eigenvalues are removed. }
+\item{MEM.autocor}{ A string indicating if all MEMs must be returned or
+  only those corresponding to positive or negative autocorrelation. }
 }
 \details{
   In order to remove the effect of units of measurments (cm, km ...), testing the nullity of eigenvalues is based on E(i)/E(1) where E(i) is i-th eiegnvalue and E(1) is the maximum absolute value of eigenvalues.

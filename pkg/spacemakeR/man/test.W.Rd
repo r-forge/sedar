@@ -7,14 +7,18 @@
   It allows to test various definitions of the spatial weighting matrix and return results of \code{scores.listw} for the best one.
 }
 \usage{
-test.W(Y, nb, xy, f = NULL, ...)
+test.W(Y, nb, xy, MEM.autocor = c("all","positive", "negative"), f = NULL, ...)
 }
 
 \arguments{
   \item{Y}{ A matrix with response variables (univariate or multivariate response). }
   \item{nb}{ An object of the class \code{nb} created by functions of the \code{spdep} package. }
-  \item{xy}{ Coordinates of the samples, this argument is optional and is required only if the argument \code{f} is not null.}
-  \item{f}{ A function of the distance that can be used as a weighting spatial function. This argument is optional.  }
+  \item{xy}{ Coordinates of the samples, this argument is optional and
+    is required only if the argument \code{f} is not null.}
+  \item{MEM.autocor}{ A string indicating if all MEM must be returned or
+    only those corresponding to positive or negative autocorrelation. }
+  \item{f}{ A function of the distance that can be used as a weighting
+    spatial function. This argument is optional. }  
   \item{\dots}{ Others arguments for the function \code{f}. It defines the range of parameters which will be tested. }
 }
 \details{
