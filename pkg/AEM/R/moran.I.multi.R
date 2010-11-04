@@ -1,9 +1,17 @@
 `moran.I.multi` <-
-function(eigenvector.mat,link,weight,scaled=FALSE,normalize=FALSE,alternative="two.sided",plot.res=TRUE){
+function(eigenvector.mat,link,weight,scaled=FALSE,normalize=FALSE,na.rm = FALSE,test.type="permutation",nperm=999,plot.res=TRUE){
+	
+	if(!is.matrix(link)){
+		link<-as.matrix(link)
+	}
+	if(mode(link)!="numeric"){
+		stop("'link' should be numeric")
+	}
 	
 	if(missing(weight)){
 		weight<-rep(1,nrow(link))
 	}
+	
 	#CC# Creat the distance matrix for the first class of distance (first neighbour)
 	nsite<-nrow(eigenvector.mat)
 	mat.W<-matrix(0,ncol=nsite,nrow=nsite)
@@ -19,7 +27,11 @@ function(eigenvector.mat,link,weight,scaled=FALSE,normalize=FALSE,alternative="t
 	#CC# Calculate a Moran's for each eigenvectors
 	#CC# Extract the p-value and the observed Moran's I
 	for(i in 1:n.eigen){
-		res<-moran.I.uni(eigenvector.mat[,i],mat.W,scaled=scaled,normalize=normalize,alternative=alternative)
+		#CC# Define alternative hypotheses
+		moran.val<-moran.I.basic(eigenvector.mat[,i],mat.W,scaled=scaled)
+		alter <- ifelse(moran.val$observed > moran.val$expected, "greater", "less")
+
+		res<-moran.I.uni(eigenvector.mat[,i],mat.W,scaled=scaled,normalize=normalize,na.rm = na.rm,test.type=test.type,nperm=nperm,alternative=alter)
 		res.mat[i,2]<-res$p.value
 		res.mat[i,1]<-res$observed
 	}

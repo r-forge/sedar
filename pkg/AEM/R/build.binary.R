@@ -1,11 +1,8 @@
 `build.binary` <-
-function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TRUE, 
-	plot.connexions = TRUE) 
-{
+function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE) {
 	require(spdep)
 	coords<-as.matrix(coords)
-	link <- listw2sn(nb2listw(nb.object, zero.policy = TRUE))[, 
-		1:2]
+	link <- listw2sn(nb2listw(nb.object, zero.policy = TRUE))[, 1:2]
 	link <- rm.double.link(link)
 	n <- nrow(coords)
 	if(missing(unit.angle)){
@@ -29,8 +26,7 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 			}
 		}
 	}
-	coords[, 2:3] <- round(rotation(as.matrix(coords[, 2:3]), rot.angle), 
-		digits = 8)
+	coords[, 2:3] <- round(rotation(as.matrix(coords[, 2:3]), rot.angle), digits = 8)
 	if (rm.same.y == TRUE) {
 		link <- remove.same.y(coords = coords, link = link)
 	}

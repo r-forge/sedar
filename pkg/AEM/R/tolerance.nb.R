@@ -1,14 +1,9 @@
-`tolerance.nb` <-
-function (coords, unit.angle = "degrees", max.dist, 
-	tolerance, rot.angle, plot.sites = TRUE) 
-{
+`tolerance.nb` <-function (coords, unit.angle = "degrees", max.dist, tolerance, rot.angle, plot.sites = TRUE) {
 	require(spdep)
-	require(ade4)
 	coords <- as.matrix(coords)
 	if (missing(rot.angle)) {
 		rot.angle <- 0
-	}
-	else {
+	}else{
 		if (rot.angle == 0){
 			if (unit.angle == "degrees" | unit.angle == "radians") {
 				rot.angle<-0
@@ -39,16 +34,15 @@ function (coords, unit.angle = "degrees", max.dist,
 	if (unit.angle == "degrees") {
 		angles <- (angles * 180)/pi
 	}
-	else {
-	}
+	
 	no.good <- which((angles - tolerance) > 0, arr.ind = TRUE)
 	for (i in 1:nrow(no.good)) {
 		angles[no.good[i, 1], no.good[i, 2]] <- NA
 	}
+	
 	if (missing(max.dist)) {
 		max.dist <- max(dist.coords)
-	}
-	else {
+	}else{
 		too.far <- which(as.matrix(dist.coords) > max.dist, arr.ind = TRUE)
 		for (i in 1:nrow(too.far)) {
 			angles[too.far[i, 1], too.far[i, 2]] <- NA
@@ -63,8 +57,9 @@ function (coords, unit.angle = "degrees", max.dist,
 	for (i in 1:nrow(na.all)) {
 		angles[na.all[i, 1], na.all[i, 2]] <- 0
 	}
-	neig.obj <- neig(mat01 = angles)
-	nb.obj <- neig2nb(neig.obj)
+	
+	nb.obj <- mat2listw(angles)$neighbours
+	
 	return(nb.obj)
 }
 

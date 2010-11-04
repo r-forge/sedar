@@ -1,4 +1,9 @@
-moran.I.uni<-function (x, mat.W, scaled = FALSE,normalize=FALSE, na.rm = FALSE, alternative = "two.sided") {
+moran.I.uni<-function (x, mat.W, scaled = FALSE,normalize=FALSE, na.rm = FALSE, test.type="permutation",nperm=999,alternative = "greater") {
+	
+	
+	#CC# Match arguments
+	test.type<-match.arg(test.type,c("permutation","parametric"))
+	
 	n <- length(x)
 	#CC# Test if mat.W is of a good format
 	dim.mat.W<-dim(mat.W)
@@ -28,61 +33,72 @@ moran.I.uni<-function (x, mat.W, scaled = FALSE,normalize=FALSE, na.rm = FALSE, 
 		mat.W <- mat.W/ROWSUM
 	}
 	
-	#======================
-	#### Claculate Moran's I
-	#======================
-	#CC# S0 (Gittleman & Kot, eq. 2)
-	s <- sum(mat.W)
+	if(test.type=="parametric"){
+		moran.res<-moran.I.basic(x,mat.W,scaled=scaled)
+		#=============================================
+		#### Calculate Standard deviation of Moran's I
+		#=============================================
+		#CC# (Gittleman & Kot, eq. 7)
+		S1 <- 0.5 * sum((mat.W + t(mat.W))^2)
 	
-	#CC# Calculate centred y
-	m <- mean(x)
-	y <- x - m
+		#CC# (Gittleman & Kot, eq. 8)
+		S2 <- sum((apply(mat.W, 1, sum) + apply(mat.W, 2, sum))^2)
 	
-	#CC# Numerator
-	cv <- sum(mat.W * y %o% y)
-	
-	#CC# Denominator
-	v <- sum(y^2)
-	
-	#CC# Observed Moran's I (Gittleman & Kot, eq. 1)
-	obs <- (n/s) * (cv/v)
-	
-	#CC# Scaling Moran's I (Gittleman & Kot, eq. 4)
-	if (scaled) {
-		i.max <- (n/s) * (sd(rowSums(mat.W) * y)/sqrt(v/(n - 1)))
-		obs <- obs/i.max
+		#CC# (Gittleman & Kot, eq. 6)
+		s.sq <- moran.res$s^2
+		k <- (sum(moran.res$y^4)/n)/(moran.res$v/n)^2
+		sdi <- sqrt((n * ((n^2 - 3 * n + 3) * S1 - n * S2 + 3 * s.sq) - 
+			k * (n * (n - 1) * S1 - 2 * n * S2 + 6 * s.sq))/((n - 
+			1) * (n - 2) * (n - 3) * s.sq) - 1/((n - 1)^2))
 	}
-	
-	#============================================
-	#### Calculate Standard deviation of Moran's I
-	#============================================
-	#CC# (Gittleman & Kot, eq. 7)
-	S1 <- 0.5 * sum((mat.W + t(mat.W))^2)
-	
-	#CC# (Gittleman & Kot, eq. 8)
-	S2 <- sum((apply(mat.W, 1, sum) + apply(mat.W, 2, sum))^2)
-	
-	#CC# (Gittleman & Kot, eq. 6)
-	s.sq <- s^2
-	k <- (sum(y^4)/n)/(v/n)^2
-	sdi <- sqrt((n * ((n^2 - 3 * n + 3) * S1 - n * S2 + 3 * s.sq) - 
-		k * (n * (n - 1) * S1 - 2 * n * S2 + 6 * s.sq))/((n - 
-		1) * (n - 2) * (n - 3) * s.sq) - 1/((n - 1)^2))
-	
 	#CC# Mean of Moran's I (Gittleman & Kot, eq. 5)
 	ei <- -1/(n - 1)
-
-	#===============================
-	#### Parametric test of Moran's I
-	#===============================
-	alternative <- match.arg(alternative, c("two.sided", "less", 
-		"greater"))
-	pv <- pnorm(obs, mean = ei, sd = sdi)
-	if (alternative == "two.sided") 
-		pv <- if (obs <= ei) 
-			2 * pv
-		else 2 * (1 - pv)
-	if (alternative == "greater") 
-		pv <- 1 - pv
-	list(observed = obs, expected = ei, sd = sdi, p.value = pv)
+	
+	#____________________
+	### Test of Moran's I
+	#____________________
+	
+	alternative <- match.arg(alternative, c("two.sided", "less", "greater"))
+	
+	if(test.type=="parametric"){
+		#==============
+		#### Parametric
+		#==============
+		pv <- pnorm(moran.res$obs, mean = ei, sd = sdi)
+		if (alternative == "two.sided"){
+			pv <- if (moran.res$obs <= ei){ 
+				2 * pv
+			}else{
+				2 * (1 - pv)
+			}
+		}
+		if (alternative == "greater") pv <- 1 - pv
+	}
+	if(test.type=="permutation"){
+		#================
+		#### Permutation
+		#================
+		moran.I.boot<-function(varia,i,...){
+			return(moran.I.basic(varia[i],...)$obs)
+		}
+		boot.res <- boot(x, statistic = moran.I.boot, R = nperm, sim = "permutation", mat.W = mat.W,scaled=scaled)
+		
+		if(alternative=="less"){
+			pval<-(length(which(boot.res$t<=boot.res$t0))+1)/(nperm+1)
+		}
+		if(alternative=="greater"){
+			pval<-(length(which(boot.res$t>=boot.res$t0))+1)/(nperm+1)
+		}
+		if(alternative=="two.sided"){
+			pval<-"not calculated"
+		}
+	}
+	if(test.type=="parametric"){
+		res<-list(observed = moran.res$observed, expected = moran.res$expected, sd = sdi, p.value = pv)
+	}
+	if(test.type=="permutation"){
+		res<-list(observed = boot.res$t0, expected = -1/(length(x) - 1), p.value = pval)
+	}
+	
+	return(res)
 }
