@@ -53,14 +53,16 @@ res <- aem(build.binary=bin.mat,rm.link0=FALSE)
 res$values
 
 ### Illustrate 4 AEM eigenfunctions using bubble plots
+opal <- palette()
+palette(c("black","white"))
 par(mfrow=c(2,2))
-s.value(xy[,2:3],res$vectors[,1])
+symbols(x=xy[,2:3],circles=abs(res$vectors[,1]),inches=FALSE,asp=1,fg=ifelse(sign(-res$vectors[,1])+1>0,1,0),bg=ifelse(sign(res$vectors[,1])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 1")
-s.value(xy[,2:3],res$vectors[,2])
+symbols(x=xy[,2:3],circles=abs(res$vectors[,2]),inches=FALSE,asp=1,fg=ifelse(sign(-res$vectors[,2])+1>0,1,0),bg=ifelse(sign(res$vectors[,2])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 2")
-s.value(xy[,2:3],res$vectors[,3])
+symbols(x=xy[,2:3],circles=abs(res$vectors[,3]),inches=FALSE,asp=1,fg=ifelse(sign(-res$vectors[,3])+1>0,1,0),bg=ifelse(sign(res$vectors[,3])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 3")
-s.value(xy[,2:3],res$vectors[,4])
+symbols(x=xy[,2:3],circles=abs(res$vectors[,4]),inches=FALSE,asp=1,fg=ifelse(sign(-res$vectors[,4])+1>0,1,0),bg=ifelse(sign(res$vectors[,4])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 4")
 
 ### Construct AEM eigenfunctions using only a site-by-link matrix
@@ -69,14 +71,16 @@ res2$values
 
 ### Illustrate 4 AEM eigenfunctions using bubble plots
 par(mfrow=c(2,2))
-s.value(xy[,2:3],res2$vectors[,1])
+symbols(x=xy[,2:3],circles=abs(res2$vectors[,1]),inches=FALSE,asp=1,fg=ifelse(sign(-res2$vectors[,1])+1>0,1,0),bg=ifelse(sign(res2$vectors[,1])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 1")
-s.value(xy[,2:3],res2$vectors[,2])
+symbols(x=xy[,2:3],circles=abs(res2$vectors[,2]),inches=FALSE,asp=1,fg=ifelse(sign(-res2$vectors[,2])+1>0,1,0),bg=ifelse(sign(res2$vectors[,2])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 2")
-s.value(xy[,2:3],res2$vectors[,3])
+symbols(x=xy[,2:3],circles=abs(res2$vectors[,3]),inches=FALSE,asp=1,fg=ifelse(sign(-res2$vectors[,3])+1>0,1,0),bg=ifelse(sign(res2$vectors[,3])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 3")
-s.value(xy[,2:3],res2$vectors[,4])
+symbols(x=xy[,2:3],circles=abs(res2$vectors[,4]),inches=FALSE,asp=1,fg=ifelse(sign(-res2$vectors[,4])+1>0,1,0),bg=ifelse(sign(res2$vectors[,4])+1>0,1,0),xlab="x",ylab="y")
 title("AEM 4")
+
+palette(opal)
 
 ### Construct AEM eigenfunctions with a function of the distance as weights to put on the links
 
@@ -107,6 +111,6 @@ weight.vec<-1-(long.lien/max(long.lien))^2
 
 ### Construct AEM eigenfunctions from an object of class build.binary
 res <- aem(build.binary=bin.mat,weight=weight.vec,rm.link0=TRUE)
-
+res
 }
 \keyword{ spatial }
