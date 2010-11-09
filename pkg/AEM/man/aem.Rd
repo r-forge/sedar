@@ -3,7 +3,7 @@
 
 \title{ Function to construct asymmetric eigenvector maps (AEM) }
 \description{
-  This function construct eigenvectors of a site-by-link matrix. Weights can be applied to the links.
+  This function constructS eigenvectors of a site-by-link matrix. Weights can be applied to the links.
 }
 \usage{
 aem(build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat = FALSE)

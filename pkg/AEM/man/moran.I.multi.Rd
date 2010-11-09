@@ -4,7 +4,7 @@
 \alias{moran.I.basic}
 \title{ Moran's I for symmetric and asymmetric weighting matrix }
 \description{
-  Calculates Moran's I for spatial variables out of the eigenfunction-based spatial filtering framework. The function also tests each Moran's I with a permutation or parametric test. The calculation of Moran's I and the test of significance are carried out by the function.
+  Calculate Moran's I for spatial variables out of the eigenfunction-based spatial filtering framework. The function also tests each Moran's I with a permutation or parametric test. The calculation of Moran's I and the test of significance are carried out by the function.
 
 }
 
@@ -17,7 +17,7 @@ moran.I.multi(eigenvector.mat,link,weight,scaled=FALSE,normalize=FALSE,na.rm = F
   \item{x}{ A numeric vector. }
   \item{mat.W}{ A matrix of weights. }
   \item{eigenvector.mat}{ Matrix. A set of orthogonal spatial variables, created by the function \code{aem}. }
-  \item{link}{ A 2-column matrix describing the link edges. It has 2 columns (from, to) and as many rows as there are edges. }
+  \item{link}{ A 2-column matrix describing the link edges. It has 2 columns (from, to) and as many rows as there are edges. The object names in the From-To list are the order numbers of the objects, not their names if the names differ from the order numbers. }
   \item{weight}{ A vector providing weights associated to the edges. If no weights are given, the function consider all edges to have the same weights.}
   \item{scaled}{ Logical (\code{TRUE}, \code{FALSE}) determining if the index should be scaled to allow comparisons between indices (default to \code{FALSE}). }
   \item{normalize}{ Logical (\code{TRUE}, \code{FALSE}) determining if the matrix of weights should be row-normalized to 1 (default to \code{FALSE}). }
