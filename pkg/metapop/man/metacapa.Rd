@@ -9,7 +9,7 @@ metapopulation.
 }
 \usage{
 metacapa(d, A, alpha = 1, ...)
-\method{plot}{metacapa}(x, locations = NULL,  ...)
+\method{plot}{metacapa}(x, locations = NULL, cex = 4, ...)
 }
 
 \arguments{
@@ -19,6 +19,8 @@ metacapa(d, A, alpha = 1, ...)
   \item{x}{\code{metacapa} result object}
   \item{locations}{Locations of patches. If missing, the locations are
     found from metric scaling of distances.}
+  \item{cex}{Character expansion factor for the largest dot; the other dots  
+    are scared proportional to the patch area.}
   \item{\dots}{ =ther parameters to the functions }
 }
 \details{
