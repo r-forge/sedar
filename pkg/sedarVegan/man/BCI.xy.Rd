@@ -39,8 +39,8 @@ ordisurf(BCI.xy, scores(ord, display="sites", choices=1),
 ## Multiscale ordination and variogram
 mord <- mso(ord, BCI.xy)
 msoplot(mord)
-## Constrain by pcnm (the version in sedarVegan)
-nm <- sedarVegan::pcnm(BCI.xy)$vectors
+## Constrain by pcnm (the version in vegan)
+nm <- scores(vegan::pcnm(dist(BCI.xy)))
 ## Take half of the pcnm vectors
 take <- round(ncol(nm)/2)
 ord <- vegan::cca(BCI ~ nm[,1:take])
@@ -53,14 +53,9 @@ msoplot(mso(ord, BCI.xy))
 ord <- vegan::cca(BCI ~ Condition(nm[, 1:take]))
 ord
 msoplot(mso(ord, BCI.xy))
-## For the following we have to detach ade4, because
-## that may be first in the search path, and its cca
-## will be used instead of vegan
-(pkg <- .packages())
-if (any("ade4" == pkg)) detach(package:ade4) 
 ## Forward selection of PCNM's
-m1 <- cca(BCI ~ ., data.frame(nm))
-m0 <- cca(BCI ~ 1., data.frame(nm))
+m1 <- vegan::cca(BCI ~ ., data.frame(nm))
+m0 <- vegan::cca(BCI ~ 1., data.frame(nm))
 ord <- step(m0, scope=formula(m1))
 coef(ord)
 anova(ord, by="t", step = 200)
