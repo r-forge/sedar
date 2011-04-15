@@ -2,6 +2,9 @@ Package 'hubbell' -*- change log -*-
 
 $Date$
 
+Version 1.6-2
+	* added as.matrix.landscape() to change a landgame() result to a
+	community data frame.
 Version 1.6-1
 	* carabid.Rd: fixes to pass R-devel (2.9.0-tobe) Rd parser 2
 	checks. 

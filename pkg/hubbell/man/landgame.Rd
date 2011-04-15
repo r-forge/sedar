@@ -4,6 +4,7 @@
 \alias{mutate}
 \alias{plot.landscape}
 \alias{print.landscape}
+\alias{as.matrix.landscape}
 
 \title{Build a Metacommunity from scratch. }
 \description{
@@ -18,6 +19,7 @@ landgame(land, D, m, theta)
 makeland(nrow, ncol, J)
 mutate(genes)
 \method{plot}{landscape}(x,main, ...)
+\method{as.matrix}{landscape}(x, ...)
 }
 
 \arguments{
@@ -65,7 +67,13 @@ mutate(genes)
   colour.  For better visibility, it may be better to use grey
   background (see \code{bg} in \code{\link{par}}); grey species are late
   in evolution.
+
+  Function \code{as.matrix} returns the \code{landgame} result as an
+  ordinary community data matrix where values are counts of species in
+  local communities. The species are named after their
+  \code{\link{rgb}} colour codes.  
 }
+
 \value{
   Function returns an object of class \code{landscape}, which is simply
   a three dimensional array.
