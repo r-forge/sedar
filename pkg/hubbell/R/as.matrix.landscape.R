@@ -12,5 +12,5 @@ as.matrix.landscape <-
         tbl <- table(x[i,])
         df[i, names(tbl)] <- tbl
     }
-    as.data.frame(df)
+    df
 }
