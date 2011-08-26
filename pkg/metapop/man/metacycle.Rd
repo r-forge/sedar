@@ -55,9 +55,8 @@ Hanski, I. 1999. Metapopulation Ecology. Oxford UP.
 \examples{
 ## Parameters similar to a Melitae cinxia network
 data(fritty)
-attach(fritty)
-d <- dist(cbind(x.crd, y.crd))
-sim <- metacycle(100, d, A, p, x = 0.42, e = 0.061, y = 15.2)
+d <- with(fritty, dist(cbind(x.crd, y.crd)))
+sim <- with(fritty, metacycle(100, d, A, p, x = 0.42, e = 0.061, y = 15.2))
 plot(sim$P.obs,   type = "l", col = "blue", lwd = 2,
  xlab = "Time", ylab = "Population Size")
 plot(sim$J.pot, sim$J.obs, xlab="Expected incidence", ylab="Simulated incidence")
