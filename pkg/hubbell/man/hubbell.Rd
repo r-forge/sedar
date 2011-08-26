@@ -1,7 +1,6 @@
 \name{hubbell}
 \alias{hubbell}
 \alias{plot.hubbell}
-\alias{print.hubbell}
 \alias{hubb2vect}
 
 \title{ Plays a Hubbell game. }

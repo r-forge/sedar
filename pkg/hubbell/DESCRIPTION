@@ -1,7 +1,7 @@
 Package: hubbell
 Title: Functions for Hubbell's Grand Unified Theory
-Version: 1.6-2
-Date: April 15, 2011
+Version: 1.7-0
+Date: August 26, 2011
 Author: Jari Oksanen
 Description: An educational package to accompany Hubbell's 
   "Unified Neutral Theory" book.  Mainly used for illustrating

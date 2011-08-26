@@ -1,0 +1,9 @@
+## export
+
+export(metacapa, metacycle)
+
+## do not export(metastep)
+
+## S3method
+importFrom(graphics, plot)
+S3method(plot, metacapa)

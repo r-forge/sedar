@@ -1,0 +1,16 @@
+## exports
+
+export(E.Somega, E.S, Var.S, hubb2vect, hubbell, landgame, makeland,
+mutate, rbstick, rhubbell, wtheta.fun)
+
+## import
+
+importFrom(graphics, plot)
+
+## S3 methods
+
+S3method(as.matrix, landscape)
+S3method(plot, hubbell)
+S3method(plot, landscape)
+S3method(print, hubbell)
+S3method(print, landscape)

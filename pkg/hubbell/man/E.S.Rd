@@ -75,7 +75,7 @@ wtheta.fun(S, J, theta)
 
 
 \seealso{
-  \code{\link[nls]{nls}} for non-linear regression.
+  \code{\link{nls}} for non-linear regression.
 }
 
 \examples{

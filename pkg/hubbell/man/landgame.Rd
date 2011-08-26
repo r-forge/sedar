@@ -3,7 +3,6 @@
 \alias{makeland}
 \alias{mutate}
 \alias{plot.landscape}
-\alias{print.landscape}
 \alias{as.matrix.landscape}
 
 \title{Build a Metacommunity from scratch. }

@@ -2,6 +2,8 @@ Package 'hubbell' -*- change log -*-
 
 $Date$
 
+Version 1.7-0
+	* NAMESPACE: added.
 Version 1.6-2
 	* added as.matrix.landscape() to change a landgame() result to a
 	community data frame.
