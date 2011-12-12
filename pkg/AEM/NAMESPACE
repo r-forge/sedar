@@ -1,0 +1,12 @@
+## compiled code
+useDynLib(AEM)
+
+### Export
+
+export(aem,build.binary,moran.I.basic,moran.I.multi,moran.I.uni,
+r.order.link,remove.same.y,rm.double.link,rotation)
+
+### Import
+
+import(stats)
+import(spdep)

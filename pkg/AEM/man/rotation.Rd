@@ -17,6 +17,9 @@ rotation(xy, angle)
 \value{
 A 2-columns matrix of the same size as \code{xy} giving the rotated coordinates.
 }
+\section{Warning }{
+This function was not design to handle a large number of rows in \code{xy}. To use this function for a set of coordinates with more than 1500 entries is not recommended.
+}
 
 \author{ F. Guillaume Blanchet }
 
