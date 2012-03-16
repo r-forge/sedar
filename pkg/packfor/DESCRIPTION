@@ -4,7 +4,6 @@ Version: 0.0-8
 Date: 2011-12-16
 Author: Stephane Dray with contributions of Pierre Legendre and Guillaume Blanchet
 Description: Forward Selection as in CANOCO based on permutation procedure using residuals from the reduced model. Y can be univariate (multiple regression) or multivariate (redundancy analysis).
-Maintainer: Stephane Dray <dray@biomserv.univ-lyon1.fr>
+Maintainer: Stephane Dray <stephane.dray@univ-lyon1.fr>
 Suggests: vegan
 License: GPL 3
-Packaged: Mon Jul 23 14:27:22 2007; stephane
