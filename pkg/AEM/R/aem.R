@@ -26,9 +26,9 @@ function (build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat=F
 	
 	res.mat.ct <- apply(res.mat, 2, scale, scale = FALSE)
 	val.vec <- svd(res.mat.ct, nu = (nsite - 1), nv = 0)
-	val <- val.vec$d[1:(nsite - 1)]
+	val <- val.vec$d[1:(nsite - 1)]^2/(nsite - 1)
 	
-	lim<-10^-12
+	lim<-10^{-12}
 	val.lim<-which(val>=lim)
 	vec.lim<-val.vec$u[,val.lim]
 	

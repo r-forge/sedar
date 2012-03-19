@@ -27,7 +27,7 @@ aem(build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat = FALSE
   \item{mod.binary.mat}{A site-by-link matrix modified through the function.}
 
 }
-\references{Blanchet F.G., P. Legendre and Borcard D. 2008, Modelling directional spatial processes in ecological data. \emph{Ecological Modelling}, 215, 325-336.
+\references{Blanchet F.G., P. Legendre, and Borcard D. 2008, Modelling directional spatial processes in ecological data. \emph{Ecological Modelling}, 215, 325-336.
  }
 
 \author{ F. Guillaume Blanchet }

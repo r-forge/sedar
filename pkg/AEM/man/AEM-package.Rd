@@ -12,9 +12,9 @@ Package to construct asymmetric eigenvector maps (AEM).
 \tabular{ll}{
 Package: \tab AEM\cr
 Type: \tab Package\cr
-Version: \tab 0.3-3\cr
+Version: \tab 0.4\cr
 Date: \tab 2008-07-07\cr
-License: \tab None... Copyleft \cr
+License: \tab Unlimited \cr
 }
 This package construct spatial variables from the asymmetric eigenvector maps (AEM) framework. It was built following Blanchet et al. (2008).
 
@@ -27,4 +27,6 @@ Maintainer: F. Guillaume Blanchet <gblanche@ualberta.ca>
 }
 \references{
 Blanchet F.G., P. Legendre and Borcard D. 2008, Modelling directional spatial processes in ecological data. \emph{Ecological Modelling}, 215, 325-336.
+
+Blanchet, F. G., P. Legendre, R. Maranger, D. Monti, and P. Pepin. 2011. Modelling the effect of directional spatial ecological processes at different scales. \emph{Oecologia} 166, 357-368.
 }
