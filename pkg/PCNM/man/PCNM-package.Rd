@@ -29,7 +29,7 @@ Function \code{\link{quickSTI}} performs two-way ANOVA with test of the space-ti
 }
 
 \author{
-Pierre Legendre, Daniel Borcard, Guillaume Blanchet, Miquel De Caceres and Stephane Dray
+Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet, Miquel De Caceres and Stephane Dray
 
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
 }

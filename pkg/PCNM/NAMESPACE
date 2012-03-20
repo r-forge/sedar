@@ -1,0 +1,13 @@
+### Export function without dot name
+export(biplot.pcoa,PCNM,pcoa,pcoa.all,quickPCNM,quickSTI,STImodels)
+
+### Do not export these function
+#export(anova.ccabyaxis,manovRDa,)
+
+### Import
+
+import(ade4)
+import(AEM)
+import(MASS)
+import(packfor)
+import(vegan)
