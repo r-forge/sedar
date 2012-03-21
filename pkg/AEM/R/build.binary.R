@@ -34,13 +34,6 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 	low.coord <- which(coords[, 3] == min(coords[, 3]))
 
 	if (plot.connexions) {
-		if (length(grep("darwin", R.version$os)) != 1) {
-			x11()
-		}
-		else {
-			quartz()
-		}
-		
 		xy.range<-apply(coords[,2:3],2,range)
 		
 		xy.range.min<-xy.range[1,2]-((xy.range[2,2]-xy.range[1,2])/5)

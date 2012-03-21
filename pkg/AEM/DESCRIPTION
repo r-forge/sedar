@@ -1,8 +1,8 @@
 Package: AEM
 Type: Package
 Title: Tools to construct Asymmetric eigenvector maps (AEM) spatial variables
-Version: 0.4
-Date: 2012-03-19
+Version: 0.4-1
+Date: 2012-03-21
 Author: F. Guillaume Blanchet with contributions from Pierre Legendre
 Description: Tools to construct Asymmetric eigenvector maps (AEM) spatial variables
 Maintainer: F. Guillaume Blanchet <gblanche@ualberta.ca>
