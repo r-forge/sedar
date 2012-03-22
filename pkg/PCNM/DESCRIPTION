@@ -1,7 +1,7 @@
 Package: PCNM
 Type: Package
 Version: 2.1-2
-Date: 2012-03-20
+Date: 2012-03-22
 Title: PCNM spatial eigenfunction and principal coordinate analyses
 Author:  Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
@@ -12,6 +12,9 @@ LazyLoad: yes
 Revision: 60
 Repository: R-Forge
 Repository/R-Forge/Project: sedar
-Repository/R-Forge/Revision: 75
-Date/Publication: 2009-05-27 14:11:33
-Packaged: 2010-05-08; rforge
+Repository/R-Forge/Revision: 82
+Date/Publication: 2012-03-22
+Repository: R-Forge
+Repository/R-Forge/Project: sedar
+Packaged: 2012-03-22; rforge
+Namespace: auto
