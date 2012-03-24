@@ -9,3 +9,4 @@ Description: Miscellaneous functions for mainly multivariate spatial ecological 
 Depends: vegan, fields, prabclus
 License: GPL-2
 LazyLoad: yes
+Namespace: auto

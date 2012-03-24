@@ -2,7 +2,7 @@ Package: metapop
 Type: Package
 Title: Metapopulations and Incidence Functions
 Version: 1.1-0
-Date: 2011-08-26
+Date: 2012-03-24
 Author: Jari Oksanen
 Maintainer: Jari Oksanen <jari.oksanen@oulu.fi>
 Description: Hanski's metapopulation model and fitting incidence functions. 

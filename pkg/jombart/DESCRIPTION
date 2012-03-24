@@ -10,3 +10,4 @@ Description: Various spatial tools originally developped in the adegenet package
 License: GPL (>=2)
 LazyLoad: yes
 Collate: chooseCN.R globloc.rtests.R mspa.R
+Namespace: auto
