@@ -1,7 +1,11 @@
 `build.binary` <-
 function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE) {
 	require(spdep)
-	coords<-as.matrix(coords)
+	if(is.character(coords[,1])){
+		stop("The first column of 'coords' needs to be numeric")
+	}else{
+		coords<-as.matrix(coords)
+	}
 	link <- listw2sn(nb2listw(nb.object, zero.policy = TRUE))[, 1:2]
 	link <- rm.double.link(link)
 	n <- nrow(coords)
