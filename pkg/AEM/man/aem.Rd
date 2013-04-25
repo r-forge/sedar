@@ -1,7 +1,7 @@
 \name{aem}
 \alias{aem}
 
-\title{ Function to construct asymmetric eigenvector maps (AEM) }
+\title{Function to construct asymmetric eigenvector maps (AEM)}
 \description{
   This function constructS eigenvectors of a site-by-link matrix. Weights can be applied to the links.
 }

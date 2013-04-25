@@ -1,7 +1,7 @@
 \name{scores.listw}
 \alias{scores.listw}
 
-\title{ Function to compute Moran's eigenvectors of a listw object. }
+\title{Function to compute Moran's eigenvectors of a listw object}
 \description{
   This functions compute eigenvector's of a doubly centered spatial weighting matrix. Corresponding eigenvalues are linearly related to Moran's index of spatial autocorrelation.
 }

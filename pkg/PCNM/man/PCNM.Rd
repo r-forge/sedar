@@ -1,6 +1,6 @@
 \name{PCNM}
 \alias{PCNM}
-\title{ PCNM spatial eigenfunctions }
+\title{PCNM spatial eigenfunctions}
 \description{
 Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) from a geographic distance matrix, in view of spatial eigenfunction analysis.
 

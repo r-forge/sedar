@@ -1,7 +1,7 @@
 \name{forward.sel}
 \alias{forward.sel}
 \alias{forward.sel.par}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{ Forward selection with multivariate Y using a parametric model
   or by permutation under reducel model }
 \description{
