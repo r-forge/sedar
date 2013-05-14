@@ -30,7 +30,7 @@ moran.I.multi(eigenvector.mat,link,weight,scaled=FALSE,normalize=FALSE,na.rm = F
 \details{
   \code{moran.I.uni} is a modification of \code{\link[ape]{Moran.I}} (the code was heavily borrowed from library \pkg{ape}). In \code{\link[ape]{Moran.I}} the normalization is carried out by default, whereas in \code{moran.I.uni} the choice is given to the user.
   
-  Other type of orthogonal spatial variables (MEM, PCNM) created through the Moran's eigenvector maps framework (result of \code{\link[spacemakeR]{scores.listw}} or \code{\link[spacemakeR]{pcnm}}) can also be tested with those functions. 
+  Other type of orthogonal spatial variables (MEM, PCNM) created through the Moran's eigenvector maps framework (result of \code{scores.listw} or \code{pcnm}) can also be tested with those functions. 
   
   Function \code{moran.I.basic} is simple function to compute Moran's I. It is used by both \code{moran.I.uni} and \code{moran.I.multi}.
 }
@@ -59,15 +59,16 @@ moran.I.multi(aem1$vectors, bin.mat[[2]])
 
 #---------------------------
 ### Example using spacemakeR
+### This section is temporarily in comments because spacemakeR fails to compile on R-forge.
 #---------------------------
-require(spacemakeR)
+#require(spacemakeR)
 
 ### Construct Moran's eigenvector maps
-nb<-cell2nb(5,5,"queen")
-sc.queen<-scores.listw(nb2listw(nb,style="B"))
+#nb<-cell2nb(5,5,"queen")
+#sc.queen<-scores.listw(nb2listw(nb,style="B"))
 
 ### Calculate and test Moran's I for each MEM eigenfunction
-moran.I.multi(sc.queen$vector,listw2sn(nb2listw(nb))[,1:2])
+#moran.I.multi(sc.queen$vector,listw2sn(nb2listw(nb))[,1:2])
 
 }
 \keyword{ spatial }

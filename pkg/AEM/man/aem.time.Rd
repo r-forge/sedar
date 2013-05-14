@@ -16,7 +16,7 @@ aem.time(n, w=NULL, moran=FALSE,plot.moran=FALSE)
 }
 
 \details{
-Time series represent a form of directional stochastic process. To emphasize the directional nature of the process influencing the data, AEM analysis, which was designed to take trends into account, should be applied to the non-detrended series. MEM analysis (see \code{\link[spacemakeR]{scores.listw}}) can be applied to data series that were detrended to remove the directional component as recommended by Blanchet et al. (2008, 2011) and  Legendre & Legendre (2012, Subsection 14.1.2). Detrended palaeoecological sediment core data, for example, could be studied by MEM analysis.
+Time series represent a form of directional stochastic process. To emphasize the directional nature of the process influencing the data, AEM analysis, which was designed to take trends into account, should be applied to the non-detrended series. MEM analysis (see \code{scores.listw}) can be applied to data series that were detrended to remove the directional component as recommended by Blanchet et al. (2008, 2011) and  Legendre & Legendre (2012, Subsection 14.1.2). Detrended palaeoecological sediment core data, for example, could be studied by MEM analysis.
 
 No data file needs to be provided to this function. The AEM eigenvectors are constructed from a matrix E generated from the regular sequence of points along the series. 
 
@@ -35,7 +35,7 @@ If the calculation of Moran's I is requested, the point coordinates are generate
 
 \author{ Pierre Legendre, Universite de Montreal, and F. Guillaume Blanchet, University of Alberta }
 
-\seealso{\code{\link{aem}}, \code{\link{moran.I.multi}}, \code{\link[spacemakeR]{scores.listw}}}
+\seealso{\code{\link{aem}}, \code{\link{moran.I.multi}}, \code{scores.listw}}
 
 \references{ 
 Blanchet, F. G., P. Legendre, and D. Borcard. 2008. Modelling directional spatial processes in ecological data. \emph{Ecological Modelling}, 215, 325-336.
