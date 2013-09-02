@@ -16,7 +16,7 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 		if (unit.angle == "degrees" | unit.angle == "radians") {
 			rot.angle<-0
 		}else{
-			stop("Unit for angles be either 'degrees' or 'radians'")
+			stop("Units for angles be either 'degrees' or 'radians'")
 		}
 	}
 	if (rot.angle != 0){
@@ -26,7 +26,7 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 			if (unit.angle == "radians") {
 				rot.angle <- rot.angle
 			}else{
-				stop("Unit for angles be either 'degrees' or 'radians'")
+				stop("Units for angles be either 'degrees' or 'radians'")
 			}
 		}
 	}
@@ -35,7 +35,7 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 		link <- remove.same.y(coords = coords, link = link)
 	}
 	
-	low.coord <- which(coords[, 3] == min(coords[, 3]))
+	low.y <- which(coords[, 3] == min(coords[, 3]))
 
 	if (plot.connexions) {
 		xy.range<-apply(coords[,2:3],2,range)
@@ -54,11 +54,11 @@ function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TR
 		site0<-c(mean(coords[,2]),xy.range.min)
 		
 		points(site0[1],site0[2],pch=19,col="blue")
-		segments(x0=site0[1],y0=site0[2],x1=coords[low.coord,2],y1=coords[low.coord,3],col="blue")
+		segments(x0=site0[1],y0=site0[2],x1=coords[low.y,2],y1=coords[low.y,3],col="blue")
 		par(mar=c(5,4,4,2))
 	}
-	n.low.coord <- length(low.coord)
-	link <- rbind(cbind(rep(0, n.low.coord), low.coord), as.matrix(link))
+	n.low.y <- length(low.y)
+	link <- rbind(cbind(rep(0, n.low.y), low.y), as.matrix(link))
 	nrow.link <- nrow(link)
 	link <- cbind(1:nrow.link, link)
 	points.order <- sort(coords[, 3], decreasing = FALSE, index.return = TRUE)$ix

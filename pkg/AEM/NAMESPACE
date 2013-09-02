@@ -4,7 +4,7 @@ useDynLib(AEM)
 ### Export
 
 export(aem,aem.time,build.binary,moran.I.basic,moran.I.multi,moran.I.uni,
-r.order.link,remove.same.y,rm.double.link,rotation)
+r.order.link,remove.same.y,rm.double.link,rotation,weight.edges,weight.time)
 
 ### Import
 
