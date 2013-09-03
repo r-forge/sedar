@@ -6,7 +6,7 @@
 Weight edges when constructing AEM variables
 }
 \description{
-These functions construct a vector of weights that can be associated to the edges of the connexion diagram used as a basis to build AEM eigenfunctions. \code{weight.edges} is general and can be used for 1 or 2 dimensional problems. \code{weight.time} is meant to be used only for time series. It is a wrapper of \code{weight.edges}.
+These functions construct a vector of weights that can be associated to the edges of the connexion diagram used as a basis to build AEM eigenfunctions. \code{weight.edges} is general and can be used for 1 or 2 dimensional problems. \code{weight.time} is meant to be used only for time series. It is a wrapper for \code{weight.edges}.
 }
 \usage{
 weight.edges(nb.object, coords, distmat = NULL, alpha = 2, beta = NULL, max.d = NULL, unit.angle = "degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE)
@@ -32,7 +32,7 @@ Numeric. Exponent of the first weighting function. (See details).
 Numeric. Exponent of the second weighting function. (See details).
 }
   \item{max.d}{
-Numeric. Maximum distance for weighting. Default value if max.d=NULL: the maximum distance among a set of sites divided by 2 or the full span of a time series divided by 2 (not recommended in most problems, see details). A comment it sent if max.d=NULL and the default value is used.
+Numeric. Maximum distance for weighting. Default value if max.d=NULL: the maximum distance among a set of sites divided by 2 or the full span of a time series divided by 2 (not recommended in most problems, see details). A warning is given if \code{max.d=NULL} and the default value is used.
 }
   \item{unit.angle}{
 Character. The measurement units in which the angle is defined: either "degrees" (default) or "radians". 
@@ -48,21 +48,21 @@ Logical (\code{TRUE}, \code{FALSE}). Determines if the sites and the associated 
 }
 }
 \details{
-These functions should be used in close relationship with \code{\link{build.binary}}. This is why many of the arguments in this function and in \code{\link{build.binary}} are the same.
+These functions should be used in close relationship with \code{\link{build.binary}}, consequently many of the arguments in this function and in \code{\link{build.binary}} are the same.
 
 The argument \code{distmat} may contain general forms of dissimilarity, for example the difficulty of transfer of individuals, matter or energy among the sampling units through space or time. 
 
-In \code{weight.edges}, two weighting functions, described in Legendre and Legendre (2012, eqs. 114.3 and 14.4) have been implemented, where \eqn{d_{ij}} is the distance between sites i and j:
+In \code{weight.edges}, two weighting functions, described in Legendre and Legendre (2012, eqs. 114.3 and 14.4) have been implemented, where \eqn{d_{ij}} is the distance between sites \eqn{i} and \eqn{j}:
 
 	\tabular{ll}{
 		\code{Weighting function 1:}
-		\tab \eqn{1 - (d_{ij}/max(d))^\alpha}{1 - (dij/max(d))^alpha}
+		\tab \eqn{1 - (d_{ij}/max(d))^\alpha}{1 - (d_{ij}/max(d))^alpha}
 		\cr
 		\code{Weighting function 2:}
-		\tab \eqn{1/d_{ij}^\beta}{1/dij^beta}
+		\tab \eqn{1/d_{ij}^\beta}{1/d_{ij}^beta}
 	}
 
-Note also that if a value is provided for \code{beta} (that is, if it is not \code{NULL}), weighting function 2 is used regardless of whether \code{alpha} is defined or not.
+Also note that if a value is provided for \code{beta} (that is, if it is not \code{NULL}), weighting function 2 is used regardless of whether \code{alpha} is defined or not.
 
 In most applications, the default value of \code{max.d} is not optimal. A more meaningful solution in many applications is to compute a Moran's I correlogram (for univariate data) or a Mantel correlogram (for multivariate data), and provide the distance where the correlation becomes 0 as the value for max.d.
 }
@@ -70,7 +70,8 @@ In most applications, the default value of \code{max.d} is not optimal. A more m
 A vector of weights associating a value to each edge of the graph.
 }
 \references{
-### Reference to be completed -- ###
+Legendre, P. anf L. Legendre. 2012. \emph{Numerical Ecology}, 3rd English edition. Elsevier Science BV, Amsterdam.
+
 Legendre, P. and O. Gauthier. Statistical methods for temporal and space-time analysis of community composition data. (In preparation)
 
 Legendre, P. and L. Legendre. 2012. Numerical ecology, 3rd English edition. Elsevier Science BV, Amsterdam. 
@@ -80,13 +81,13 @@ Olivier Gauthier, Pierre Legendre and F. Guillaume Blanchet
 }
 
 \seealso{
-\code{\link{build.binary}}
+\code{\link{build.binary}},\code{\link[spdep]{sp.correlogram}},\code{\link[vegan]{mantel.correlog}}
 }
 \examples{
 ### Time serie example
-###  Example - 12 dates (days from January 1st of year 1) in a 6-year study
+###  Example - 12 dates (days from January 1st of year 1) in a 6-year study starting September 5, 2000
 ###########################################################################
-dates <- c(129,269,500,631,864,976,1228,1352,1606,1730,1957,2087)
+dates <- as.Date(c(129,269,500,631,864,976,1228,1352,1606,1730,1957,2087),origin="2000/1/1")
 autocor.limit <- 522  # Limit of autcorrelation in the correlogram
 
 ### Using weight.time()

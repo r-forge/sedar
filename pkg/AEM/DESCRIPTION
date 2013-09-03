@@ -7,5 +7,5 @@ Author: F. Guillaume Blanchet with contributions from Pierre Legendre and Olivie
 Description: Tools to construct Asymmetric eigenvector maps (AEM) spatial variables
 Maintainer: F. Guillaume Blanchet <guillaume.blanchet@helsinki.fi>
 Depends: spdep
-Suggests: ape
+Suggests: ape, vegan
 License: Unlimited
