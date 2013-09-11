@@ -3,9 +3,13 @@ function(coords,link){
 	
 	#### Remove links with the same y coordinates (after rotation)
 	#### Find all the points (sites) with the same y coordinate
+	#CC# Make sure the names match
+	colnames(link)<-c("from","to")
+	
 	#CC# Creat object link.tmp and coords.tmp
 	link.tmp<-link
 	coords.tmp<-coords
+	
 	#CC# Loop checking for sites with the same y coordinates
 	while(nrow(coords.tmp)!=0){
 		#CC# Which site has the same coordinates
@@ -43,7 +47,7 @@ function(coords,link){
 			#CC# If the object "same" has a positive number of rows
 			if(nrow(same)!=0){
 				#### Put all the site in a single line (this will limit the repetition)
-				same.no.rep<-c(same[,1],same[nrow(same),2])
+				same.no.rep<-c(same[,1],same[1:nrow(same),2])
 				
 				#### To remove the horizontal links
 				#CC# Match the links in "same" with the links in "link" in the first

@@ -1,12 +1,17 @@
 `build.binary` <-
-function (nb.object, coords, unit.angle="degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE) {
-	require(spdep)
+function (nb.object=NULL, coords,link=NULL, unit.angle="degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE) {
 	if(is.character(coords[,1])){
 		stop("The first column of 'coords' needs to be numeric")
 	}else{
 		coords<-as.matrix(coords)
 	}
-	link <- listw2sn(nb2listw(nb.object, zero.policy = TRUE))[, 1:2]
+	if(!is.null(nb.object)){
+		link <- listw2sn(nb2listw(nb.object, zero.policy = TRUE))[, 1:2]
+	}else{
+		if(is.null(link)){
+			stop("both 'nb.object' and 'link' are NULL")
+		}
+	}
 	link <- rm.double.link(link)
 	n <- nrow(coords)
 	if(missing(unit.angle)){

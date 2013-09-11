@@ -11,12 +11,13 @@
   
 }
 \usage{
-build.binary(nb.object, coords, unit.angle = "degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE)
+build.binary(nb.object=NULL, coords,link=NULL, unit.angle = "degrees", rot.angle = 0, rm.same.y = TRUE, plot.connexions = TRUE)
 }
 
 \arguments{
   \item{nb.object}{ Object of class \code{nb} from library spdep. }
   \item{coords}{ A three columns matrix or data frame. Colums 1: identifiers of the points (needs to be numeric). Columns 2 and 3: the X and Y coordinates of the points.}
+  \item{link}{ A two columns matrix. Each row define an edge. Column 1: The site from which the edge starts. Column 2: the site to which the edge ends. All values in \code{link} need to be integers. }
   \item{unit.angle}{ Character. The measurement units in which the angle is defined: either "degrees" (default) or "radians". }
   \item{rot.angle}{ Numeric. Angle of the vector describing the process influencing the sites. This argument generate a rotation of the site coordinates. The set of coordinates is rotated counterclockwise. Negative values will produce a clockwise rotation.}
   \item{rm.same.y}{ Logical (\code{TRUE}, \code{FALSE}). Determines if the links perpendicular to the gradient should be removed. Default value: \code{TRUE}. If these links have already been removed this argument put to \code{TRUE} will make the function crash. See detail for more information. }
@@ -52,6 +53,11 @@ xy <- cbind(1:25,expand.grid(1:5,1:5))
 
 ### Build a binary site-by-link matrix; remove the site which have identical Y coordinate (by default argument: rm.same.y = TRUE)
 bin.mat <- build.binary(nb,xy)
+str(bin.mat)
+
+### Build a binary site-by-link matrix using the argument link: remove the site which have identical Y coordinate (by default argument: rm.same.y = TRUE)
+edges<-expand.grid(1,2:25)
+bin.mat <- build.binary(coords=xy,link=edges)
 str(bin.mat)
 
 ### Build a binary site-by-link matrix, making the process affect the points at an angle of 45 degrees

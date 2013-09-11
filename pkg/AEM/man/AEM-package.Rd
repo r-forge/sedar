@@ -12,7 +12,7 @@ Package to construct asymmetric eigenvector maps (AEM).
 \tabular{ll}{
 Package: \tab AEM\cr
 Type: \tab Package\cr
-Version: \tab 0.5\cr
+Version: \tab 0.5-1\cr
 Date: \tab 2008-07-07\cr
 License: \tab Unlimited \cr
 }
