@@ -70,7 +70,7 @@ In most applications, the default value of \code{max.d} is not optimal. A more m
 A vector of weights associating a value to each edge of the graph.
 }
 \references{
-Legendre, P. anf L. Legendre. 2012. \emph{Numerical Ecology}, 3rd English edition. Elsevier Science BV, Amsterdam.
+Legendre, P. and L. Legendre. 2012. \emph{Numerical Ecology}, 3rd English edition. Elsevier Science BV, Amsterdam.
 
 Legendre, P. and O. Gauthier. Statistical methods for temporal and space-time analysis of community composition data. (In preparation)
 
