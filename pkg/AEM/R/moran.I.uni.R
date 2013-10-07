@@ -1,6 +1,5 @@
 moran.I.uni<-function (x, mat.W, scaled = FALSE,normalize=FALSE, na.rm = FALSE, test.type="permutation",nperm=999,alternative = "greater") {
 	
-	
 	#CC# Match arguments
 	test.type<-match.arg(test.type,c("permutation","parametric"))
 	

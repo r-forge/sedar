@@ -10,3 +10,4 @@ r.order.link,remove.same.y,rm.double.link,rotation,weight.edges,weight.time)
 
 import(stats)
 import(spdep)
+import(boot)
