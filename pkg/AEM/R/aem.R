@@ -29,11 +29,12 @@ function (build.binary, binary.mat, weight, rm.link0 = FALSE, print.binary.mat=F
 	val <- val.vec$d[1:(nsite - 1)]^2/(nsite - 1)
 	
 	lim<-10^{-12}
-	val.lim<-which(val>=lim)
-	vec.lim<-val.vec$u[,val.lim]
+	val.sel<-which(val>=lim)
+	vec.lim<-val.vec$u[,val.sel]
+	val.lim<-val[val.sel]
 	
 	if(print.binary.mat){
-		res<-list(val,vec.lim,res.mat)
+		res<-list(val.lim,vec.lim,res.mat)
 		names(res)<-c("values","vectors","mod.binary.mat")
 	}else{
 		res <- list(val, vec.lim)
