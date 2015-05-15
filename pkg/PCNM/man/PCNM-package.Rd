@@ -11,7 +11,7 @@ Package: \tab PCNM\cr
 Type: \tab Package\cr
 Version: \tab 2.1\cr
 Date: \tab 2009-05-27\cr
-License: \tab Unlimited\cr
+License: \tab Copyleft\cr
 LazyLoad: \tab yes\cr
 }
 From a geographic distance matrix, function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) or Moran's eigenvector maps (MEM) based on distances, in view of spatial eigenfunction analysis.
@@ -29,7 +29,7 @@ Function \code{\link{quickSTI}} performs two-way ANOVA with test of the space-ti
 }
 
 \author{
-Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet, Miquel De Caceres and Stephane Dray
+Pierre Legendre, Daniel Borcard, Guillaume Blanchet, Miquel De Caceres and Stephane Dray
 
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
 }
@@ -65,7 +65,7 @@ mite.log <- log1p(mite[1:30,-35])
 mite.D <- vegdist(mite.log, "bray")
 res <- pcoa(mite.D)
 mite.log.st = apply(mite.log, 2, scale, center=TRUE, scale=TRUE)
-biplot(res$vectors, mite.log.st)
+biplot(res, mite.log.st)
 }
 
 \keyword{ package }

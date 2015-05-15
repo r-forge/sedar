@@ -9,6 +9,7 @@
 # rn : An optional vector of row names, of length n, for the objects.
 {
 	epsilon <- sqrt(.Machine$double.eps) 
+# replace by: 	epsilon <- .Machine$double.eps * 10^2
 	D <- as.matrix(D)
 	n <- nrow(D)
 	D <- D + diag(rep(diagonal,n))

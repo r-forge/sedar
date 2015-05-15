@@ -95,7 +95,8 @@ if(detrend==TRUE){
    else{  
    temp2 <- vegan::rda(Y,space)
    temp2.test <- vegan::anova.cca(temp2,alpha=alpha,step=100,perm.max=perm.max)
-   if(temp2.test[1,5] <= alpha) {
+#   if(temp2.test[1,5] <= alpha) {
+   if(temp2.test[1, ncol(temp2.test)] <= alpha) {
       Y.det <- resid(lm(Y~space))
      assign("Y.det", Y.det, envir=.GlobalEnv)   # compensation for internal loss of object by R
        }                 
@@ -123,7 +124,8 @@ mod1.sum <- summary(mod1,scaling=1)
 R2glob <- mod1.sum$constr.chi/mod1.sum$tot.chi
 R2glob.a <- 1-((n-1)/(n-global.test[1,1]-1))*(1-R2glob)
 
-if(global.test[1,5] >= alpha) {
+# if(global.test[1,5] >= alpha) {
+if(global.test[1, ncol(global.test)] >= alpha) {
    cat("\n------------------------------------------------------------------")
    cat ("\n*** Procedure stopped ***")
    cat ("\np-value of global test: ",global.test[1,5])
@@ -244,7 +246,8 @@ if(ncol(Y)==1 || nb.sig.ev == 1) {
 	 mod.axes.test <- vegan::anova.cca(mod,by="axis",step=100,perm.max=perm.max,cutoff=0.10)
 	 }
  ## Count the significant axes 
-nb.ax <- length(which(mod.axes.test[,5]<=alpha))
+# nb.ax <- length(which(mod.axes.test[,5]<=alpha))
+nb.ax <- length(which(mod.axes.test[,ncol(mod.axes.test)]<=alpha))
 
         }         
 
@@ -273,7 +276,8 @@ if(ncol(space)==2){
 
 ## Screen output
 if(detrend==TRUE){
-   if(temp2.test[1,5] <= alpha) {
+#   if(temp2.test[1,5] <= alpha) {
+   if(temp2.test[1, ncol(temp2.test)] <= alpha) {
       cat("\n-------------------------------------------------------")
       cat("\nA significant linear trend has been found in the response data.")
       cat("\nThe data have been detrended prior to PCNM analysis.")

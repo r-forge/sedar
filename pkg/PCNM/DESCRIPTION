@@ -1,7 +1,7 @@
 Package: PCNM
 Type: Package
-Version: 2.1-2
-Date: 2012-03-22
+Version: 2.1-4
+Date: 2015-05-14
 Title: MEM spatial eigenfunction and principal coordinate analyses
 Author: Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
@@ -16,5 +16,5 @@ Repository/R-Forge/Revision: 82
 Date/Publication: 2012-03-22
 Repository: R-Forge
 Repository/R-Forge/Project: sedar
-Packaged: 2012-03-22; rforge
+Packaged: 2015-05-14; rforge
 Namespace: auto

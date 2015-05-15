@@ -1,5 +1,5 @@
 'PCNM' <- 
-function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE)
+function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE, silent=FALSE)
 #
 # Compute the PCNM or dbMEM eigenfunctions corresponding to 
 # all eigenvalues (+, 0, -). 
@@ -25,7 +25,7 @@ function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=
 		pcoa.xy <- pcoa.all(matdist)
 		
 		if(is.na(pcoa.xy$values[2]) | (pcoa.xy$values[2] < epsilon)) {
-			cat("The sites form a straight line on the map.",'\n')
+			if(!silent) cat("The sites form a straight line on the map.",'\n')
 			xy <- pcoa.xy$vectors
 			single <- TRUE
 			} else {
@@ -40,10 +40,10 @@ function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=
 	if(is.null(thresh)) {
 		spanning <- vegan::spantree(as.dist(matdist))
 		threshh <- max(spanning$dist)
-	    cat("Truncation level =",threshh+0.000001,'\n')
+	    if(!silent) cat("Truncation level =",threshh+0.000001,'\n')
 		} else {
 		threshh = thresh
-	    cat("User-provided truncation threshold =",thresh,'\n')
+	    if(!silent) cat("User-provided truncation threshold =",thresh,'\n')
 		}
 	matdist[matdist > threshh] <- 4*threshh
 
@@ -71,7 +71,7 @@ function(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=
 		}
 	})
 	a[3] <- sprintf("%2f",a[3])
-	cat("Time to compute PCNMs =",a[3]," sec",'\n')
+	if(!silent) cat("Time to compute PCNMs =",a[3]," sec",'\n')
 	if(is.null(thresh)) {
 		if(moran) {
 			res <- list(values=mypcnm.all$values, vectors=mypcnm.all$vectors, Moran_I=Moran, expected_Moran=res$expected, spanning=spanning, thresh=threshh+0.000001)

@@ -1,13 +1,13 @@
 \name{PCNM}
 \alias{PCNM}
-\title{PCNM spatial eigenfunctions}
+\title{ PCNM spatial eigenfunctions }
 \description{
 Function \code{\link{PCNM}} computes principal coordinates of neighbour matrices (PCNM) from a geographic distance matrix, in view of spatial eigenfunction analysis.
 
 This version allows users to obtain either the classical PCNM eigenfunctions with positive eigenvalues only, or all PCNM eigenfunctions with positive and negative eigenvalues.
 }
 \usage{
-PCNM(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE)
+PCNM(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALSE, silent=FALSE)
 }
 
 \arguments{
@@ -17,6 +17,7 @@ PCNM(matdist, thresh=NULL, dbMEM=FALSE, moran=NULL, all=FALSE, include.zero=FALS
   \item{moran}{ If TRUE, Moran's I are computed for all PCNMs. If FALSE, Moran's I are not computed. When \code{moran=NULL} (default value), Moran's I are computed for PCNM but not for dbMEM eigenfunctions because, for dbMEM, Moran's I are proportional to the eigenvalues. That is not the case for classical PCNMs. }
   \item{all}{ If TRUE, the eigenvectors corresponding to all eigenvalues, positive and negative, are shown in the output list. Default value: \code{all=FALSE}. }
   \item{include.zero}{ If FALSE (default value), the zero eigenvalues as well as their eigenvectors are excluded from the output list. See details. }
+  \item{silent}{ If FALSE (default value), informative messages are printed in the R console. They are not printed if silent=TRUE (to be used in simulation studies for example). }
 }
 
 \details{
@@ -54,7 +55,7 @@ Dray, S., P. Legendre and P. R. Peres-Neto. 2006. Spatial modelling: a comprehen
 \seealso{\code{\link{pcoa.all}}, \code{\link{quickPCNM}} }
 
 \examples{
-# Oribatid mite data from Borcard and Legendre (1994) using 
+# Oribatid mite data from Borcard and Legendre (1994)
 library(vegan)
 data(mite)      # 70 peat cores, 35 species
 data(mite.xy)   # Core geographic coordinates
@@ -85,7 +86,7 @@ s.value(mite.xy, mite.pcnm3$vectors[,70], clegend=0, sub="PCNM 70", csub=2.5)
 # By construction, they all have positive eigenvalues and Moran's I
 mite.dbMEM1 <- PCNM(mite.D, dbMEM=TRUE)
 dim(mite.dbMEM1$vectors)
-plot(mite.dbMEM1$spanning, mite.xy)
+plot.spantree(mite.dbMEM1$spanning, mite.xy)
 
 # Compute all (n-1) db-MEM eigenfunctions, including those that 
 # have negative eigenvalues and Moran's I modelling negative spatial correlation

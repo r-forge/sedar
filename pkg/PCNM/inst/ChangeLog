@@ -2,10 +2,6 @@ $Date$
 
 PCNM package ChangeLog at http://sedar.r-forge.r-project.org/
 
-Version 2.1-1
-
-	* Include NAMESPACE
-	
 Version 2.1
 
 	* Provision for the case where there is a single eigenvector with 

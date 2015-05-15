@@ -34,6 +34,7 @@ bstick.def <- function (n, tot.var = 1, ...)   # 'bstick.default' from vegan
 	D <- as.matrix(D)
 	n <- nrow(D)
 	epsilon <- sqrt(.Machine$double.eps)
+# replace by: 	epsilon <- .Machine$double.eps * 10^2
 	if(length(rn)!=0) {
 		names <- rn
 		} else {
