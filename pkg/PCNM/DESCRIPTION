@@ -7,7 +7,7 @@ Author: Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
 Depends: ade4, AEM, MASS, packfor, vegan
 Description: Spatial eigenfunction analysis by principal coordinates of neighbour matrices (PCNM) and principal coordinate analysis.
-License: Unlimited
+License: GPL (>=2)
 LazyLoad: yes
 Revision: 60
 Repository: R-Forge

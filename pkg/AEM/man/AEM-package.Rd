@@ -12,9 +12,9 @@ Package to construct asymmetric eigenvector maps (AEM).
 \tabular{ll}{
 Package: \tab AEM\cr
 Type: \tab Package\cr
-Version: \tab 0.5-2\cr
+Version: \tab 0.6\cr
 Date: \tab 2008-07-07\cr
-License: \tab Unlimited \cr
+License: \tab GPL >=2 \cr
 }
 This package construct spatial variables from the asymmetric eigenvector maps (AEM) framework. It was built following Blanchet et al. (2008).
 
@@ -22,7 +22,7 @@ This package construct spatial variables from the asymmetric eigenvector maps (A
 \author{
 F. Guillaume Blanchet
 
-Maintainer: F. Guillaume Blanchet <guillaume.blanchet@helsinki.fi>
+Maintainer: F. Guillaume Blanchet <guillaume.blanchet@math.mcmaster.ca>
 
 }
 \references{

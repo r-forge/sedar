@@ -86,7 +86,7 @@ s.value(mite.xy, mite.pcnm3$vectors[,70], clegend=0, sub="PCNM 70", csub=2.5)
 # By construction, they all have positive eigenvalues and Moran's I
 mite.dbMEM1 <- PCNM(mite.D, dbMEM=TRUE)
 dim(mite.dbMEM1$vectors)
-plot.spantree(mite.dbMEM1$spanning, mite.xy)
+plot(mite.dbMEM1$spanning, mite.xy)
 
 # Compute all (n-1) db-MEM eigenfunctions, including those that 
 # have negative eigenvalues and Moran's I modelling negative spatial correlation
