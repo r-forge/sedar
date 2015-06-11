@@ -5,7 +5,7 @@ Date: 2015-05-14
 Title: MEM spatial eigenfunction and principal coordinate analyses
 Author: Pierre Legendre, Daniel Borcard, F. Guillaume Blanchet and Stephane Dray
 Maintainer: Pierre Legendre <pierre.legendre@umontreal.ca>
-Depends: ade4, AEM, MASS, packfor, vegan
+Imports: ade4, AEM, MASS, packfor, vegan
 Description: Spatial eigenfunction analysis by principal coordinates of neighbour matrices (PCNM) and principal coordinate analysis.
 License: GPL (>=2)
 LazyLoad: yes
