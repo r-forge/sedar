@@ -6,6 +6,6 @@ Title: Tools to construct Asymmetric eigenvector maps (AEM) spatial variables
 Author: F. Guillaume Blanchet with contributions from Pierre Legendre and Olivier Gauthier
 Description: Tools to construct Asymmetric eigenvector maps (AEM) spatial variables.
 Maintainer: F. Guillaume Blanchet <guillaume.blanchet@math.mcmaster.ca>
-Imports: spdep, boot
+Depends: spdep, boot
 Suggests: ape, vegan
 License: GPL (>=2)
